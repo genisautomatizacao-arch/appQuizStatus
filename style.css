@@ -1,0 +1,429 @@
+:root {
+    --primary: #6366f1;
+    --primary-hover: #4f46e5;
+    --success: #10b981;
+    --danger: #ef4444;
+    --bg-color: #0f172a;
+    --text-main: #f8fafc;
+    --text-muted: #94a3b8;
+    --glass-bg: rgba(255, 255, 255, 0.05);
+    --glass-border: rgba(255, 255, 255, 0.1);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-main);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    position: relative;
+}
+
+/* Background animated blobs for a modern dynamic feel */
+.blob {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(80px);
+    z-index: -1;
+    opacity: 0.6;
+    animation: float 20s infinite alternate ease-in-out;
+}
+
+.shape-1 {
+    width: 400px;
+    height: 400px;
+    background: #4f46e5;
+    top: -100px;
+    left: -100px;
+}
+
+.shape-2 {
+    width: 300px;
+    height: 300px;
+    background: #ec4899;
+    bottom: -50px;
+    right: -50px;
+    animation-delay: -5s;
+}
+
+.shape-3 {
+    width: 250px;
+    height: 250px;
+    background: #0ea5e9;
+    bottom: 20%;
+    left: 20%;
+    animation-delay: -10s;
+}
+
+@keyframes float {
+    0% { transform: translate(0, 0) scale(1); }
+    100% { transform: translate(50px, 50px) scale(1.1); }
+}
+
+/* Main Container - Glassmorphism */
+.app-container {
+    background: var(--glass-bg);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid var(--glass-border);
+    border-radius: 24px;
+    padding: 40px;
+    width: 90%;
+    max-width: 650px;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+    min-height: 450px;
+    max-height: 90vh; /* Allow container to grow but not overflow the screen */
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start; /* Changed from center to allow scrolling content to push down */
+    position: relative;
+    overflow: hidden;
+}
+
+/* Screen Management */
+.screen {
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    animation: fadeIn 0.4s ease forwards;
+}
+
+.screen.active {
+    display: flex;
+    height: 100%; /* Take full height of container */
+    overflow-y: auto; /* Allow the screen itself to scroll if needed */
+    padding-right: 5px; /* Space for scrollbar */
+}
+
+/* Custom scrollbar for active screens */
+.screen.active::-webkit-scrollbar {
+    width: 6px;
+}
+.screen.active::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.02);
+}
+.screen.active::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+h1 {
+    font-size: 2.5rem;
+    font-weight: 800;
+    margin-bottom: 1rem;
+    background: linear-gradient(135deg, #a855f7, #6366f1);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+p {
+    color: var(--text-muted);
+    margin-bottom: 2rem;
+    line-height: 1.6;
+}
+
+/* Utilities */
+.badge {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 6px 14px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+}
+
+/* Buttons */
+.primary-btn {
+    background: var(--primary);
+    color: white;
+    border: none;
+    padding: 14px 32px;
+    border-radius: 12px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 14px rgba(99, 102, 241, 0.4);
+    font-family: inherit;
+}
+
+.primary-btn:hover {
+    background: var(--primary-hover);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(99, 102, 241, 0.6);
+}
+
+.primary-btn:active, .secondary-btn:active {
+    transform: translateY(1px);
+}
+
+.secondary-btn {
+    background: transparent;
+    color: var(--text-main);
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    padding: 12px 28px;
+    border-radius: 12px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-family: inherit;
+}
+
+.secondary-btn:hover {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: rgba(255, 255, 255, 0.4);
+    transform: translateY(-2px);
+}
+
+.icon-btn {
+    background: rgba(255, 255, 255, 0.1);
+    border: none;
+    color: var(--text-main);
+    padding: 8px 12px;
+    border-radius: 8px;
+    font-size: 0.9rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.icon-btn:hover {
+    background: rgba(255, 255, 255, 0.2);
+    transform: scale(1.05);
+}
+
+/* Quiz Screen Specifics */
+.quiz-header {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center; /* Keep items centered vertically */
+    margin-bottom: 20px;
+    gap: 10px; /* Space between flex items */
+}
+
+/* Allow middle items to spread evenly but keep back button fixed */
+.quiz-header .badge {
+    flex-grow: 1;
+    text-align: center;
+    max-width: fit-content;
+}
+
+.progress-bar-container {
+    width: 100%;
+    height: 6px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    margin-bottom: 30px;
+    overflow: hidden;
+}
+
+.progress-bar {
+    height: 100%;
+    background: linear-gradient(90deg, #6366f1, #a855f7);
+    width: 0%;
+    transition: width 0.4s ease;
+    border-radius: 10px;
+}
+
+#question-text {
+    font-size: 1.4rem;
+    font-weight: 600;
+    margin-bottom: 30px;
+    text-align: left;
+    width: 100%;
+    line-height: 1.4;
+}
+
+/* Options Grid */
+.options-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    width: 100%;
+}
+
+.option-btn {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: var(--text-main);
+    padding: 16px 20px;
+    border-radius: 12px;
+    font-size: 1rem;
+    text-align: left;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    font-family: inherit;
+    display: flex;
+    align-items: center;
+}
+
+.option-btn:hover:not(:disabled) {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: rgba(255, 255, 255, 0.3);
+    transform: translateX(4px);
+}
+
+/* Option States */
+.option-btn.correct {
+    background: rgba(16, 185, 129, 0.2);
+    border-color: var(--success);
+    color: #fff;
+}
+
+.option-btn.wrong {
+    background: rgba(239, 68, 68, 0.2);
+    border-color: var(--danger);
+    color: #fff;
+    animation: shake 0.4s;
+}
+
+.option-btn:disabled {
+    cursor: default;
+    opacity: 0.8;
+}
+
+@keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    25% { transform: translateX(-5px); }
+    75% { transform: translateX(5px); }
+}
+
+/* Results Screen Specifics */
+.score-circle {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    background: conic-gradient(var(--primary) calc(var(--score-deg) * 1deg), rgba(255, 255, 255, 0.1) 0);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 30px auto;
+    position: relative;
+    box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.5);
+}
+
+.score-circle::before {
+    content: '';
+    position: absolute;
+    width: 120px;
+    height: 120px;
+    background: var(--bg-color);
+    border-radius: 50%;
+}
+
+.score-circle span {
+    position: relative;
+    z-index: 1;
+    font-size: 2.5rem;
+    font-weight: 800;
+}
+
+.score-total {
+    font-size: 1.2rem !important;
+    color: var(--text-muted);
+    margin-top: 10px;
+    margin-left: 5px;
+}
+
+/* Status Cards */
+.status-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    width: 100%;
+    margin-top: 20px;
+    /* Removed max-height so it expands naturally within the scrolling screen */
+    padding-right: 10px;
+}
+
+.status-card {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    padding: 20px;
+    text-align: left;
+}
+
+.status-card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 12px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.status-card h3 {
+    font-size: 1.3rem;
+    color: #fff;
+    margin: 0;
+}
+
+.status-badge {
+    background: var(--primary);
+    color: white;
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: bold;
+}
+
+.status-card h4 {
+    font-size: 1rem;
+    color: var(--text-muted);
+    margin-top: 15px;
+    margin-bottom: 5px;
+}
+
+.status-card p {
+    font-size: 0.95rem;
+    margin-bottom: 0;
+    color: #e2e8f0;
+}
+
+.status-card ul {
+    margin-left: 20px;
+    color: #e2e8f0;
+    font-size: 0.95rem;
+}
+
+.status-card li {
+    margin-bottom: 4px;
+}
+
+.alert-text {
+    color: #fca5a5 !important;
+}
+
+/* Custom Scrollbar for Status Grid */
+.status-grid::-webkit-scrollbar {
+    width: 6px;
+}
+.status-grid::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.02);
+}
+.status-grid::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+}

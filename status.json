@@ -1,0 +1,54 @@
+[
+  {
+    "sonda": "NS-38",
+    "statusGeral": "Assentamento CWO e Testes em Andamento",
+    "resumoRealizado": "A sonda NS-38 realizou o assentamento do conjunto CWO (TRT/LPR/FDR/SJ) na ANM, após inspeções visuais com ROV. O sistema EDS foi habilitado e um briefing operacional foi conduzido com o sondador. Testes de overpull e de interface contra as válvulas S1 e S2 da ANM foram executados, pressurizando o DPR. Atividades de rotina como circulação de tanques de HW 525 e atualizações de documentação no Sharepoint também foram realizadas, juntamente com inspeções de MRC, UEH e Clamps via ROV.",
+    "pendencias": [
+      "HPU: Uma bomba de HP e uma de MP estão paradas; diversas reguladoras (MP1, MP2, HP2, DEADMAN, OS 33, OS 34) apresentam falhas ou estão bypassadas.",
+      "HPU: Necessário testar a função OS-05 devido a problema de software que impediu o bloqueio de uma válvula.",
+      "SFT-004: Vazamentos no selo do fecha Swab e abre Swab; investigar incremento de pressão no atuador da Wing.",
+      "SFT Skid: Instalar parafusos nas abraçadeiras de fixação.",
+      "Coflexip: Coletar dados da eslinga (2 pernas) para verificar validade.",
+      "Skid N2: Conferir pressão do R-16-13-23283 (900 PSI).",
+      "Adaptadores HUB: Verificar validade dos COC’s e desembarcar adaptadores vencidos.",
+      "Pup Joint: PPJ-006 (20’) vencido, conectado na coluna.",
+      "HW-525: Solicitar mais 10 bombonas.",
+      "Geral: Rádios danificados, falta de kit de segurança para trabalho em altura e apenas um cinto de segurança.",
+      "Carretel OS: Monitorar danos no UEH e risco de contato com estrutura metálica no guia-cabo.",
+      "Carretel HCR: Regulagem do freio próxima do final.",
+      "Finalizar teste de estanqueidade do CWO.",
+      "Mobilizar cabo elétrico EJ017 na cabine do sondador."
+    ],
+    "riscosOuAlertas": "Problemas persistentes na HPU, incluindo bombas e reguladoras com falhas ou isoladas, e flow meters com leitura lenta. Vazamentos na válvula 6.14, na TRT e na SFT-004. Dano na capa externa do HCR e gotejamento no MQC 2 da HPU. Queda de itens da Polia 180º no mar (rolete recuperado). Pup Joint PPJ-006 (20’) vencido e conectado na coluna. Carretel OS com UEH pegando em estrutura metálica. Falha no teste de EDS na superfície. Rádios danificados e deficiências em equipamentos de segurança."
+  },
+  {
+    "sonda": "SS-73",
+    "statusGeral": "Operação Comprometida, Manutenção Crítica",
+    "resumoRealizado": "A sonda SS-73 passou por diversas atividades operacionais e de manutenção. A equipe de eletrônica realizou tentativas contínuas de comunicação do sistema RTO LIVE. O monitoramento da HPU-239 foi constante, com múltiplos procedimentos de flushing e análise de fluidos, resultando em melhoria das classes NAS. Foram realizados troubleshootings em bombas pneumáticas e de MP, com alguns sucessos, e o sistema Factor Taly da Cabine de Controle foi restabelecido. Instalações físicas incluíram uma placa de proteção para os acumuladores da HPU-239 e espiroprotec no jumper HCR. Módulos da CWJ foram instalados na seção de assentamento. Checklists e atualizações de inventário foram feitos para diversos equipamentos e containers. Testes funcionais foram concluídos para o guia cabo do carretel TH, Riser Spider, swivel da SFT, e kits de clamps e CWJ. Testes de pressão no bore de produção da JRC + THRT e no HCR foram realizados com sucesso. Houve troubleshooting e intervenção na bomba HP1, e uma nova bomba HP foi recebida. Amostras de fluido foram coletadas e analisadas dos tanques e bombas da HPU. A documentação no Sharepoint foi atualizada.",
+    "pendencias": [
+      "Realizar Gabaritagem da SFT.",
+      "Substituir eslinga da coflex (vencida).",
+      "Substituir Relif da bomba MP-1.",
+      "Substituir Reguladora de HP-2.",
+      "Substituir bomba de HP.",
+      "Preparar ferramentas para operação.",
+      "Mover clamps para o bag para operação.",
+      "Realizar Packoff.",
+      "Realizar transferência de HW do tanque de retorno para o tanque de supply.",
+      "Atualizar controle de equipamentos (Lista passada hoje).",
+      "Check list da caixa que embarcou com a bomba e atualizar controle de equipamentos a bordo.",
+      "Atualizar check list do container oficina retirando 2 silver tapes e 2 filamentosas.",
+      "Teste funcional kit clamps com vídeo.",
+      "Teste funcional kit cwj com vídeo.",
+      "Teste funcional guia cabo.",
+      "Teste funcional riser spider com vídeo.",
+      "Giro do swivel SFT com vídeo.",
+      "Realizar levantamento da quantidade de cintas catracas para atendimento a operação e a desmobilização.",
+      "Retirar a amostra de HW para classificar.",
+      "Realizar a movimentação dos módulos da CWJ proximo a seção de assentamento.",
+      "Realizar a movimentação de 2 bombonas de HW próximo a HPU.",
+      "Realizar anotação do ID do tubo em que será montado o centralizador."
+    ],
+    "riscosOuAlertas": "A sonda enfrenta falhas críticas na HPU-239, incluindo bombas MP-1 (válvula relief reprovada e bloqueada) e ambas as bombas HP inoperantes, exigindo o uso da bomba pneumática e by-pass entre reguladoras. Vazamentos e perda de estanqueidade são recorrentes na HPU, com reguladoras MP-Test, HP-Test, OS-33, OS-35 e OS-36 apresentando passagem indevida. O flowmeter de retorno normal flow está inoperante, e as válvulas dos filtros de retorno estão fechadas. As certificações das válvulas da HPU e o COC da HPU estão vencidos. O sistema RTO LIVE e a antena Starlink apresentam falhas de comunicação persistentes. A cabine de controle opera com sistema de purga em by-pass, AC-02 com problemas de TRIP, monitor DELL trincado, e funções OS-19, OS-24, OS-33, OS-36 atuando em local mode. A memória do sistema HMI atingiu o limite, causando travamentos. Há tubos, saver sub, EBE e spreader bar vencidos a bordo. A unidade de injeção química MAC-2003 apresentou vazamento, e o manifold de bombeio de MEG está com certificados vencidos. O carretel TH veio sem botão de acionamento, e o swivel elétrico do carretel está inoperante. Houve quebra da conexão Weco do Jumper HCR e parafusos danificados na CWJ-007."
+  }
+]

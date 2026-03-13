@@ -1,0 +1,152 @@
+[
+  {
+    "question": "De acordo com o documento 'D-0761576 - C - OPERATIONAL AND MAINTENACE MANUAL - SYSTEM DPR 5KII - OMM', Seção 6.12, qual é a pré-carga de nitrogênio e a pressão de trabalho dos acumuladores de LP no circuito hidráulico de MP da HPU?",
+    "options": [
+      "Pré-carga de 2000 psi e Pressão de Trabalho de 3000 psi",
+      "Pré-carga de 2650 psi e Pressão de Trabalho de 5000 psi",
+      "Pré-carga de 4350 psi e Pressão de Trabalho de 10000 psi",
+      "Pré-carga de 1000 psi e Pressão de Trabalho de 2000 psi"
+    ],
+    "correctAnswer": 1
+  },
+  {
+    "question": "Conforme o documento 'D-0737819 - INSTRUÇÃO DE TRABALHO - MOBILIZAÇÃO E INICIALIZAÇÃO DA HPU', Item 8.4.7 e Alerta, qual é o procedimento rigoroso para iniciar a pré-carga de N2 nos acumuladores de LP (12.1 / 12.2 / 12.3 / 12.4 / 12.5) para mitigar o risco de bexiga danificada?",
+    "options": [
+      "Abrir totalmente as válvulas de entrada dos acumuladores e as válvulas de dreno HW simultaneamente.",
+      "Abrir parcialmente (2 voltas) as válvulas 6.13 / 6.3 / 6.4 / 6.5 / 6.6 (dreno HW) antes de abrir as válvulas de entrada de cada acumulador individualmente.",
+      "Manter todas as válvulas de dreno HW fechadas e abrir as válvulas de entrada dos acumuladores uma por vez.",
+      "Realizar a pré-carga em todos os acumuladores simultaneamente, sem abrir as válvulas de dreno HW."
+    ],
+    "correctAnswer": 1
+  },
+  {
+    "question": "Baseado no documento 'D-0761576 - C - OPERATIONAL AND MAINTENACE MANUAL - SYSTEM DPR 5KII - OMM', Seção 8, Tabela 2.1.5.2 (p.50), qual é a sequência exata de comandos e seus respectivos tempos para a ativação do ESD Nível 2 (Emergency Shutdown)?",
+    "options": [
+      "Abre Cisalhante TRT 1 (1s), Fecha Cisalhante TRT 23 (2s), Abre Válvula EDP 5” 3 (20s), Fecha Válvula EDP 5” 4 (21s), Abre Válvula Anular EDP 5 (22s), Fecha Válvula Anular EDP 6 (23s), Abre Válvula XO EDP 2 (24s), Abre Válvula Wing SFT 49 (25s).",
+      "Piloto SDR 24 (1s), Abre Válvula EDP 5” 3 (20s), Fecha Válvula EDP 5” 4 (21s), Abre Válvula Anular EDP 5 (22s), Fecha Válvula Anular EDP 6 (23s), Abre Válvula XO EDP 2 (24s), Abre Válvula Wing SFT 49 (25s).",
+      "Abre Válvula Wing SFT 49 (1s).",
+      "Fecha Cisalhante TRT 23 (1s), Abre Válvula EDP 5” 3 (2s), Fecha Válvula EDP 5” 4 (3s), Abre Válvula Anular EDP 5 (4s), Fecha Válvula Anular EDP 6 (5s), Abre Válvula XO EDP 2 (6s), Abre Válvula Wing SFT 49 (7s)."
+    ],
+    "correctAnswer": 0
+  },
+  {
+    "question": "De acordo com o documento 'Alerta Operacional DPR_08_2022_A - EQD Involuntário no NS-29', qual foi a causa raiz identificada para o comando involuntário de EDS e qual a modificação proposta para aumentar a confiabilidade do sistema?",
+    "options": [
+      "Falha de comunicação; implementação de videoconferência obrigatória.",
+      "Fator humano; treinamento intensivo dos operadores.",
+      "Falha intermitente do contato da botoeira ESD#3 – EQD no ESDP; adição de chave modelo On/Off para atuar em conjunto com a botoeira.",
+      "Descarga limitada de MEG; instalação de um sistema de contenção de vazamentos."
+    ],
+    "correctAnswer": 2
+  },
+  {
+    "question": "Conforme o documento 'D-0737819 - INSTRUÇÃO DE TRABALHO - MOBILIZAÇÃO E INICIALIZAÇÃO DA HPU', Item 8.5.1, qual a quantidade inicial de fluido hidráulico (HW) necessária para abastecer a HPU e qual a classe de limpeza ISO 4406 que o fluido deve atingir antes de ser transferido para o Supply Reservoir?",
+    "options": [
+      "200 litros, Classe 9",
+      "400 litros, Classe 6",
+      "600 litros, Classe 12",
+      "160 galões, Classe 17/15/12"
+    ],
+    "correctAnswer": 1
+  },
+  {
+    "question": "Baseado no documento 'D-0761576 - C - OPERATIONAL AND MAINTENACE MANUAL - SYSTEM DPR 5KII - OMM', Seção 11.3.1 (p.469), qual é a vazão máxima permitida para o Umbilical de Circulação (HCR) de 1.1/4” com 2200 metros de comprimento, e qual a pressão de topo que nunca deve ser excedida?",
+    "options": [
+      "2.0 bpm e 3000 psi",
+      "1.5 bpm e 4000 psi",
+      "1.2 bpm e 5000 psi",
+      "0.8 bpm e 2500 psi"
+    ],
+    "correctAnswer": 2
+  },
+  {
+    "question": "De acordo com o documento 'D-0761576 - C - OPERATIONAL AND MAINTENACE MANUAL - SYSTEM DPR 5KII - OMM', Seção 15.1.11, qual é a pressão mínima de abertura para a válvula Wing (3-1/16”) da SFT quando o bore está a 4000 psi?",
+    "options": [
+      "1000 psi",
+      "2000 psi",
+      "3000 psi",
+      "5000 psi"
+    ],
+    "correctAnswer": 2
+  },
+  {
+    "question": "Conforme o documento 'D-0761576 - C - OPERATIONAL AND MAINTENACE MANUAL - SYSTEM DPR 5KII - OMM', Seção 12.2.3, qual a regulagem de lubrificação do sistema de tratamento de ar (Lubrifil) para o Carretel Lubricator Valve e qual a pressão de alimentação do sistema?",
+    "options": [
+      "5 a 7 gotas de óleo por minuto a 80 psi",
+      "10 a 12 gotas de óleo a cada minuto a 100 psi",
+      "15 a 20 gotas de óleo por minuto a 120 psi",
+      "20 a 25 gotas de óleo a cada minuto a 150 psi"
+    ],
+    "correctAnswer": 1
+  },
+  {
+    "question": "Baseado no documento 'D-0761576 - C - OPERATIONAL AND MAINTENACE MANUAL - SYSTEM DPR 5KII - OMM', Seção 19.2.6, qual é o padrão de aplicação de torque para flanges API e qual a condição mínima de protuberância dos prisioneiros/estojos após o torque?",
+    "options": [
+      "Padrão sequencial, um filete de rosca",
+      "Padrão estrela (cruzada), dois filetes de rosca",
+      "Padrão circular, três filetes de rosca",
+      "Padrão alternado, um e meio filetes de rosca"
+    ],
+    "correctAnswer": 1
+  },
+  {
+    "question": "De acordo com o documento 'D-0761576 - C - OPERATIONAL AND MAINTENACE MANUAL - SYSTEM DPR 5KII - OMM', Seção 21.1, quais são os torques de trabalho mínimo, nominal e máximo para o centralizador DPR 5K II com interface pino e caixa 6.5/8” XT-MF-69?",
+    "options": [
+      "Mínimo: 50.000 ft*lbs; Nominal: 60.000 ft*lbs; Máximo: 70.000 ft*lbs",
+      "Mínimo: 70.800 ft*lbs; Nominal: 73.000 ft*lbs; Máximo: 85.000 ft*lbs",
+      "Mínimo: 65.000 ft*lbs; Nominal: 70.000 ft*lbs; Máximo: 80.000 ft*lbs",
+      "Mínimo: 75.000 ft*lbs; Nominal: 80.000 ft*lbs; Máximo: 90.000 ft*lbs"
+    ],
+    "correctAnswer": 1
+  },
+  {
+    "question": "Conforme o documento 'D-0761576 - C - OPERATIONAL AND MAINTENACE MANUAL - SYSTEM DPR 5KII - OMM', Seção 24.1, qual a vazão máxima de cimento permitida pela linha de cimentação (P/N 0649782) para operações com KV & SES, e qual a pressão máxima?",
+    "options": [
+      "5 bpm e 3000 psi",
+      "6 bpm e 4000 psi",
+      "8 bpm e 5000 psi",
+      "10 bpm e 6000 psi"
+    ],
+    "correctAnswer": 2
+  },
+  {
+    "question": "Baseado no documento 'Sistema de Controle DPR 5KII', Seção 'Cabine de Controle - Componentes Principais' (p.30), qual é o tempo de purga da Cabine de Controle e quais são os níveis inferior e superior de alarme para o detector de gás sulfídrico (H2S)?",
+    "options": [
+      "45 minutos, 2 ppm e 5 ppm",
+      "55 minutos, 5 ppm e 10 ppm",
+      "60 minutos, 10 ppm e 20 ppm",
+      "30 minutos, 1 ppm e 3 ppm"
+    ],
+    "correctAnswer": 1
+  },
+  {
+    "question": "De acordo com o documento 'D-0761576 - C - OPERATIONAL AND MAINTENACE MANUAL - SYSTEM DPR 5KII - OMM', Seção 16.4.5, Tabela 63, qual é a taxa máxima de queda de pressão permitida para o teste do corpo da Lubricator Valve a 5000 psi durante 15 minutos?",
+    "options": [
+      "12 psi",
+      "25 psi",
+      "62 psi",
+      "100 psi"
+    ],
+    "correctAnswer": 2
+  },
+  {
+    "question": "Conforme o documento 'Sistema de Controle DPR 5KII', Seção 'HPU - Hydraulic Power Unit - Componentes Principais' (p.88), quais são os limites inferior e superior de pressão para as válvulas reguladoras de pressão dos headers MP1 e MP2 na HPU?",
+    "options": [
+      "2.000 psi a 4.000 psi",
+      "2.000 psi a 6.000 psi",
+      "4.000 psi a 10.000 psi",
+      "1.000 psi a 5.000 psi"
+    ],
+    "correctAnswer": 1
+  },
+  {
+    "question": "Baseado no documento 'D-0761576 - C - OPERATIONAL AND MAINTENACE MANUAL - SYSTEM DPR 5KII - OMM', Seção 14.2.3, qual é o torque recomendado pela IPB para os parafusos do Clamp OWL Valve e qual o limite máximo de torque que nunca deve ser excedido?",
+    "options": [
+      "30 ~ 35 lbf.ft, nunca exceder 40 lbf.ft",
+      "45 ~ 50 lbf.ft, nunca exceder 60 lbf.ft",
+      "55 ~ 60 lbf.ft, nunca exceder 70 lbf.ft",
+      "65 ~ 70 lbf.ft, nunca exceder 80 lbf.ft"
+    ],
+    "correctAnswer": 1
+  }
+]
