@@ -35,20 +35,25 @@ async function extractTextFromPDFs() {
             if (stat && stat.isDirectory()) {
                 results = results.concat(getPdfFiles(filePath));
             } else if (file.toLowerCase().endsWith('.pdf')) {
-                results.push(filePath);
+                results.push({ path: filePath, mtime: stat.mtime });
             }
         });
         return results;
     }
 
-    const files = getPdfFiles(PDF_DIR);
+    // Get files, sort by most recent, and take top 20 to avoid token limits
+    const allFiles = getPdfFiles(PDF_DIR);
+    const files = allFiles
+        .sort((a, b) => b.mtime - a.mtime)
+        .slice(0, 20)
+        .map(f => f.path);
     
     if (files.length === 0) {
         console.log("⚠️ Nenhum arquivo PDF encontrado na pasta data/pdfs/.");
         return combinedText;
     }
 
-    console.log(`📄 Encontrados ${files.length} arquivos PDF. Extraindo texto...`);
+    console.log(`📄 Encontrados ${allFiles.length} arquivos PDF. Processando os 20 mais recentes para evitar limites de cota...`);
 
     for (const filePath of files) {
         const file = path.basename(filePath);
@@ -72,37 +77,39 @@ async function extractTextFromPDFs() {
 async function generateQuizQuestions(textSource) {
     if (!textSource.trim()) {
         console.log("⚠️ Sem texto para processar. Crie um arquivo questions.json manual ou adicione PDFs.");
-        // Generate a fallback mock if no PDFs are present just to test the frontend
         createMockQuestions();
         return;
     }
 
-    console.log("🤖 Enviando texto para a Inteligência Artificial (Gemini) gerar as perguntas...");
+    // Load existing questions to prevent duplicates
+    let existingQuestions = [];
+    if (fs.existsSync(OUTPUT_FILE)) {
+        try {
+            existingQuestions = JSON.parse(fs.readFileSync(OUTPUT_FILE, 'utf8'));
+            console.log(`📂 Carregadas ${existingQuestions.length} perguntas existentes para evitar repetições.`);
+        } catch (e) {
+            console.warn("⚠️ Erro ao ler questions.json existente. Começando do zero.");
+        }
+    }
 
-    const prompt = `Você é um Engenheiro Subsea Sênior elaborando um teste de certificação EXTREMAMENTE TÉCNICO e de alta dificuldade com base ESTRITAMENTE nos documentos fornecidos.
-SUA TAREFA É CRIAR EXATAMENTE 15 PERGUNTAS DE NÍVEL AVANÇADO. NÃO ACEITAREI MENOS DE 15.
+    const currentTitles = existingQuestions.map(q => q.question).join('\n');
 
-FOCO TÉCNICO (MUITO IMPORTANTE): As perguntas devem abordar detalhes críticos e específicos de engenharia e operação, como:
-- Valores exatos de setpoints (pressões de testes, vazões, ranges de torque, tensões de operação).
-- Diagnóstico de falhas complexas e procedimentos rigorosos de emergência (ESD/PSD).
-- Intertravamentos mecânicos, lógicas de válvulas e características exclusivas do sistema DPR 5KII / HPU / IWOCS.
-Evite perguntas conceituais fáceis. Exija conhecimento profundo dos manuais técnicos fornecidos.
+    console.log("🤖 Enviando texto para a Inteligência Artificial (Gemini) gerar NOVAS perguntas...");
 
-REQUISITO OBRIGATÓRIO DE CITAÇÃO NA PERGUNTA:
-Para *CADA* pergunta que você criar, você deve explicitamente citar o nome completo do documento (e seção/página, se possível) de onde tirou a informação.
-Exemplo: "De acordo com o documento 'D-0737819 - INSTRUÇÃO DE TRABALHO - MOBILIZAÇÃO E INICIALIZAÇÃO DA HPU', qual é o procedimento de..."
+    const prompt = `Você é um Engenheiro Subsea Sênior elaborando um teste de certificação EXTREMAMENTE TÉCNICO.
+SUA TAREFA É CRIAR EXATAMENTE 15 NOVAS PERGUNTAS DE NÍVEL AVANÇADO que NÃO estejam na lista abaixo.
 
-IMPORTANTE: Você ESTRITAMENTE DEVE retornar um Array JSON válido com os 15 objetos, sem formatações markdown (como \`\`\`json), apenas o array cru.
-Exemplo de formato esperado:
-[
-  {
-    "question": "De acordo com o documento 'Sistema de Controle DPR 5KII', qual a pressão máxima?",
-    "options": ["100 psi", "300 psi", "500 psi", "1000 psi"],
-    "correctAnswer": 1
-  }
-]
+LISTA DE PERGUNTAS JÁ EXISTENTES (NÃO REPITA ESTAS):
+---
+${currentTitles.slice(0, 5000)} ... (truncado)
+---
 
-Aqui estão os textos dos materiais de estudo (separados por marcadores de documento):
+FOCO TÉCNICO: Detalhes críticos de engenharia, setpoints, pressões, torques e lógicas do sistema DPR 5KII / HPU / IWOCS.
+CITE O DOCUMENTO: Para cada pergunta, cite o nome completo do manual/documento de origem.
+
+RETORNE APENAS O ARRAY JSON CRU com as 15 novas perguntas.
+
+Estudo:
 """
 ${textSource}
 """
@@ -110,23 +117,23 @@ ${textSource}
 
     try {
         const response = await ai.models.generateContent({
-            model: 'gemini-2.5-flash',
+            model: 'gemini-2.0-flash',
             contents: prompt,
             config: {
-                temperature: 0.2, // Low temp for factual consistency
+                temperature: 0.3,
             }
         });
 
         let resultText = response.text;
-        
-        // Clean up markdown markers if the AI ignores our instruction
         resultText = resultText.replace(/```json/g, '').replace(/```/g, '').trim();
 
-        // Validate JSON
-        const questions = JSON.parse(resultText);
+        const newQuestions = JSON.parse(resultText);
         
-        fs.writeFileSync(OUTPUT_FILE, JSON.stringify(questions, null, 2));
-        console.log(`🎉 Sucesso! ${questions.length} perguntas foram geradas e salvas em ${OUTPUT_FILE}`);
+        // Merge with existing
+        const combined = [...existingQuestions, ...newQuestions];
+        
+        fs.writeFileSync(OUTPUT_FILE, JSON.stringify(combined, null, 2));
+        console.log(`🎉 Sucesso! ${newQuestions.length} novas perguntas adicionadas. Total no banco: ${combined.length}`);
 
     } catch (error) {
         console.error("❌ Erro ao gerar perguntas com a IA:", error);
@@ -139,11 +146,6 @@ function createMockQuestions() {
         {
             "question": "Como você não adicionou PDFs, esta é uma pergunta teste. Qual a cor do cavalo branco de Napoleão?",
             "options": ["Preto", "Marrom", "Branco", "Malhado"],
-            "correctAnswer": 2
-        },
-        {
-            "question": "Qual destas tecnologias é usada para estilizar páginas web?",
-            "options": ["HTML", "Python", "CSS", "Java"],
             "correctAnswer": 2
         }
     ];

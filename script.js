@@ -64,8 +64,15 @@ function startGame() {
     currentIndex = 0;
     score = 0;
     
-    // Randomize the questions for this session
-    shuffleArray(questions);
+    // Copy the full question pool
+    let activeQuestions = [...questions];
+    
+    // Shuffle the entire pool
+    shuffleArray(activeQuestions);
+    
+    // Select a subset (e.g., 15 questions) for this session
+    // This allows the bank to grow to 100 while keeping the game session short
+    questions = activeQuestions.slice(0, 15);
     
     // Switch Screen
     startScreen.classList.remove('active');
