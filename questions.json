@@ -1,151 +1,151 @@
 [
   {
-    "question": "De acordo com o documento 'D-0761576 - C - OPERATIONAL AND MAINTENACE MANUAL - SYSTEM DPR 5KII - OMM', Seção 6.12, qual é a pré-carga de nitrogênio e a pressão de trabalho dos acumuladores de LP no circuito hidráulico de MP da HPU?",
+    "question": "De acordo com o documento 'D-0841277_A - Instrucao de Trabalho - Riser Spider DPR 5K II', após a conclusão dos testes funcionais do Riser Spider, qual é a sequência exata para liberar a pressão residual dos jumpers hidráulicos durante a desmobilização, e qual a ordem de desconexão das mangueiras?",
     "options": [
-      "Pré-carga de 2000 psi e Pressão de Trabalho de 3000 psi",
-      "Pré-carga de 2650 psi e Pressão de Trabalho de 5000 psi",
-      "Pré-carga de 4350 psi e Pressão de Trabalho de 10000 psi",
-      "Pré-carga de 1000 psi e Pressão de Trabalho de 2000 psi"
+      "A) Desligar a unidade, acionar as manobras de abertura do GUIA e fechamento da cunha por 10 segundos, desconectar da HPU, depois do painel, e por fim do Riser Spider.",
+      "B) Manter o guia aberto e a cunha fechada, desligar a alimentação pneumática e hidráulica, acionar as manobras de abertura do GUIA e fechamento da cunha por 20 segundos, desconectar do Riser Spider, depois do painel, e por fim da unidade hidráulica.",
+      "C) Desligar a unidade, acionar as manobras de fechamento do GUIA e abertura da cunha por 20 segundos, desconectar do painel, depois do Riser Spider, e por fim da HPU.",
+      "D) Manter o guia e a cunha fechados, desligar a alimentação pneumática e hidráulica, acionar as manobras de abertura do GUIA e fechamento da cunha por 15 segundos, desconectar da unidade hidráulica, depois do painel, e por fim do Riser Spider."
     ],
     "correctAnswer": 1
   },
   {
-    "question": "Conforme o documento 'D-0737819 - INSTRUÇÃO DE TRABALHO - MOBILIZAÇÃO E INICIALIZAÇÃO DA HPU', Item 8.4.7 e Alerta, qual é o procedimento rigoroso para iniciar a pré-carga de N2 nos acumuladores de LP (12.1 / 12.2 / 12.3 / 12.4 / 12.5) para mitigar o risco de bexiga danificada?",
+    "question": "De acordo com o documento 'D-0841266_A - Instrucao de Trabalho - Surface Flow Tree – Flexible Flow Line Pipe – DPR 5K II', qual é o sentido de rotação do atuador hidráulico tipo FAIL CLOSE da válvula WING do Bloco Lateral da SFT para realizar sua abertura manual via override?",
     "options": [
-      "Abrir totalmente as válvulas de entrada dos acumuladores e as válvulas de dreno HW simultaneamente.",
-      "Abrir parcialmente (2 voltas) as válvulas 6.13 / 6.3 / 6.4 / 6.5 / 6.6 (dreno HW) antes de abrir as válvulas de entrada de cada acumulador individualmente.",
-      "Manter todas as válvulas de dreno HW fechadas e abrir as válvulas de entrada dos acumuladores uma por vez.",
-      "Realizar a pré-carga em todos os acumuladores simultaneamente, sem abrir as válvulas de dreno HW."
+      "A) Sentido horário, com 12.5 voltas completas.",
+      "B) Sentido anti-horário, com 12.5 voltas completas.",
+      "C) Sentido horário.",
+      "D) Sentido anti-horário."
+    ],
+    "correctAnswer": 3
+  },
+  {
+    "question": "De acordo com o documento 'D-0841263_A - Instrucão de Trabalho - Mobilização Open Sea Reeler – DPR 5K II', qual dos seguintes itens NÃO é um intertravamento de segurança listado na Tabela 6 para desativar o sistema de acionamento do Carretel Open Sea?",
+    "options": [
+      "A) Front gate Interlock (HV1/1)",
+      "B) Drive side access door interlock (HV1/2)",
+      "C) Umbilical tension sensor interlock",
+      "D) Transit Bolt Interlock (HV1/6)"
+    ],
+    "correctAnswer": 2
+  },
+  {
+    "question": "De acordo com o documento 'Sistema de Controle DPR 5KII', quais são os níveis inferior e superior de alarme para o detector de gás sulfídrico (H2S) no CPFG (Combined Pressurization Fire & Gas Control Panel) da Cabine de Controle?",
+    "options": [
+      "A) Nível inferior: 10% LEL, Nível superior: 20% LEL",
+      "B) Nível inferior: 5 ppm, Nível superior: 10 ppm",
+      "C) Nível inferior: 10 ppm, Nível superior: 20 ppm",
+      "D) Nível inferior: 0.5% v/v, Nível superior: 1% v/v"
     ],
     "correctAnswer": 1
   },
   {
-    "question": "Baseado no documento 'D-0761576 - C - OPERATIONAL AND MAINTENACE MANUAL - SYSTEM DPR 5KII - OMM', Seção 8, Tabela 2.1.5.2 (p.50), qual é a sequência exata de comandos e seus respectivos tempos para a ativação do ESD Nível 2 (Emergency Shutdown)?",
+    "question": "De acordo com o documento 'Sistema de Controle DPR 5KII', quais são as especificações de potência do motor elétrico, vazão e pressão de trabalho para as bombas do circuito de alta pressão (HP) da HPU?",
     "options": [
-      "Abre Cisalhante TRT 1 (1s), Fecha Cisalhante TRT 23 (2s), Abre Válvula EDP 5” 3 (20s), Fecha Válvula EDP 5” 4 (21s), Abre Válvula Anular EDP 5 (22s), Fecha Válvula Anular EDP 6 (23s), Abre Válvula XO EDP 2 (24s), Abre Válvula Wing SFT 49 (25s).",
-      "Piloto SDR 24 (1s), Abre Válvula EDP 5” 3 (20s), Fecha Válvula EDP 5” 4 (21s), Abre Válvula Anular EDP 5 (22s), Fecha Válvula Anular EDP 6 (23s), Abre Válvula XO EDP 2 (24s), Abre Válvula Wing SFT 49 (25s).",
-      "Abre Válvula Wing SFT 49 (1s).",
-      "Fecha Cisalhante TRT 23 (1s), Abre Válvula EDP 5” 3 (2s), Fecha Válvula EDP 5” 4 (3s), Abre Válvula Anular EDP 5 (4s), Fecha Válvula Anular EDP 6 (5s), Abre Válvula XO EDP 2 (6s), Abre Válvula Wing SFT 49 (7s)."
+      "A) 15HP, 4.4 GPM, 5.000 psi",
+      "B) 15HP, 2 GPM, 10.000 psi",
+      "C) 20HP, 4.4 GPM, 10.000 psi",
+      "D) 20HP, 2 GPM, 5.000 psi"
+    ],
+    "correctAnswer": 1
+  },
+  {
+    "question": "De acordo com o documento 'D-0841266_A - Instrucao de Trabalho - Surface Flow Tree – Flexible Flow Line Pipe – DPR 5K II', qual o torque correto a ser aplicado nos 4 parafusos trava (P/N: 0523802) entre o Saver Sub e o crossover da SFT utilizando graxa Never-seez regular grade (P/N: CA051-008-01) com coeficiente de fricção 0.06, e qual o torque caso um plug de rosca esquerda seja utilizado?",
+    "options": [
+      "A) 8 N.m com graxa; 8.75 N.m sem graxa; 23.05 NM para plug de rosca esquerda.",
+      "B) 8.75 N.m com graxa; 8 N.m sem graxa; 23.05 NM para plug de rosca esquerda.",
+      "C) 52 lb.ft com graxa; 8.75 N.m sem graxa; 23.05 NM para plug de rosca esquerda.",
+      "D) 8 N.m com graxa; 52 lb.ft sem graxa; 23.05 NM para plug de rosca esquerda."
     ],
     "correctAnswer": 0
   },
   {
-    "question": "De acordo com o documento 'Alerta Operacional DPR_08_2022_A - EQD Involuntário no NS-29', qual foi a causa raiz identificada para o comando involuntário de EDS e qual a modificação proposta para aumentar a confiabilidade do sistema?",
+    "question": "De acordo com os documentos 'D-0824049_A _ Instrução de Trabalho – Mobilização e Operação da Torcup, Hytorc, Kit clamp`s e Kit CWJ' (Seção 8, Página 9) e 'Conversion Charts RP-2000 RAPTOR TorcUP Torque 2015' (Página 1), qual a pressão de ar em PSI que deve ser ajustada no regulador do kit lubrifil para que uma ferramenta TorcUP RP-2000 aplique um torque de 985 lb.ft nos dogs de travamento da Stress Joint + MRC?",
     "options": [
-      "Falha de comunicação; implementação de videoconferência obrigatória.",
-      "Fator humano; treinamento intensivo dos operadores.",
-      "Falha intermitente do contato da botoeira ESD#3 – EQD no ESDP; adição de chave modelo On/Off para atuar em conjunto com a botoeira.",
-      "Descarga limitada de MEG; instalação de um sistema de contenção de vazamentos."
+      "A) 30 psi",
+      "B) 40 psi",
+      "C) 50 psi",
+      "D) 60 psi"
+    ],
+    "correctAnswer": 1
+  },
+  {
+    "question": "De acordo com o documento 'D-0841275_A - Instrucao de Trabalho - Mobilizacao do Tubing Hanger Reeler DPR 5K II', qual a pressão e o volume esperado para o teste funcional da válvula gaveta do Tubing Hanger Reeler, tanto para abertura quanto para fechamento?",
+    "options": [
+      "A) 2000 psi, 0.196 litros",
+      "B) 3000 psi, 0.196 litros",
+      "C) 3000 psi, 0.250 litros",
+      "D) 5000 psi, 0.196 litros"
+    ],
+    "correctAnswer": 1
+  },
+  {
+    "question": "De acordo com o documento 'Sistema de Controle DPR 5KII', qual é a condição crítica para a correta inicialização da HMI do sistema de controle DPR 5K, e qual o tempo de espera associado para o switch (stratix)?",
+    "options": [
+      "A) A HMI deve ser energizada simultaneamente com o switch (stratix) para garantir a comunicação imediata.",
+      "B) A HMI deve ser energizada após a completa inicialização do switch (stratix), que necessita de 5 a 10 minutos para iniciar.",
+      "C) A HMI pode ser energizada a qualquer momento, pois sua inicialização é independente do switch (stratix).",
+      "D) A HMI requer uma reinicialização manual do switch (stratix) se não iniciar em 2 minutos."
+    ],
+    "correctAnswer": 1
+  },
+  {
+    "question": "De acordo com o documento 'Sistema de Controle DPR 5KII', na Sequência de ESD 2 - ESD, qual é a ação que ocorre aos 20 segundos e qual a ação que ocorre aos 25 segundos após a ativação da sequência?",
+    "options": [
+      "A) Aos 20s: Fecha Válvula EDP 5” 4 (Pressurizada); Aos 25s: Abre Válvula Wing SFT 49 (Ventada).",
+      "B) Aos 20s: Abre Válvula EDP 5” 3 (Ventada); Aos 25s: Abre Válvula Wing SFT 49 (Ventada).",
+      "C) Aos 20s: Abre Válvula Anular EDP 5 (Ventada); Aos 25s: Fecha Cisalhante TRT 23 (Pressurizada).",
+      "D) Aos 20s: Piloto SDR 24 (Pressurizada); Aos 25s: Abre Válvula Wing SFT 49 (Ventada)."
+    ],
+    "correctAnswer": 1
+  },
+  {
+    "question": "De acordo com o documento 'Sistema de Controle DPR 5KII', quais são as pressões de pré-carga de Nitrogênio (N2) para os acumuladores de bexiga dos Headers LP e HP da HPU, respectivamente?",
+    "options": [
+      "A) LP Header: 2.650 psi; HP Header: 4.350 psi.",
+      "B) LP Header: 5.000 psi; HP Header: 10.000 psi.",
+      "C) LP Header: 4.350 psi; HP Header: 2.650 psi.",
+      "D) LP Header: 2.000 psi; HP Header: 4.000 psi."
+    ],
+    "correctAnswer": 0
+  },
+  {
+    "question": "De acordo com o documento 'D-0841263_A - Instrucão de Trabalho - Mobilização Open Sea Reeler – DPR 5K II', quais são os raios de curvatura mínimos dinâmico e de armazenamento para o Umbilical Open Sea?",
+    "options": [
+      "A) Raio de curvatura mínimo dinâmico: 800 mm; Raio de curvatura mínimo de armazenamento: 900 mm.",
+      "B) Raio de curvatura mínimo dinâmico: 1100 mm; Raio de curvatura mínimo de armazenamento: 700 mm.",
+      "C) Raio de curvatura mínimo dinâmico: 700 mm; Raio de curvatura mínimo de armazenamento: 1100 mm.",
+      "D) Raio de curvatura mínimo dinâmico: 900 mm; Raio de curvatura mínimo de armazenamento: 800 mm."
+    ],
+    "correctAnswer": 1
+  },
+  {
+    "question": "De acordo com o documento 'D-0824049_A _ Instrução de Trabalho – Mobilização e Operação da Torcup, Hytorc, Kit clamp`s e Kit CWJ', após a montagem da CWJ com a chave de ar, quais são as configurações de torque finais e corretas para os parafusos das seções inferior e média, e para os parafusos de alternância nas seções superiores?",
+    "options": [
+      "A) Parafusos inferior e médio: 15 Nm; Parafusos de alternância superiores: 25 Nm.",
+      "B) Parafusos inferior e médio: 20 Nm; Parafusos de alternância superiores: 10 Nm.",
+      "C) Parafusos inferior e médio: 25 Nm; Parafusos de alternância superiores: 15 Nm.",
+      "D) Parafusos inferior e médio: 45 lbf.ft; Parafusos de alternância superiores: 25 Nm."
     ],
     "correctAnswer": 2
   },
   {
-    "question": "Conforme o documento 'D-0737819 - INSTRUÇÃO DE TRABALHO - MOBILIZAÇÃO E INICIALIZAÇÃO DA HPU', Item 8.5.1, qual a quantidade inicial de fluido hidráulico (HW) necessária para abastecer a HPU e qual a classe de limpeza ISO 4406 que o fluido deve atingir antes de ser transferido para o Supply Reservoir?",
+    "question": "De acordo com o documento 'D-0841277_A - Instrucao de Trabalho - Riser Spider DPR 5K II', com que frequência é imprescindível realizar a limpeza e lubrificação do BOWL e dos mordentes do Riser Spider durante as operações de manobra de coluna?",
     "options": [
-      "200 litros, Classe 9",
-      "400 litros, Classe 6",
-      "600 litros, Classe 12",
-      "160 galões, Classe 17/15/12"
-    ],
-    "correctAnswer": 1
-  },
-  {
-    "question": "Baseado no documento 'D-0761576 - C - OPERATIONAL AND MAINTENACE MANUAL - SYSTEM DPR 5KII - OMM', Seção 11.3.1 (p.469), qual é a vazão máxima permitida para o Umbilical de Circulação (HCR) de 1.1/4” com 2200 metros de comprimento, e qual a pressão de topo que nunca deve ser excedida?",
-    "options": [
-      "2.0 bpm e 3000 psi",
-      "1.5 bpm e 4000 psi",
-      "1.2 bpm e 5000 psi",
-      "0.8 bpm e 2500 psi"
+      "A) A cada 10 seções.",
+      "B) A cada 20 seções.",
+      "C) A cada 30 seções.",
+      "D) Diariamente."
     ],
     "correctAnswer": 2
   },
   {
-    "question": "De acordo com o documento 'D-0761576 - C - OPERATIONAL AND MAINTENACE MANUAL - SYSTEM DPR 5KII - OMM', Seção 15.1.11, qual é a pressão mínima de abertura para a válvula Wing (3-1/16”) da SFT quando o bore está a 4000 psi?",
+    "question": "De acordo com o documento 'D-0841266_A - Instrucao de Trabalho - Surface Flow Tree – Flexible Flow Line Pipe – DPR 5K II', quais são os três testes hold points obrigatórios, conforme o padrão Petrobras PE-1PBR-01580, que devem ser realizados no bloco e válvulas da SFT?",
     "options": [
-      "1000 psi",
-      "2000 psi",
-      "3000 psi",
-      "5000 psi"
-    ],
-    "correctAnswer": 2
-  },
-  {
-    "question": "Conforme o documento 'D-0761576 - C - OPERATIONAL AND MAINTENACE MANUAL - SYSTEM DPR 5KII - OMM', Seção 12.2.3, qual a regulagem de lubrificação do sistema de tratamento de ar (Lubrifil) para o Carretel Lubricator Valve e qual a pressão de alimentação do sistema?",
-    "options": [
-      "5 a 7 gotas de óleo por minuto a 80 psi",
-      "10 a 12 gotas de óleo a cada minuto a 100 psi",
-      "15 a 20 gotas de óleo por minuto a 120 psi",
-      "20 a 25 gotas de óleo a cada minuto a 150 psi"
-    ],
-    "correctAnswer": 1
-  },
-  {
-    "question": "Baseado no documento 'D-0761576 - C - OPERATIONAL AND MAINTENACE MANUAL - SYSTEM DPR 5KII - OMM', Seção 19.2.6, qual é o padrão de aplicação de torque para flanges API e qual a condição mínima de protuberância dos prisioneiros/estojos após o torque?",
-    "options": [
-      "Padrão sequencial, um filete de rosca",
-      "Padrão estrela (cruzada), dois filetes de rosca",
-      "Padrão circular, três filetes de rosca",
-      "Padrão alternado, um e meio filetes de rosca"
-    ],
-    "correctAnswer": 1
-  },
-  {
-    "question": "De acordo com o documento 'D-0761576 - C - OPERATIONAL AND MAINTENACE MANUAL - SYSTEM DPR 5KII - OMM', Seção 21.1, quais são os torques de trabalho mínimo, nominal e máximo para o centralizador DPR 5K II com interface pino e caixa 6.5/8” XT-MF-69?",
-    "options": [
-      "Mínimo: 50.000 ft*lbs; Nominal: 60.000 ft*lbs; Máximo: 70.000 ft*lbs",
-      "Mínimo: 70.800 ft*lbs; Nominal: 73.000 ft*lbs; Máximo: 85.000 ft*lbs",
-      "Mínimo: 65.000 ft*lbs; Nominal: 70.000 ft*lbs; Máximo: 80.000 ft*lbs",
-      "Mínimo: 75.000 ft*lbs; Nominal: 80.000 ft*lbs; Máximo: 90.000 ft*lbs"
-    ],
-    "correctAnswer": 1
-  },
-  {
-    "question": "Conforme o documento 'D-0761576 - C - OPERATIONAL AND MAINTENACE MANUAL - SYSTEM DPR 5KII - OMM', Seção 24.1, qual a vazão máxima de cimento permitida pela linha de cimentação (P/N 0649782) para operações com KV & SES, e qual a pressão máxima?",
-    "options": [
-      "5 bpm e 3000 psi",
-      "6 bpm e 4000 psi",
-      "8 bpm e 5000 psi",
-      "10 bpm e 6000 psi"
-    ],
-    "correctAnswer": 2
-  },
-  {
-    "question": "Baseado no documento 'Sistema de Controle DPR 5KII', Seção 'Cabine de Controle - Componentes Principais' (p.30), qual é o tempo de purga da Cabine de Controle e quais são os níveis inferior e superior de alarme para o detector de gás sulfídrico (H2S)?",
-    "options": [
-      "45 minutos, 2 ppm e 5 ppm",
-      "55 minutos, 5 ppm e 10 ppm",
-      "60 minutos, 10 ppm e 20 ppm",
-      "30 minutos, 1 ppm e 3 ppm"
-    ],
-    "correctAnswer": 1
-  },
-  {
-    "question": "De acordo com o documento 'D-0761576 - C - OPERATIONAL AND MAINTENACE MANUAL - SYSTEM DPR 5KII - OMM', Seção 16.4.5, Tabela 63, qual é a taxa máxima de queda de pressão permitida para o teste do corpo da Lubricator Valve a 5000 psi durante 15 minutos?",
-    "options": [
-      "12 psi",
-      "25 psi",
-      "62 psi",
-      "100 psi"
-    ],
-    "correctAnswer": 2
-  },
-  {
-    "question": "Conforme o documento 'Sistema de Controle DPR 5KII', Seção 'HPU - Hydraulic Power Unit - Componentes Principais' (p.88), quais são os limites inferior e superior de pressão para as válvulas reguladoras de pressão dos headers MP1 e MP2 na HPU?",
-    "options": [
-      "2.000 psi a 4.000 psi",
-      "2.000 psi a 6.000 psi",
-      "4.000 psi a 10.000 psi",
-      "1.000 psi a 5.000 psi"
-    ],
-    "correctAnswer": 1
-  },
-  {
-    "question": "Baseado no documento 'D-0761576 - C - OPERATIONAL AND MAINTENACE MANUAL - SYSTEM DPR 5KII - OMM', Seção 14.2.3, qual é o torque recomendado pela IPB para os parafusos do Clamp OWL Valve e qual o limite máximo de torque que nunca deve ser excedido?",
-    "options": [
-      "30 ~ 35 lbf.ft, nunca exceder 40 lbf.ft",
-      "45 ~ 50 lbf.ft, nunca exceder 60 lbf.ft",
-      "55 ~ 60 lbf.ft, nunca exceder 70 lbf.ft",
-      "65 ~ 70 lbf.ft, nunca exceder 80 lbf.ft"
+      "A) Vedação da válvula Master no sentido do fluxo, Vedação da válvula Swab no sentido de contra fluxo, Vedação da válvula Wing no sentido de contra fluxo.",
+      "B) Vedação da válvula Swab no sentido do fluxo, Vedação da válvula Master no sentido de contra fluxo, Vedação da válvula Wing no sentido do fluxo.",
+      "C) Vedação da válvula Swab no sentido de contra fluxo, Vedação da válvula Master no sentido do fluxo, Vedação da válvula Wing no sentido de contra fluxo.",
+      "D) Vedação da válvula Swab no sentido do fluxo, Vedação da válvula Wing no sentido de contra fluxo, Vedação da válvula Master no sentido do fluxo."
     ],
     "correctAnswer": 1
   }
