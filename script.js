@@ -13,6 +13,11 @@ const progressBar = document.getElementById('progress-bar');
 const finalScore = document.getElementById('final-score');
 const circle = document.querySelector('.score-circle');
 const scoreTotal = document.querySelector('.score-total');
+const resultMessage = document.getElementById('result-message');
+
+// New navigation buttons
+const quizBackBtn = document.getElementById('quiz-back-btn');
+const resultMenuBtn = document.getElementById('result-menu-btn');
 
 // New navigation elements
 const statusBtn = document.getElementById('status-btn');
@@ -207,14 +212,16 @@ function showResults() {
     }
 
     // Dynamic message
-    if (percentage === 1) {
-        resultMessage.textContent = "🏆 Perfeito! Gabaritou!";
-    } else if (percentage >= 0.7) {
-        resultMessage.textContent = "👏 Muito bom! Você quase lá.";
-    } else if (percentage >= 0.4) {
-        resultMessage.textContent = "👍 Razoável, pode melhorar!";
-    } else {
-        resultMessage.textContent = "📚 Precisa estudar mais o PDF!";
+    if (resultMessage) {
+        if (percentage === 1) {
+            resultMessage.textContent = "🏆 Perfeito! Gabaritou!";
+        } else if (percentage >= 0.7) {
+            resultMessage.textContent = "👏 Muito bom! Você quase lá.";
+        } else if (percentage >= 0.4) {
+            resultMessage.textContent = "👍 Razoável, pode melhorar!";
+        } else {
+            resultMessage.textContent = "📚 Precisa estudar mais o PDF!";
+        }
     }
     
     // Complete progress bar visually
