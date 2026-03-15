@@ -52,27 +52,29 @@
                 <button id="open-picker-btn" class="open-picker-btn">➕ Adicionar Itens</button>
             </div>
 
-            <!-- Modal para Selecionar Equipamentos -->
-            <div id="equipment-picker-modal" class="modal-overlay">
-                <div class="modal-card">
-                    <header class="modal-header">
-                        <h2>Mestre de Equipamentos</h2>
-                        <button id="close-picker-btn" class="close-btn">&times;</button>
-                    </header>
-                    <div class="search-container">
-                        <input type="text" id="picker-search" placeholder="Buscar no catálogo completo (ex: CROSSOVER)...">
-                    </div>
-                    <div id="picker-container" class="picker-results">
-                        <!-- Itens do catálogo aparecem aqui -->
-                    </div>
-                </div>
-            </div>
-
             <div id="equipment-container" class="equipment-grid">
                 <!-- Equipment cards injected by script.js -->
             </div>
             
             <button id="back-from-equip-btn" class="secondary-btn" style="margin-top: 32px; width: 100%;">🏠 Sair do Inventário</button>
+        </div>
+    </div>
+
+    <!-- Modal para Selecionar Equipamentos (Fora do Container principal para sobreposição total) -->
+    <div id="equipment-picker-modal" class="modal-overlay">
+        <div class="modal-card">
+            <header class="modal-header">
+                <h2>Mestre de Equipamentos</h2>
+                <button id="close-picker-btn" class="close-btn">&times;</button>
+            </header>
+            <div class="search-container">
+                <input type="text" id="picker-search" placeholder="Buscar no catálogo completo (ex: CROSSOVER)...">
+            </div>
+            <div id="picker-container" class="picker-results">
+                <!-- Itens do catálogo aparecem aqui -->
+            </div>
+        </div>
+    </div>
         </section>
 
         <!-- Screen 2: Quiz -->
