@@ -35,6 +35,7 @@ const equipmentBtn = document.getElementById('equipment-btn');
 const equipmentScreen = document.getElementById('equipment-screen');
 const backFromEquipBtn = document.getElementById('back-from-equip-btn');
 const equipmentContainer = document.getElementById('equipment-container');
+const equipmentSearch = document.getElementById('equipment-search');
 const rigTabsContainer = document.getElementById('rig-tabs');
 const addRigBtn = document.getElementById('add-rig-btn');
 const pickerModal = document.getElementById('equipment-picker-modal');
