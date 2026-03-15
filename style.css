@@ -559,9 +559,9 @@ h1 {
     align-items: start;
 }
 
-@media (min-width: 1024px) {
+@media (min-width: 1200px) {
     .equipment-grid {
-        grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+        grid-template-columns: repeat(3, 1fr);
     }
 }
 
