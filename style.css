@@ -616,6 +616,36 @@ h1 {
     gap: 8px;
 }
 
+.catalog-selector {
+    width: 100%;
+    background: rgba(99, 102, 241, 0.1);
+    border: 1px solid var(--primary);
+    border-radius: 12px;
+    padding: 10px 16px;
+    color: var(--text-white);
+    font-family: inherit;
+    font-size: 0.9rem;
+    margin-top: 12px;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.catalog-selector:focus {
+    outline: none;
+    box-shadow: 0 0 10px var(--primary-glow);
+}
+
+.catalog-selector optgroup {
+    background: #0f172a;
+    color: var(--primary);
+    font-weight: 700;
+}
+
+.catalog-selector option {
+    background: #1e293b;
+    color: white;
+}
+
 .equipment-card {
     background: rgba(255, 255, 255, 0.03);
     border: 1px solid var(--glass-border);

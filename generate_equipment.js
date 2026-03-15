@@ -3,88 +3,89 @@ const path = require('path');
 const XLSX = require('xlsx');
 
 const DATA_DIR = path.join(__dirname, 'data', 'controle de equipamentos a bordo');
-const SPREADSHEET_FILE = path.join(DATA_DIR, 'lista equipamentos.xlsx');
 const OUTPUT_FILE = path.join(__dirname, 'equipments.json');
 
-async function generateEquipmentData() {
-    console.log("📦 Iniciando Sincronização de Equipamentos...");
+function getAllFiles(dirPath, arrayOfFiles) {
+    const files = fs.readdirSync(dirPath);
+    arrayOfFiles = arrayOfFiles || [];
 
-    if (!fs.existsSync(SPREADSHEET_FILE)) {
-        console.warn(`⚠️ Planilha não encontrada em: ${SPREADSHEET_FILE}`);
-        console.log("Criando uma planilha de exemplo...");
-        
-        if (!fs.existsSync(DATA_DIR)) fs.mkdirSync(DATA_DIR);
-        
-        const wb = XLSX.utils.book_new();
-        const ws_data = [
-            ["ID", "Nome", "Localização", "Status", "Quantidade"],
-            ["EQP-001", "Balança de Teste", "Laboratório", "Disponível", 2],
-            ["EQP-002", "Compressor de Ar", "Deck de Operações", "Em Uso", 1],
-            ["EQP-003", "Multímetro Digital", "Oficina Elétrica", "Manutenção", 3],
-            ["EQP-004", "Guincho Hidráulico", "Deck de Carga", "Disponível", 1]
-        ];
-        const ws = XLSX.utils.aoa_to_sheet(ws_data);
-        XLSX.utils.book_append_sheet(wb, ws, "Equipamentos");
-        XLSX.writeFile(wb, SPREADSHEET_FILE);
-    }
-
-    try {
-        const workbook = XLSX.readFile(SPREADSHEET_FILE);
-        const sheetName = workbook.SheetNames[0];
-        const worksheet = workbook.Sheets[sheetName];
-        
-        // Use raw row arrays to handle merged cells and complex headers
-        const rows = XLSX.utils.sheet_to_json(worksheet, { header: 1 });
-        
-        let mappedData = [];
-        let currentCategory = "Geral";
-        let headerFound = false;
-
-        for (let i = 0; i < rows.length; i++) {
-            const row = rows[i];
-            
-            // The items usually start after row 10 and row[1] is a number (id/counter)
-            const itemNum = parseInt(row[1]);
-            if (!isNaN(itemNum)) {
-                headerFound = true;
-                
-                // If column 2 has content, it's either a new category or the first item of one
-                if (row[2] && typeof row[2] === 'string' && row[2].trim() !== '') {
-                    currentCategory = row[2].trim().toUpperCase();
-                }
-
-                mappedData.push({
-                    Categoria: currentCategory,
-                    Equip: row[2] || 'N/A',
-                    Qtd: row[3] || 0,
-                    NP: row[4] || 'N/A',
-                    NS: row[5] || '-',
-                    Descricao: row[6] || 'Sem descrição',
-                    Localizacao: row[10] || 'N/A',
-                    Status: row[10] || 'Disponível'
-                });
+    files.forEach(function(file) {
+        const fullPath = path.join(dirPath, file);
+        if (fs.statSync(fullPath).isDirectory()) {
+            arrayOfFiles = getAllFiles(fullPath, arrayOfFiles);
+        } else {
+            if (file.endsWith('.xlsx') && !file.startsWith('.~link')) {
+                arrayOfFiles.push(fullPath);
             }
         }
+    });
 
-        if (mappedData.length === 0) {
-            console.warn("⚠️ Nenhum dado mapeado. Tentando fallback para mapeamento por nomes de colunas...");
-            // Fallback to simpler mapping if row-based fails
-            const jsonData = XLSX.utils.sheet_to_json(worksheet);
-            mappedData = jsonData.map(row => ({
-                Categoria: row['Categoria'] || 'Geral',
-                ID: row['NS'] || row['ID'] || 'N/A',
-                NS: row['NS'] || '-',
-                Nome: row['Descrição do equipamento'] || row['Nome'] || 'Equipamento',
-                Localização: row['Localização'] || 'Não informado',
-                Status: row['Status'] || 'Disponível',
-                Quantidade: row['Quantidade'] || 1
-            }));
+    return arrayOfFiles;
+}
+
+async function generateEquipmentData() {
+    console.log("📦 Iniciando Sincronização de Múltiplos Bancos de Equipamentos...");
+
+    const fileList = getAllFiles(DATA_DIR);
+    console.log(`🔍 Encontrados ${fileList.length} arquivos de inventário.`);
+
+    let allMappedData = [];
+
+    for (const filePath of fileList) {
+        try {
+            console.log(`📄 Processando: ${path.basename(filePath)}`);
+            const workbook = XLSX.readFile(filePath);
+            const sheetName = workbook.SheetNames[0];
+            const worksheet = workbook.Sheets[sheetName];
+            
+            const rigName = worksheet['G5'] ? worksheet['G5'].v : 'Desconhecida';
+            const date = worksheet['G6'] ? worksheet['G6'].v : 'Sem data';
+            
+            const rows = XLSX.utils.sheet_to_json(worksheet, { header: 1 });
+            
+            let currentCategory = "GERAL";
+            let fileData = [];
+
+            for (let i = 0; i < rows.length; i++) {
+                const row = rows[i];
+                const itemNum = parseInt(row[1]);
+                
+                if (!isNaN(itemNum)) {
+                    if (row[2] && typeof row[2] === 'string' && row[2].trim() !== '') {
+                        currentCategory = row[2].trim().toUpperCase();
+                    }
+
+                    fileData.push({
+                        Categoria: currentCategory,
+                        Equip: row[2] || 'N/A',
+                        Qtd: row[3] || 0,
+                        NP: row[4] || 'N/A',
+                        NS: row[5] || '-',
+                        Descricao: row[6] || 'Sem descrição',
+                        Localizacao: row[10] || 'N/A',
+                        Status: row[10] || 'Disponível',
+                        Source: path.basename(filePath),
+                        RigName: rigName,
+                        Date: date
+                    });
+                }
+            }
+
+            if (fileData.length > 0) {
+                allMappedData.push(...fileData);
+                console.log(`   ✅ ${fileData.length} itens extraídos de ${rigName}`);
+            }
+
+        } catch (error) {
+            console.error(`   ❌ Erro ao converter ${filePath}:`, error.message);
         }
+    }
 
-        fs.writeFileSync(OUTPUT_FILE, JSON.stringify(mappedData, null, 2));
-        console.log(`✅ Sucesso! ${mappedData.length} equipamentos salvos com categorias em ${OUTPUT_FILE}`);
-    } catch (error) {
-        console.error("❌ Erro ao converter planilha:", error);
+    if (allMappedData.length > 0) {
+        fs.writeFileSync(OUTPUT_FILE, JSON.stringify(allMappedData, null, 2));
+        console.log(`\n🎉 SUCESSO! ${allMappedData.length} itens totais salvos em ${OUTPUT_FILE}`);
+    } else {
+        console.error("\n❌ Nenhum dado foi extraído dos arquivos.");
     }
 }
 

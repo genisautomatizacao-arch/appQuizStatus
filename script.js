@@ -46,6 +46,7 @@ const pickerContainer = document.getElementById('picker-container');
 
 // State Variables
 let activePickerCategory = '';
+let activeCatalog = ''; // New state for selected database file
 let questions = [];
 let currentIndex = 0;
 let score = 0;
@@ -514,7 +515,6 @@ function renderStatus(items) {
 // Equipment Management
 async function loadEquipments() {
   try {
-    // Load persisted state from localStorage
     const savedStates = localStorage.getItem('quiz_app_rig_states');
     if (savedStates) rigStates = JSON.parse(savedStates);
     
@@ -526,11 +526,57 @@ async function loadEquipments() {
     const response = await fetch('equipments.json');
     if (!response.ok) throw new Error('Falha ao carregar equipamentos');
     equipments = await response.json();
+    
+    // Default catalog: the first one available in the file
+    if (!activeCatalog && equipments.length > 0) {
+      activeCatalog = equipments[0].Source;
+    }
+    
+    renderSourceSelector();
     renderEquipments(filterEquipments());
   } catch (error) {
     console.error(error);
     equipmentContainer.innerHTML = '<p>Erro ao carregar inventário.</p>';
   }
+}
+
+function renderSourceSelector() {
+    let selector = document.getElementById('catalog-selector');
+    if (!selector) {
+        const container = document.querySelector('.search-container');
+        selector = document.createElement('select');
+        selector.id = 'catalog-selector';
+        selector.className = 'catalog-selector';
+        container.appendChild(selector);
+        
+        selector.addEventListener('change', (e) => {
+            activeCatalog = e.target.value;
+            renderEquipments(filterEquipments());
+        });
+    }
+    
+    const sources = [...new Set(equipments.map(e => ({ file: e.Source, rig: e.RigName, date: e.Date })))];
+    // Group by Rig
+    selector.innerHTML = '<option value="">Todos os Bancos (Cuidado com Duplicatas)</option>';
+    
+    const grouped = {};
+    sources.forEach(s => {
+        if (!grouped[s.rig]) grouped[s.rig] = [];
+        grouped[s.rig].push(s);
+    });
+
+    Object.keys(grouped).forEach(rig => {
+        const optgroup = document.createElement('optgroup');
+        optgroup.label = `Sonda: ${rig}`;
+        grouped[rig].forEach(s => {
+            const option = document.createElement('option');
+            option.value = s.file;
+            option.textContent = `${s.date} - ${s.file}`;
+            if (s.file === activeCatalog) option.selected = true;
+            optgroup.appendChild(option);
+        });
+        selector.appendChild(optgroup);
+    });
 }
 
 function toggleItem(itemId) {
