@@ -498,6 +498,33 @@ h1 {
     margin-top: 10px;
 }
 
+.cat-add-btn {
+    background: var(--primary);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    padding: 6px 12px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    transition: var(--transition);
+    text-transform: none;
+    letter-spacing: 0;
+}
+
+.cat-add-btn:hover {
+    transform: scale(1.05);
+    background: #4f46e5;
+    box-shadow: 0 4px 12px var(--primary-glow);
+}
+
+.cat-add-btn span {
+    font-size: 0.8rem;
+}
+
 .equipment-card.checked {
     border-color: var(--success);
     background: rgba(16, 185, 129, 0.05);

@@ -295,10 +295,10 @@ function initEventListeners() {
   }
 }
 
-function openPicker() {
+function openPicker(catFilter = '') {
   pickerModal.classList.add('active');
-  pickerSearch.value = '';
-  renderPickerResults(equipments);
+  pickerSearch.value = catFilter;
+  renderPickerResults(filterPicker(catFilter));
 }
 
 function closePicker() {
@@ -553,52 +553,75 @@ function toggleItem(itemId) {
 
 function renderEquipments(items) {
   equipmentContainer.innerHTML = '';
-  const checkedForActiveRig = rigStates[activeRig] || [];
+  const onBoardIds = rigStates[activeRig] || [];
   
-  // Group items by category first
-  const categories = {};
+  // Identify ALL categories from the master list
+  const allCategories = [...new Set(equipments.map(e => e.Categoria || 'Geral'))];
+  
+  // Group currently ON BOARD items by category
+  const onBoardByCat = {};
   items.forEach(item => {
     const cat = item.Categoria || 'Geral';
-    if (!categories[cat]) categories[cat] = [];
-    categories[cat].push(item);
+    if (!onBoardByCat[cat]) onBoardByCat[cat] = [];
+    onBoardByCat[cat].push(item);
   });
 
-  Object.keys(categories).forEach(catName => {
+  allCategories.forEach(catName => {
     const categoryGroup = document.createElement('div');
     categoryGroup.className = 'category-group';
     
     const header = document.createElement('div');
     header.className = 'equipment-category-header';
-    header.textContent = catName;
+    header.style.justifyContent = 'space-between';
+    
+    const titleSpan = document.createElement('span');
+    titleSpan.textContent = catName;
+    header.appendChild(titleSpan);
+
+    const addBtn = document.createElement('button');
+    addBtn.className = 'cat-add-btn';
+    addBtn.innerHTML = '<span>➕</span> Adicionar';
+    addBtn.onclick = (e) => {
+        e.stopPropagation();
+        openPicker(catName);
+    };
+    header.appendChild(addBtn);
+
     categoryGroup.appendChild(header);
 
     const itemsContainer = document.createElement('div');
     itemsContainer.className = 'category-items';
     
-    categories[catName].forEach((item, index) => {
-      const matchInMaster = equipments.indexOf(item);
-      const uniqueId = item.NS && item.NS !== '-' ? item.NS : `${item.ID}-${matchInMaster}`;
-      const isChecked = checkedForActiveRig.includes(uniqueId);
-      
-      const card = document.createElement('div');
-      card.className = `equipment-card ${isChecked ? 'checked' : ''}`;
-      
-      card.innerHTML = `
-        <div class="equip-info">
-          <h3>${item.Nome || 'Equipamento'}</h3>
-          <p>ID: ${item.ID || 'N/A'} | NS: ${item.NS || '-'}</p>
-          <p>Local: ${item.Localização || 'Não informado'}</p>
-        </div>
-        <div class="equip-status-right">
-          <div class="equip-status">
-            <span class="status-indicator ${getStatusClass(item.Status)}">${item.Status || 'Status'}</span>
-            <span class="qty-badge">Qtd: ${item.Quantidade || 0}</span>
-          </div>
-          <button class="remove-item-btn" onclick="toggleItem('${uniqueId}')">Remover</button>
-        </div>
-      `;
-      itemsContainer.appendChild(card);
-    });
+    const itemsInCat = onBoardByCat[catName] || [];
+    
+    if (itemsInCat.length === 0) {
+        itemsContainer.innerHTML = '<p style="font-size: 0.75rem; color: var(--text-dim); padding: 10px; text-align: center; opacity: 0.5;">Nenhum item a bordo nesta categoria.</p>';
+    } else {
+        itemsInCat.forEach((item) => {
+          const matchInMaster = equipments.indexOf(item);
+          const uniqueId = item.NS && item.NS !== '-' ? item.NS : `${item.ID}-${matchInMaster}`;
+          const isChecked = onBoardIds.includes(uniqueId);
+          
+          const card = document.createElement('div');
+          card.className = `equipment-card ${isChecked ? 'checked' : ''}`;
+          
+          card.innerHTML = `
+            <div class="equip-info">
+              <h3>${item.Nome || 'Equipamento'}</h3>
+              <p>ID: ${item.ID || 'N/A'} | NS: ${item.NS || '-'}</p>
+              <p>Local: ${item.Localização || 'Não informado'}</p>
+            </div>
+            <div class="equip-status-right">
+              <div class="equip-status">
+                <span class="status-indicator ${getStatusClass(item.Status)}">${item.Status || 'Status'}</span>
+                <span class="qty-badge">Qtd: ${item.Quantidade || 0}</span>
+              </div>
+              <button class="remove-item-btn" onclick="toggleItem('${uniqueId}')">Remover</button>
+            </div>
+          `;
+          itemsContainer.appendChild(card);
+        });
+    }
 
     categoryGroup.appendChild(itemsContainer);
     equipmentContainer.appendChild(categoryGroup);
