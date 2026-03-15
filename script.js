@@ -232,24 +232,35 @@ function updateScoreUI() {
     scoreDisplay.textContent = `Score: ${score}`;
 }
 
-// Event Listeners
-if (startBtn) startBtn.addEventListener('click', startGame);
-if (restartBtn) restartBtn.addEventListener('click', startGame);
-if (statusBtn) statusBtn.addEventListener('click', showStatus);
-if (equipmentBtn) equipmentBtn.addEventListener('click', showEquipment);
-if (backToMenuBtn) backToMenuBtn.addEventListener('click', backToMenu);
-if (backFromEquipBtn) backFromEquipBtn.addEventListener('click', backToMenu);
-if (quizBackBtn) quizBackBtn.addEventListener('click', backToMenu);
-if (resultMenuBtn) resultMenuBtn.addEventListener('click', backToMenu);
+// Event Listeners Initialization
+function initEventListeners() {
+  console.log("⚙️ Inicializando Event Listeners...");
+  if (startBtn) startBtn.addEventListener('click', startGame);
+  if (restartBtn) restartBtn.addEventListener('click', startGame);
+  if (statusBtn) statusBtn.addEventListener('click', showStatus);
+  if (equipmentBtn) equipmentBtn.addEventListener('click', showEquipment);
+  if (backToMenuBtn) backToMenuBtn.addEventListener('click', backToMenu);
+  if (backFromEquipBtn) backFromEquipBtn.addEventListener('click', backToMenu);
+  if (quizBackBtn) quizBackBtn.addEventListener('click', backToMenu);
+  if (resultMenuBtn) resultMenuBtn.addEventListener('click', backToMenu);
 
-rigTabs.forEach(tab => {
-  tab.addEventListener('click', () => {
-    rigTabs.forEach(t => t.classList.remove('active'));
-    tab.classList.add('active');
-    activeRig = tab.dataset.rig;
-    renderEquipments(filterEquipments());
-  });
-});
+  if (rigTabs) {
+    rigTabs.forEach(tab => {
+      tab.addEventListener('click', () => {
+        rigTabs.forEach(t => t.classList.remove('active'));
+        tab.classList.add('active');
+        activeRig = tab.dataset.rig;
+        renderEquipments(filterEquipments());
+      });
+    });
+  }
+
+  if (equipmentSearch) {
+    equipmentSearch.addEventListener('input', () => {
+      renderEquipments(filterEquipments());
+    });
+  }
+}
 
 function filterEquipments() {
   const searchTerm = equipmentSearch.value.toLowerCase();
@@ -266,18 +277,27 @@ equipmentSearch.addEventListener('input', () => {
 });
 
 function showEquipment() {
-  startScreen.classList.remove('active');
-  equipmentScreen.classList.add('active');
-  loadEquipments();
+  if (startScreen && equipmentScreen) {
+    startScreen.classList.remove('active');
+    equipmentScreen.classList.add('active');
+    loadEquipments();
+  }
+}
+
+function showStatus() {
+  if (startScreen && statusScreen) {
+    startScreen.classList.remove('active');
+    statusScreen.classList.add('active');
+    loadStatus();
+  }
 }
 
 function backToMenu() {
-  clearInterval(timerInterval); 
-  statusScreen.classList.remove('active');
-  equipmentScreen.classList.remove('active');
-  quizScreen.classList.remove('active');
-  resultScreen.classList.remove('active');
-  startScreen.classList.add('active');
+  if (timerInterval) clearInterval(timerInterval); 
+  [statusScreen, equipmentScreen, quizScreen, resultScreen].forEach(s => {
+    if (s) s.classList.remove('active');
+  });
+  if (startScreen) startScreen.classList.add('active');
 }
 
 async function loadStatus() {
@@ -440,4 +460,7 @@ function renderEquipments(items) {
 
 
 // Init Load on startup
-document.addEventListener('DOMContentLoaded', loadQuestions);
+document.addEventListener('DOMContentLoaded', () => {
+    loadQuestions();
+    initEventListeners();
+});
