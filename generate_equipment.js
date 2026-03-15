@@ -34,12 +34,14 @@ async function generateEquipmentData() {
 
     for (const filePath of fileList) {
         try {
-            console.log(`📄 Processando: ${path.basename(filePath)}`);
+            const fileName = path.basename(filePath, '.xlsx');
+            console.log(`📄 Processando: ${fileName}`);
+            
             const workbook = XLSX.readFile(filePath);
             const sheetName = workbook.SheetNames[0];
             const worksheet = workbook.Sheets[sheetName];
             
-            const rigName = worksheet['G5'] ? worksheet['G5'].v : 'Desconhecida';
+            const rigName = fileName; // File name is now the rig name
             const date = worksheet['G6'] ? worksheet['G6'].v : 'Sem data';
             
             const rows = XLSX.utils.sheet_to_json(worksheet, { header: 1 });

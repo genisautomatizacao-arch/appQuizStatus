@@ -535,6 +535,13 @@ async function loadEquipments() {
     if (!response.ok) throw new Error('Falha ao carregar equipamentos');
     equipments = await response.json();
     
+    // SYNC RIGS: Initialize activeRigs based on unique RigNames in the database
+    const availableRigs = [...new Set(equipments.map(e => e.RigName))].sort();
+    if (availableRigs.length > 0) {
+      activeRigs = availableRigs;
+      if (!activeRigs.includes(activeRig)) activeRig = activeRigs[0];
+    }
+
     // Default catalog: the first one available in the file
     if (!activeCatalog && equipments.length > 0) {
       activeCatalog = equipments[0].Source;
