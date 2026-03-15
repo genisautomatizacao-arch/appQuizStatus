@@ -309,12 +309,17 @@ function closePicker() {
 function filterPicker(term) {
   const search = term.toLowerCase();
   return equipments.filter(item => {
+    // Only show items with Qtd > 0
+    const quantity = parseInt(item.Qtd) || 0;
+    if (quantity <= 0) return false;
+
     const itemCat = item.Categoria || 'Geral';
     const isInActiveCat = activePickerCategory ? itemCat === activePickerCategory : true;
     
     const matchesTerm = String(item.Nome || '').toLowerCase().includes(search) ||
                         String(item.ID || '').toLowerCase().includes(search) ||
-                        String(item.NS || '').toLowerCase().includes(search);
+                        String(item.NS || '').toLowerCase().includes(search) ||
+                        String(item.Descricao || '').toLowerCase().includes(search);
                         
     return isInActiveCat && matchesTerm;
   });
@@ -410,15 +415,17 @@ function filterEquipments() {
   const searchTerm = equipmentSearch.value.toLowerCase();
   const onBoardIds = rigStates[activeRig] || [];
   
-  // Only show items that are ON BOARD
+  // Only show items that are ON BOARD and have Qtd > 0
   return equipments.filter(item => {
-    const uniqueId = item.NS && item.NS !== '-' ? item.NS : `${item.ID}-${item.Nome}`; // Improved matching
-    // Fallback search in master but only if they are on board
+    // Hidden if Qtd is 0
+    const quantity = parseInt(item.Qtd) || 0;
+    if (quantity <= 0) return false;
+
     const fitsSearch = String(item.Nome || '').toLowerCase().includes(searchTerm) ||
                        String(item.ID || '').toLowerCase().includes(searchTerm) ||
-                       String(item.NS || '').toLowerCase().includes(searchTerm);
+                       String(item.NS || '').toLowerCase().includes(searchTerm) ||
+                       String(item.Descricao || '').toLowerCase().includes(searchTerm);
     
-    // We need to re-match IDs carefully
     return fitsSearch; 
   }).filter(item => {
       const uniqueId = getUniqueId(item);
