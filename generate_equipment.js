@@ -35,13 +35,18 @@ async function generateEquipmentData() {
     for (const filePath of fileList) {
         try {
             const fileName = path.basename(filePath, '.xlsx');
-            console.log(`📄 Processando: ${fileName}`);
+            const parentDir = path.basename(path.dirname(filePath));
+            
+            // If the file is in a subfolder (not the root data folder), use folder name as Rig
+            // Root is 'controle de equipamentos a bordo'
+            const rigName = (parentDir !== 'controle de equipamentos a bordo') ? parentDir : fileName;
+            
+            console.log(`📄 Processando: ${fileName} (Sonda: ${rigName})`);
             
             const workbook = XLSX.readFile(filePath);
             const sheetName = workbook.SheetNames[0];
             const worksheet = workbook.Sheets[sheetName];
             
-            const rigName = fileName; // File name is now the rig name
             const date = worksheet['G6'] ? worksheet['G6'].v : 'Sem data';
             
             const rows = XLSX.utils.sheet_to_json(worksheet, { header: 1 });

@@ -540,6 +540,15 @@ async function loadEquipments() {
     if (availableRigs.length > 0) {
       activeRigs = availableRigs;
       if (!activeRigs.includes(activeRig)) activeRig = activeRigs[0];
+      
+      // AUTO-POPULATE: Pre-fill checklists if they are empty
+      activeRigs.forEach(rig => {
+          if (!rigStates[rig] || rigStates[rig].length === 0) {
+              const rigItems = equipments.filter(e => e.RigName === rig);
+              rigStates[rig] = rigItems.map(item => getUniqueId(item));
+          }
+      });
+      localStorage.setItem('quiz_app_rig_states', JSON.stringify(rigStates));
     }
 
     // Default catalog: the first one available in the file
