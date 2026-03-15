@@ -35,9 +35,13 @@ const equipmentBtn = document.getElementById('equipment-btn');
 const equipmentScreen = document.getElementById('equipment-screen');
 const backFromEquipBtn = document.getElementById('back-from-equip-btn');
 const equipmentContainer = document.getElementById('equipment-container');
-const equipmentSearch = document.getElementById('equipment-search');
 const rigTabsContainer = document.getElementById('rig-tabs');
 const addRigBtn = document.getElementById('add-rig-btn');
+const pickerModal = document.getElementById('equipment-picker-modal');
+const openPickerBtn = document.getElementById('open-picker-btn');
+const closePickerBtn = document.getElementById('close-picker-btn');
+const pickerSearch = document.getElementById('picker-search');
+const pickerContainer = document.getElementById('picker-container');
 
 // State Variables
 let questions = [];
@@ -274,11 +278,82 @@ function initEventListeners() {
 
   if (addRigBtn) addRigBtn.addEventListener('click', addRig);
 
+  if (openPickerBtn) openPickerBtn.addEventListener('click', openPicker);
+  if (closePickerBtn) closePickerBtn.addEventListener('click', closePicker);
+  
+  if (pickerSearch) {
+    pickerSearch.addEventListener('input', () => {
+      renderPickerResults(filterPicker(pickerSearch.value));
+    });
+  }
+
   if (equipmentSearch) {
     equipmentSearch.addEventListener('input', () => {
       renderEquipments(filterEquipments());
     });
   }
+}
+
+function openPicker() {
+  pickerModal.classList.add('active');
+  pickerSearch.value = '';
+  renderPickerResults(equipments);
+}
+
+function closePicker() {
+  pickerModal.classList.remove('active');
+}
+
+function filterPicker(term) {
+  const search = term.toLowerCase();
+  return equipments.filter(item => 
+    String(item.Nome || '').toLowerCase().includes(search) ||
+    String(item.ID || '').toLowerCase().includes(search) ||
+    String(item.Categoria || '').toLowerCase().includes(search) ||
+    String(item.NS || '').toLowerCase().includes(search)
+  );
+}
+
+function renderPickerResults(items) {
+  pickerContainer.innerHTML = '';
+  const onBoardIds = rigStates[activeRig] || [];
+  
+  let lastCategory = '';
+
+  items.forEach((item, index) => {
+    const currentCategory = item.Categoria || 'Geral';
+    if (currentCategory !== lastCategory) {
+      const header = document.createElement('div');
+      header.classList.add('equipment-category-header');
+      header.textContent = currentCategory;
+      header.style.fontSize = '0.7rem'; // Compact for modal
+      pickerContainer.appendChild(header);
+      lastCategory = currentCategory;
+    }
+
+    const uniqueId = item.NS && item.NS !== '-' ? item.NS : `${item.ID}-${index}`;
+    const isOnBoard = onBoardIds.includes(uniqueId);
+    
+    const div = document.createElement('div');
+    div.classList.add('equipment-card');
+    div.style.padding = '10px';
+    div.style.marginBottom = '5px';
+    
+    div.innerHTML = `
+      <div class="equip-info">
+        <h4 style="font-size: 0.85rem">${item.Nome}</h4>
+        <p style="font-size: 0.7rem">NS: ${item.NS || '-'}</p>
+      </div>
+    `;
+
+    const addBtn = document.createElement('button');
+    addBtn.className = isOnBoard ? 'remove-item-btn' : 'add-item-btn';
+    addBtn.textContent = isOnBoard ? 'Remover' : 'Adicionar';
+    addBtn.addEventListener('click', () => toggleItem(uniqueId));
+
+    div.appendChild(addBtn);
+    pickerContainer.appendChild(div);
+  });
 }
 
 function renderRigTabs() {
@@ -318,12 +393,25 @@ function addRig() {
 
 function filterEquipments() {
   const searchTerm = equipmentSearch.value.toLowerCase();
-  return equipments.filter(item => 
-    String(item.Nome || '').toLowerCase().includes(searchTerm) ||
-    String(item.ID || '').toLowerCase().includes(searchTerm) ||
-    String(item.Localização || '').toLowerCase().includes(searchTerm) ||
-    String(item.NS || '').toLowerCase().includes(searchTerm)
-  );
+  const onBoardIds = rigStates[activeRig] || [];
+  
+  // Only show items that are ON BOARD
+  return equipments.filter(item => {
+    const uniqueId = item.NS && item.NS !== '-' ? item.NS : `${item.ID}-${item.Nome}`; // Improved matching
+    // Fallback search in master but only if they are on board
+    const fitsSearch = String(item.Nome || '').toLowerCase().includes(searchTerm) ||
+                       String(item.ID || '').toLowerCase().includes(searchTerm) ||
+                       String(item.NS || '').toLowerCase().includes(searchTerm);
+    
+    // We need to re-match IDs carefully
+    return fitsSearch; 
+  }).filter(item => {
+      // Re-calculate the specific item's ID in the list to check if it's on board
+      // Note: This is a bit inefficient, but works for the current scale.
+      const matchInMaster = equipments.indexOf(item);
+      const uniqueId = item.NS && item.NS !== '-' ? item.NS : `${item.ID}-${matchInMaster}`;
+      return onBoardIds.includes(uniqueId);
+  });
 }
 
 // Initial Search Event Listener removed as it's now in initEventListeners
@@ -454,7 +542,12 @@ function toggleItem(itemId) {
   
   // Save to localStorage
   localStorage.setItem('quiz_app_rig_states', JSON.stringify(rigStates));
+  
+  // Refresh both views
   renderEquipments(filterEquipments());
+  if (pickerModal.classList.contains('active')) {
+    renderPickerResults(filterPicker(pickerSearch.value));
+  }
 }
 
 function renderEquipments(items) {
