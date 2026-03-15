@@ -31,9 +31,13 @@ const statusScreen = document.getElementById('status-screen');
 const backToMenuBtn = document.getElementById('back-to-menu-btn');
 const statusContainer = document.getElementById('status-container');
 
+const equipmentBtn = document.getElementById('equipment-btn');
+const equipmentScreen = document.getElementById('equipment-screen');
+const backFromEquipBtn = document.getElementById('back-from-equip-btn');
 const equipmentContainer = document.getElementById('equipment-container');
 const equipmentSearch = document.getElementById('equipment-search');
-// rigTabs selector replaced by dynamic container
+const rigTabsContainer = document.getElementById('rig-tabs');
+const addRigBtn = document.getElementById('add-rig-btn');
 
 // State Variables
 let questions = [];
@@ -268,16 +272,7 @@ function initEventListeners() {
   if (quizBackBtn) quizBackBtn.addEventListener('click', backToMenu);
   if (resultMenuBtn) resultMenuBtn.addEventListener('click', backToMenu);
 
-  if (rigTabs) {
-    rigTabs.forEach(tab => {
-      tab.addEventListener('click', () => {
-        rigTabs.forEach(t => t.classList.remove('active'));
-        tab.classList.add('active');
-        activeRig = tab.dataset.rig;
-        renderEquipments(filterEquipments());
-      });
-    });
-  }
+  if (addRigBtn) addRigBtn.addEventListener('click', addRig);
 
   if (equipmentSearch) {
     equipmentSearch.addEventListener('input', () => {
@@ -296,9 +291,7 @@ function filterEquipments() {
   );
 }
 
-equipmentSearch.addEventListener('input', () => {
-  renderEquipments(filterEquipments());
-});
+// Initial Search Event Listener removed as it's now in initEventListeners
 
 function showEquipment() {
   if (startScreen && equipmentScreen) {
