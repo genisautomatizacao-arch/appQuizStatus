@@ -352,7 +352,7 @@ function renderEquipments(items) {
     info.classList.add('equip-info');
     info.innerHTML = `
       <h3>${item.Nome || 'Equipamento'}</h3>
-      <p>ID: ${item.ID || 'N/A'}</p>
+      <p>ID: ${item.ID || 'N/A'} | NS: ${item.NS || '-'}</p>
       <p>Local: ${item.Localização || 'Não informado'}</p>
     `;
 

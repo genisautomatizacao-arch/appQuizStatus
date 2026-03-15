@@ -2,8 +2,8 @@ const fs = require('fs');
 const path = require('path');
 const XLSX = require('xlsx');
 
-const DATA_DIR = path.join(__dirname, 'data');
-const SPREADSHEET_FILE = path.join(DATA_DIR, 'equipamentos.xlsx');
+const DATA_DIR = path.join(__dirname, 'data', 'controle de equipamentos a bordo');
+const SPREADSHEET_FILE = path.join(DATA_DIR, 'lista equipamentos.xlsx');
 const OUTPUT_FILE = path.join(__dirname, 'equipments.json');
 
 async function generateEquipmentData() {
@@ -32,10 +32,20 @@ async function generateEquipmentData() {
         const workbook = XLSX.readFile(SPREADSHEET_FILE);
         const sheetName = workbook.SheetNames[0];
         const worksheet = workbook.Sheets[sheetName];
-        const jsonData = XLSX.utils.sheet_to_json(worksheet);
+        let jsonData = XLSX.utils.sheet_to_json(worksheet);
 
-        fs.writeFileSync(OUTPUT_FILE, JSON.stringify(jsonData, null, 2));
-        console.log(`✅ Sucesso! ${jsonData.length} equipamentos salvos em ${OUTPUT_FILE}`);
+        // Map user columns to our standard format
+        const mappedData = jsonData.map(row => ({
+            ID: row['ID'] || row['id'] || 'N/A',
+            NS: row['NS'] || row['ns'] || '-',
+            Nome: row['Descrição do equipamento'] || row['Nome'] || 'Equipamento',
+            Localização: row['Localização'] || row['localização'] || 'Não informado',
+            Status: row['Status'] || 'Disponível', // Default as it might not be in their list
+            Quantidade: row['Quantidade'] || row['qtd'] || 1
+        }));
+
+        fs.writeFileSync(OUTPUT_FILE, JSON.stringify(mappedData, null, 2));
+        console.log(`✅ Sucesso! ${mappedData.length} equipamentos salvos em ${OUTPUT_FILE}`);
     } catch (error) {
         console.error("❌ Erro ao converter planilha:", error);
     }
