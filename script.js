@@ -31,12 +31,9 @@ const statusScreen = document.getElementById('status-screen');
 const backToMenuBtn = document.getElementById('back-to-menu-btn');
 const statusContainer = document.getElementById('status-container');
 
-const equipmentBtn = document.getElementById('equipment-btn');
-const equipmentScreen = document.getElementById('equipment-screen');
-const backFromEquipBtn = document.getElementById('back-from-equip-btn');
 const equipmentContainer = document.getElementById('equipment-container');
 const equipmentSearch = document.getElementById('equipment-search');
-const rigTabs = document.querySelectorAll('.rig-tab');
+// rigTabs selector replaced by dynamic container
 
 // State Variables
 let questions = [];
@@ -47,6 +44,7 @@ let timerInterval;
 const TIME_PER_QUESTION = 30;
 let equipments = []; // Global store for filtering
 let activeRig = "Sonda 1";
+let activeRigs = ["Sonda 1"]; // Fleet management
 let rigStates = {}; // Persisted state { "Sonda 1": ["ID1", "ID2"] }
 
 // Initialize
@@ -398,8 +396,13 @@ function renderStatus(items) {
 async function loadEquipments() {
   try {
     // Load persisted state from localStorage
-    const saved = localStorage.getItem('quiz_app_rig_states');
-    if (saved) rigStates = JSON.parse(saved);
+    const savedStates = localStorage.getItem('quiz_app_rig_states');
+    if (savedStates) rigStates = JSON.parse(savedStates);
+    
+    const savedRigs = localStorage.getItem('quiz_app_active_rigs');
+    if (savedRigs) activeRigs = JSON.parse(savedRigs);
+
+    renderRigTabs();
 
     const response = await fetch('equipments.json');
     if (!response.ok) throw new Error('Falha ao carregar equipamentos');

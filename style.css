@@ -404,20 +404,41 @@ h1 {
 
 .rig-selector-container {
     width: 100%;
-    overflow-x: auto;
+    display: flex;
+    align-items: center;
+    gap: 12px;
     margin-bottom: 20px;
     padding-bottom: 8px;
+    overflow-x: auto;
     scrollbar-width: none;
-}
-
-.rig-selector-container::-webkit-scrollbar {
-    display: none;
 }
 
 .rig-tabs {
     display: flex;
     gap: 8px;
-    width: max-content;
+}
+
+.add-rig-btn {
+    background: var(--glass-bg);
+    border: 1px dashed var(--glass-border);
+    border-radius: 10px;
+    width: 40px;
+    height: 40px;
+    min-width: 40px;
+    color: var(--primary);
+    font-size: 1.5rem;
+    font-weight: 300;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.add-rig-btn:hover {
+    background: rgba(255, 255, 255, 0.1);
+    border-style: solid;
+    transform: scale(1.05);
 }
 
 .rig-tab {
