@@ -44,13 +44,16 @@ async function loadQuestions() {
         }
         
         questions = data;
-        startBtn.textContent = 'Começar Quiz';
+        const btnSpan = startBtn.querySelector('span');
+        if (btnSpan) btnSpan.textContent = '🎯 Iniciar Treinamento';
         startBtn.disabled = false;
+        console.log("✅ Perguntas carregadas com sucesso:", questions.length);
         
     } catch (error) {
-        console.error("Erro ao carregar perguntas:", error);
-        questionText.textContent = "Erro ao carregar as perguntas do arquivo questions.json. Verifique o gerador.";
-        startBtn.textContent = 'Indisponível';
+        console.error("❌ Erro ao carregar perguntas:", error);
+        const btnSpan = startBtn.querySelector('span');
+        if (btnSpan) btnSpan.textContent = '❌ Erro ao Carregar';
+        alert("Falha ao carregar as perguntas do servidor. Verifique sua conexão ou se o arquivo questions.json existe.");
         startBtn.disabled = true;
     }
 }
@@ -63,9 +66,15 @@ function shuffleArray(array) {
     }
 }
 
-function startGame() {
+async function startGame() {
     currentIndex = 0;
     score = 0;
+
+    if (questions.length === 0) {
+        console.warn("⚠️ Tentativa de iniciar quiz sem perguntas carregadas.");
+        await loadQuestions();
+        if (questions.length === 0) return; // If still no questions, exit
+    }
     
     // Copy the full question pool
     let activeQuestions = [...questions];
