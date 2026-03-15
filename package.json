@@ -2,8 +2,10 @@
   "name": "quiz-app",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "server.js",
   "scripts": {
+    "start": "node server.js",
+    "dev": "node generate_quiz.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
@@ -13,6 +15,7 @@
   "dependencies": {
     "@google/genai": "^1.45.0",
     "dotenv": "^17.3.1",
+    "express": "^5.2.1",
     "mammoth": "^1.12.0",
     "pdf-parse": "^2.4.5"
   }

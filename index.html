@@ -3,80 +3,93 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Quiz App Inteligente</title>
-    <!-- Configurações do PWA -->
+    <title>Subsea Intelligence | Quiz App</title>
     <link rel="manifest" href="manifest.json">
     <meta name="theme-color" content="#6366f1">
     <link rel="apple-touch-icon" href="icon-192.png">
-    <!-- Modern Font: Inter -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     
-    <!-- Background Animated Shapes -->
-    <div class="blob shape-1"></div>
-    <div class="blob shape-2"></div>
-    <div class="blob shape-3"></div>
+    <div class="glow-orb"></div>
 
-    <main class="app-container glass-panel">
+    <main class="app-container">
         
-        <!-- Screen 1: Menu -->
+        <!-- Screen 1: Home -->
         <section id="menu-screen" class="screen active">
-            <h1 class="bounce-in">🧠 Quiz App</h1>
-            <p>Selecione uma opção:</p>
-            <button id="start-btn" class="primary-btn pulse">🎯 Acessar Quiz</button>
-            <button id="status-btn" class="primary-btn pulse" style="margin-top:10px;">📊 Visão de Campo</button>
+            <div class="logo-container">
+                <img src="logo.png" alt="Subsea Intelligence Logo" class="app-logo" onerror="this.src='icon-192.svg'">
+            </div>
+            <h1>Subsea Intelligence</h1>
+            <p class="subtitle">Aprimore seus conhecimentos técnicos com nossa plataforma de treinamento avançado.</p>
+            
+            <div class="btn-group">
+                <button id="start-btn" class="primary-btn">
+                    <span>🎯 Iniciar Treinamento</span>
+                </button>
+                <button id="status-btn" class="secondary-btn">📊 Visão de Campo (Sondas)</button>
+            </div>
         </section>
 
         <!-- Screen 2: Quiz -->
         <section id="quiz-screen" class="screen">
-            <header class="quiz-header">
-                <button id="quiz-back-btn" class="icon-btn" title="Voltar ao Menu">⬅ Voltar</button>
-                <span id="question-counter" class="badge">Pergunta 1/5</span>
-                <span id="score-display" class="badge">Aproveitamento: 0</span>
+            <header class="quiz-nav">
+                <button id="quiz-back-btn" class="icon-btn">Voltar</button>
+                <div id="question-counter" class="indicator">Pergunta 1/15</div>
+                <div id="score-display" class="indicator">Score: 0</div>
             </header>
             
-            <div class="progress-bar-container">
-                <div id="progress-bar" class="progress-bar"></div>
+            <div class="progress-track">
+                <div id="progress-bar" class="progress-fill"></div>
             </div>
 
-            <h2 id="question-text">Carregando pergunta...</h2>
+            <div class="question-box">
+                <h2 id="question-text">Identificando parâmetros críticos do sistema...</h2>
+            </div>
             
-            <div id="options-container" class="options-grid">
-                <!-- Options will be injected here via JS -->
+            <div id="options-container" class="options-stack">
+                <!-- Options injected by script.js -->
             </div>
         </section>
 
         <!-- Screen 3: Results -->
         <section id="result-screen" class="screen">
-            <h2>Fim de Jogo!</h2>
-            <div class="score-circle">
-                <span id="final-score">0</span>
-                <span class="score-total">/ 0</span>
+            <h1>Desempenho Final</h1>
+            <div class="result-stats">
+                <span id="final-score" class="score-display">0</span>
+                <p id="result-message">Analisando resultados da sessão...</p>
             </div>
-            <p id="result-message">Você mandou bem!</p>
-            <button id="restart-btn" class="primary-btn">🔁 Testar Novamente</button>
-            <button id="result-menu-btn" class="secondary-btn" style="margin-top:10px;">🏠 Menu Principal</button>
+            
+            <div class="btn-group">
+                <button id="restart-btn" class="primary-btn">🔁 Nova Tentativa</button>
+                <button id="result-menu-btn" class="secondary-btn">🏠 Retornar ao Início</button>
+            </div>
         </section>
+
+        <!-- Screen 4: Status Monitor -->
         <section id="status-screen" class="screen">
-            <h2>📊 Status das Sondas</h2>
-            <div id="status-container" class="status-grid"></div>
-            <button id="back-to-menu-btn" class="secondary-btn" style="margin-top:20px;">⬅ Voltar ao Menu</button>
+            <h1>Visão de Campo</h1>
+            <p class="subtitle">Monitoramento em tempo real das unidades subsea.</p>
+            
+            <div id="status-container" class="status-grid">
+                <!-- Status cards injected by script.js -->
+            </div>
+            
+            <button id="back-to-menu-btn" class="secondary-btn" style="margin-top: 32px; width: 100%;">🏠 Sair da Monitoria</button>
         </section>
 
     </main>
 
     <script src="script.js"></script>
     <script>
-      // Registra o Service Worker para suporte PWA/Offline
       if ('serviceWorker' in navigator) {
         window.addEventListener('load', () => {
-          navigator.serviceWorker.register('/sw.js')
-            .then(registration => console.log('ServiceWorker registrado! Escopo:', registration.scope))
-            .catch(error => console.log('Falha ao registrar ServiceWorker:', error));
+          navigator.serviceWorker.register('sw.js')
+            .then(reg => console.log('PWA Ready'))
+            .catch(err => console.log('PWA Error', err));
         });
       }
     </script>

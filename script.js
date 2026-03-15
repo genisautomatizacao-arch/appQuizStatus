@@ -100,13 +100,11 @@ function showQuestion() {
     
     // Inject Options
     q.options.forEach((optionText, index) => {
-        const btn = document.createElement('button');
-        btn.classList.add('option-btn');
+        const btn = document.createElement('div');
+        btn.classList.add('option');
         btn.textContent = optionText;
         
-        // Add Event Listener closure captures index
         btn.addEventListener('click', () => handleAnswer(index, btn));
-        
         optionsContainer.appendChild(btn);
     });
 }
@@ -115,11 +113,8 @@ function handleAnswer(selectedIndex, selectedBtn) {
     if (!canClick) return;
     canClick = false; // block other clicks
     
-    const correctIndex = questions[currentIndex].correctAnswer;
-    const allButtons = document.querySelectorAll('.option-btn');
-    
-    // Disable all
-    allButtons.forEach(b => b.disabled = true);
+    const allButtons = document.querySelectorAll('.option');
+    allButtons.forEach(b => b.classList.add('disabled'));
     
     if (selectedIndex === correctIndex) {
         selectedBtn.classList.add('correct');
@@ -127,7 +122,6 @@ function handleAnswer(selectedIndex, selectedBtn) {
         updateScoreUI();
     } else {
         selectedBtn.classList.add('wrong');
-        // highlight the correct one
         allButtons[correctIndex].classList.add('correct');
     }
     
@@ -232,49 +226,42 @@ function renderStatus(items) {
     const card = document.createElement('div');
     card.classList.add('status-card');
 
-    const header = document.createElement('div');
-    header.classList.add('status-card-header');
-    
+    const header = document.createElement('header');
     const title = document.createElement('h3');
-    title.textContent = `Sonda: ${item.sonda || 'Desconhecida'}`;
+    title.textContent = `${item.sonda || 'Sonda'}`;
     
-    const badge = document.createElement('span');
-    badge.classList.add('status-badge');
-    badge.textContent = item.statusGeral || 'Pendente';
+    const tag = document.createElement('span');
+    tag.classList.add('status-tag');
+    tag.textContent = item.statusGeral || 'Em espera';
     
     header.appendChild(title);
-    header.appendChild(badge);
+    header.appendChild(tag);
 
-    const resumoTitle = document.createElement('h4');
-    resumoTitle.textContent = "Resumo do Dia:";
+    const content = document.createElement('div');
+    content.classList.add('status-content');
+
     const resumo = document.createElement('p');
-    resumo.textContent = item.resumoRealizado || 'Sem resumo';
+    resumo.textContent = item.resumoRealizado || 'Sem dados recentes.';
 
-    const pendenciasTitle = document.createElement('h4');
-    pendenciasTitle.textContent = "Pendências:";
-    const pendenciasList = document.createElement('ul');
+    const pendenciasHead = document.createElement('h4');
+    pendenciasHead.textContent = "Pendências Ativas";
+    
+    const list = document.createElement('ul');
+    list.classList.add('status-list');
     if (Array.isArray(item.pendencias)) {
-        item.pendencias.forEach(pendencia => {
+        item.pendencias.forEach(p => {
             const li = document.createElement('li');
-            li.textContent = pendencia;
-            pendenciasList.appendChild(li);
+            li.textContent = p;
+            list.appendChild(li);
         });
     }
 
-    const riscosTitle = document.createElement('h4');
-    riscosTitle.textContent = "Riscos/Alertas:";
-    const riscos = document.createElement('p');
-    riscos.classList.add('alert-text');
-    riscos.textContent = item.riscosOuAlertas || 'Nenhum reportado';
-
+    content.appendChild(resumo);
+    content.appendChild(pendenciasHead);
+    content.appendChild(list);
+    
     card.appendChild(header);
-    card.appendChild(resumoTitle);
-    card.appendChild(resumo);
-    card.appendChild(pendenciasTitle);
-    card.appendChild(pendenciasList);
-    card.appendChild(riscosTitle);
-    card.appendChild(riscos);
-
+    card.appendChild(content);
     statusContainer.appendChild(card);
   });
 }
