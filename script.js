@@ -571,6 +571,7 @@ function renderSourceSelector() {
         selector = document.createElement('select');
         selector.id = 'catalog-selector';
         selector.className = 'catalog-selector';
+        selector.style.display = 'none'; // FULLY HIDDEN
         container.appendChild(selector);
         
         selector.addEventListener('change', (e) => {

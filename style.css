@@ -531,9 +531,8 @@ h1 {
 }
 
 .equipment-card.checked .equip-info h3 {
-    text-decoration: line-through;
     color: var(--success);
-    opacity: 0.8;
+    opacity: 1; /* Keep full visibility but with success color */
 }
 
 .check-btn {
