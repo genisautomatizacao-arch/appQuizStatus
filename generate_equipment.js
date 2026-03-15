@@ -37,7 +37,7 @@ async function generateEquipmentData() {
         const rows = XLSX.utils.sheet_to_json(worksheet, { header: 1 });
         
         let mappedData = [];
-        let currentCategory = " Geral";
+        let currentCategory = "Geral";
         let headerFound = false;
 
         for (let i = 0; i < rows.length; i++) {
@@ -48,13 +48,9 @@ async function generateEquipmentData() {
             if (!isNaN(itemNum)) {
                 headerFound = true;
                 
-                // If column 2 has content AND it's not a normal item row yet (or we detect it's a category)
-                // In this spreadsheet, row[2] serves as both Category title and "Equip" field
-                if (row[2] && typeof row[2] === 'string' && row[2].trim() !== '' && isNaN(parseInt(row[2]))) {
-                    // Check if row[6] is empty, if so, it's likely a category header row
-                    if (!row[6]) {
-                        currentCategory = row[2].trim();
-                    }
+                // If column 2 has content, it's either a new category or the first item of one
+                if (row[2] && typeof row[2] === 'string' && row[2].trim() !== '') {
+                    currentCategory = row[2].trim().toUpperCase();
                 }
 
                 mappedData.push({
