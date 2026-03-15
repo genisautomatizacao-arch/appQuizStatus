@@ -320,28 +320,28 @@ function filterPicker(term) {
   });
 }
 
-function renderPickerResults(items) {
+function renderPickerResults(filtered) {
   pickerContainer.innerHTML = '';
   const onBoardIds = rigStates[activeRig] || [];
-  
-  let lastCategory = '';
 
-  items.forEach((item, index) => {
-    const currentCategory = item.Categoria || 'Geral';
-    if (currentCategory !== lastCategory) {
-      const header = document.createElement('div');
-      header.classList.add('equipment-category-header');
-      header.textContent = currentCategory;
-      header.style.fontSize = '0.7rem'; // Compact for modal
-      pickerContainer.appendChild(header);
-      lastCategory = currentCategory;
-    }
+  // Sort alphabetically by Description or Equip
+  filtered.sort((a, b) => {
+    const titleA = (a.Descricao && a.Descricao !== 'Sem descrição' ? a.Descricao : (a.Equip || '')).toUpperCase();
+    const titleB = (b.Descricao && b.Descricao !== 'Sem descrição' ? b.Descricao : (b.Equip || '')).toUpperCase();
+    return titleA.localeCompare(titleB);
+  });
 
+  filtered.forEach(item => {
     const uniqueId = getUniqueId(item);
-    const isOnBoard = onBoardIds.includes(uniqueId);
+    const isChecked = onBoardIds.includes(uniqueId);
     
     const div = document.createElement('div');
-    div.classList.add('equipment-card');
+    div.className = 'picker-item';
+    div.style.display = 'flex';
+    div.style.alignItems = 'center';
+    div.style.justifyContent = 'space-between';
+    div.style.background = 'rgba(255,255,255,0.05)';
+    div.style.borderRadius = '8px';
     div.style.padding = '10px';
     div.style.marginBottom = '5px';
     
@@ -356,12 +356,17 @@ function renderPickerResults(items) {
       </div>
     `;
 
-    const addBtn = document.createElement('button');
-    addBtn.className = isOnBoard ? 'remove-item-btn' : 'add-item-btn';
-    addBtn.textContent = isOnBoard ? 'Remover' : 'Adicionar';
-    addBtn.addEventListener('click', () => toggleItem(uniqueId));
+    const btn = document.createElement('button');
+    btn.textContent = isChecked ? 'Remover' : 'Adicionar';
+    btn.className = isChecked ? 'remove-item-btn' : 'cat-add-btn';
+    btn.style.padding = '5px 10px';
+    btn.style.fontSize = '0.7rem';
+    btn.onclick = () => {
+      toggleItem(uniqueId);
+      renderPickerResults(filterPicker(pickerSearch ? pickerSearch.value : ''));
+    };
 
-    div.appendChild(addBtn);
+    div.appendChild(btn);
     pickerContainer.appendChild(div);
   });
 }
@@ -606,8 +611,8 @@ function renderEquipments(items) {
   equipmentContainer.innerHTML = '';
   const onBoardIds = rigStates[activeRig] || [];
   
-  // Identify ALL categories from the master list
-  const allCategories = [...new Set(equipments.map(e => e.Categoria || 'Geral'))];
+  // Identify and SORT categories alphabetically
+  const allCategories = [...new Set(equipments.map(e => e.Categoria || 'Geral'))].sort((a, b) => a.localeCompare(b));
   
   // Group currently ON BOARD items by category
   const onBoardByCat = {};
@@ -648,6 +653,13 @@ function renderEquipments(items) {
     if (itemsInCat.length === 0) {
         itemsContainer.innerHTML = '<p style="font-size: 0.75rem; color: var(--text-dim); padding: 10px; text-align: center; opacity: 0.5;">Nenhum item a bordo nesta categoria.</p>';
     } else {
+        // SORT items in category alphabetically
+        itemsInCat.sort((a, b) => {
+          const titleA = (a.Descricao && a.Descricao !== 'Sem descrição' ? a.Descricao : (a.Equip || '')).toUpperCase();
+          const titleB = (b.Descricao && b.Descricao !== 'Sem descrição' ? b.Descricao : (b.Equip || '')).toUpperCase();
+          return titleA.localeCompare(titleB);
+        });
+
         itemsInCat.forEach((item) => {
           const uniqueId = getUniqueId(item);
           const isChecked = onBoardIds.includes(uniqueId);
