@@ -460,8 +460,20 @@ function toggleItem(itemId) {
 function renderEquipments(items) {
   equipmentContainer.innerHTML = '';
   const checkedForActiveRig = rigStates[activeRig] || [];
+  
+  let lastCategory = '';
 
   items.forEach((item, index) => {
+    // Inject category header if it changes
+    const currentCategory = item.Categoria || 'Geral';
+    if (currentCategory !== lastCategory) {
+      const header = document.createElement('div');
+      header.classList.add('equipment-category-header');
+      header.textContent = currentCategory;
+      equipmentContainer.appendChild(header);
+      lastCategory = currentCategory;
+    }
+
     const uniqueId = item.NS && item.NS !== '-' ? item.NS : `${item.ID}-${index}`;
     const isChecked = checkedForActiveRig.includes(uniqueId);
     

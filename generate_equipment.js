@@ -32,20 +32,56 @@ async function generateEquipmentData() {
         const workbook = XLSX.readFile(SPREADSHEET_FILE);
         const sheetName = workbook.SheetNames[0];
         const worksheet = workbook.Sheets[sheetName];
-        let jsonData = XLSX.utils.sheet_to_json(worksheet);
+        
+        // Use raw row arrays to handle merged cells and complex headers
+        const rows = XLSX.utils.sheet_to_json(worksheet, { header: 1 });
+        
+        let mappedData = [];
+        let currentCategory = " Geral";
+        let headerFound = false;
 
-        // Map user columns to our standard format
-        const mappedData = jsonData.map(row => ({
-            ID: row['ID'] || row['id'] || 'N/A',
-            NS: row['NS'] || row['ns'] || '-',
-            Nome: row['Descrição do equipamento'] || row['Nome'] || 'Equipamento',
-            Localização: row['Localização'] || row['localização'] || 'Não informado',
-            Status: row['Status'] || 'Disponível', // Default as it might not be in their list
-            Quantidade: row['Quantidade'] || row['qtd'] || 1
-        }));
+        for (let i = 0; i < rows.length; i++) {
+            const row = rows[i];
+            
+            // The items usually start after row 10 and row[1] is a number (id/counter)
+            const itemNum = parseInt(row[1]);
+            if (!isNaN(itemNum)) {
+                headerFound = true;
+                
+                // If column 2 has content, it's a new category
+                if (row[2] && typeof row[2] === 'string' && row[2].trim() !== '') {
+                    currentCategory = row[2].trim();
+                }
+
+                mappedData.push({
+                    Categoria: currentCategory,
+                    ID: row[5] || row[4] || 'N/A',
+                    NS: row[5] || row[4] || '-',
+                    Nome: row[6] || 'Equipamento',
+                    Localização: row[10] || 'Não informado',
+                    Status: row[10] || 'Disponível',
+                    Quantidade: row[3] || 1
+                });
+            }
+        }
+
+        if (mappedData.length === 0) {
+            console.warn("⚠️ Nenhum dado mapeado. Tentando fallback para mapeamento por nomes de colunas...");
+            // Fallback to simpler mapping if row-based fails
+            const jsonData = XLSX.utils.sheet_to_json(worksheet);
+            mappedData = jsonData.map(row => ({
+                Categoria: row['Categoria'] || 'Geral',
+                ID: row['NS'] || row['ID'] || 'N/A',
+                NS: row['NS'] || '-',
+                Nome: row['Descrição do equipamento'] || row['Nome'] || 'Equipamento',
+                Localização: row['Localização'] || 'Não informado',
+                Status: row['Status'] || 'Disponível',
+                Quantidade: row['Quantidade'] || 1
+            }));
+        }
 
         fs.writeFileSync(OUTPUT_FILE, JSON.stringify(mappedData, null, 2));
-        console.log(`✅ Sucesso! ${mappedData.length} equipamentos salvos em ${OUTPUT_FILE}`);
+        console.log(`✅ Sucesso! ${mappedData.length} equipamentos salvos com categorias em ${OUTPUT_FILE}`);
     } catch (error) {
         console.error("❌ Erro ao converter planilha:", error);
     }
