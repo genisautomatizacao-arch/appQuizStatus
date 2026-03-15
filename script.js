@@ -336,7 +336,7 @@ function renderPickerResults(items) {
       lastCategory = currentCategory;
     }
 
-    const uniqueId = item.NS && item.NS !== '-' ? item.NS : `${item.ID}-${index}`;
+    const uniqueId = getUniqueId(item);
     const isOnBoard = onBoardIds.includes(uniqueId);
     
     const div = document.createElement('div');
@@ -411,10 +411,7 @@ function filterEquipments() {
     // We need to re-match IDs carefully
     return fitsSearch; 
   }).filter(item => {
-      // Re-calculate the specific item's ID in the list to check if it's on board
-      // Note: This is a bit inefficient, but works for the current scale.
-      const matchInMaster = equipments.indexOf(item);
-      const uniqueId = item.NS && item.NS !== '-' ? item.NS : `${item.ID}-${matchInMaster}`;
+      const uniqueId = getUniqueId(item);
       return onBoardIds.includes(uniqueId);
   });
 }
@@ -602,8 +599,7 @@ function renderEquipments(items) {
         itemsContainer.innerHTML = '<p style="font-size: 0.75rem; color: var(--text-dim); padding: 10px; text-align: center; opacity: 0.5;">Nenhum item a bordo nesta categoria.</p>';
     } else {
         itemsInCat.forEach((item) => {
-          const matchInMaster = equipments.indexOf(item);
-          const uniqueId = item.NS && item.NS !== '-' ? item.NS : `${item.ID}-${matchInMaster}`;
+          const uniqueId = getUniqueId(item);
           const isChecked = onBoardIds.includes(uniqueId);
           
           const card = document.createElement('div');
@@ -637,6 +633,16 @@ function getStatusClass(status) {
   if (s.includes('disponível')) return 'status-available';
   if (s.includes('uso')) return 'status-busy';
   return 'status-maintenance';
+}
+
+function getUniqueId(item) {
+  if (!item) return '';
+  // Use NS if available and valid, otherwise use name-id-masterIndex
+  const masterIndex = equipments.indexOf(item);
+  if (item.NS && item.NS !== '-' && item.NS !== 'N/A') {
+    return `NS-${item.NS}`;
+  }
+  return `ID-${item.ID || 'NONE'}-${masterIndex}`;
 }
 
 
