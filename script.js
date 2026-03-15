@@ -1,3 +1,9 @@
+// Global Debug/Error Handling
+window.onerror = function(msg, url, lineNo, columnNo, error) {
+    alert("Erro detectado: " + msg + "\nLinha: " + lineNo);
+    return false;
+};
+
 // Elements
 const startScreen = document.getElementById('menu-screen');
 const quizScreen = document.getElementById('quiz-screen');
@@ -235,6 +241,26 @@ function updateScoreUI() {
 // Event Listeners Initialization
 function initEventListeners() {
   console.log("⚙️ Inicializando Event Listeners...");
+  
+  // Repair App Button (Secret)
+  const repairBtn = document.getElementById('repair-app-btn');
+  if (repairBtn) {
+    repairBtn.addEventListener('click', () => {
+      if (confirm("Deseja forçar a atualização e limpar o cache do app?")) {
+        if ('serviceWorker' in navigator) {
+          navigator.serviceWorker.getRegistrations().then(registrations => {
+            for (let registration of registrations) { registration.unregister(); }
+            caches.keys().then(names => {
+              for (let name of names) caches.delete(name);
+              alert("App resetado. A página será recarregada.");
+              window.location.reload(true);
+            });
+          });
+        }
+      }
+    });
+  }
+
   if (startBtn) startBtn.addEventListener('click', startGame);
   if (restartBtn) restartBtn.addEventListener('click', startGame);
   if (statusBtn) statusBtn.addEventListener('click', showStatus);
