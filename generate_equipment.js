@@ -30,6 +30,7 @@ async function generateEquipmentData() {
     console.log(`🔍 Encontrados ${fileList.length} arquivos de inventário.`);
 
     let allMappedData = [];
+    const seenItems = new Map(); // To track duplicates across files
 
     for (const filePath of fileList) {
         try {
@@ -44,7 +45,7 @@ async function generateEquipmentData() {
             const rows = XLSX.utils.sheet_to_json(worksheet, { header: 1 });
             
             let currentCategory = "GERAL";
-            let fileData = [];
+            let fileDataCount = 0;
 
             for (let i = 0; i < rows.length; i++) {
                 const row = rows[i];
@@ -55,7 +56,7 @@ async function generateEquipmentData() {
                         currentCategory = row[2].trim().toUpperCase();
                     }
 
-                    fileData.push({
+                    const item = {
                         Categoria: currentCategory,
                         Equip: row[2] || 'N/A',
                         Qtd: row[3] || 0,
@@ -67,13 +68,21 @@ async function generateEquipmentData() {
                         Source: path.basename(filePath),
                         RigName: rigName,
                         Date: date
-                    });
+                    };
+
+                    // De-duplication key: combine core identifying fields
+                    const key = `${item.Equip}|${item.NP}|${item.NS}|${item.Descricao}`.toUpperCase();
+                    
+                    if (!seenItems.has(key)) {
+                        seenItems.set(key, item);
+                        allMappedData.push(item);
+                        fileDataCount++;
+                    }
                 }
             }
 
-            if (fileData.length > 0) {
-                allMappedData.push(...fileData);
-                console.log(`   ✅ ${fileData.length} itens extraídos de ${rigName}`);
+            if (fileDataCount > 0) {
+                console.log(`   ✅ ${fileDataCount} novos itens únicos extraídos de ${rigName}`);
             }
 
         } catch (error) {
@@ -83,7 +92,8 @@ async function generateEquipmentData() {
 
     if (allMappedData.length > 0) {
         fs.writeFileSync(OUTPUT_FILE, JSON.stringify(allMappedData, null, 2));
-        console.log(`\n🎉 SUCESSO! ${allMappedData.length} itens totais salvos em ${OUTPUT_FILE}`);
+        console.log(`\n🎉 SUCESSO! ${allMappedData.length} itens únicos salvos em ${OUTPUT_FILE}`);
+        console.log(`📉 Redução de duplicatas: de ~2300 para ${allMappedData.length} itens.`);
     } else {
         console.error("\n❌ Nenhum dado foi extraído dos arquivos.");
     }
