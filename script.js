@@ -27,6 +27,8 @@ let canClick = true;
 let timerInterval;
 const TIME_PER_QUESTION = 30;
 let equipments = []; // Global store for filtering
+let activeRig = "Sonda 1";
+let rigStates = {}; // Persisted state { "Sonda 1": ["ID1", "ID2"] }
 
 // Initialize
 async function loadQuestions() {
@@ -228,6 +230,7 @@ const equipmentScreen = document.getElementById('equipment-screen');
 const backFromEquipBtn = document.getElementById('back-from-equip-btn');
 const equipmentContainer = document.getElementById('equipment-container');
 const equipmentSearch = document.getElementById('equipment-search');
+const rigTabs = document.querySelectorAll('.rig-tab');
 
 statusBtn.addEventListener('click', showStatus);
 equipmentBtn.addEventListener('click', showEquipment);
@@ -236,14 +239,27 @@ backFromEquipBtn.addEventListener('click', backToMenu);
 quizBackBtn.addEventListener('click', backToMenu);
 resultMenuBtn.addEventListener('click', backToMenu);
 
-equipmentSearch.addEventListener('input', (e) => {
-  const searchTerm = e.target.value.toLowerCase();
-  const filtered = equipments.filter(item => 
+rigTabs.forEach(tab => {
+  tab.addEventListener('click', () => {
+    rigTabs.forEach(t => t.classList.remove('active'));
+    tab.classList.add('active');
+    activeRig = tab.dataset.rig;
+    renderEquipments(filterEquipments());
+  });
+});
+
+function filterEquipments() {
+  const searchTerm = equipmentSearch.value.toLowerCase();
+  return equipments.filter(item => 
     String(item.Nome || '').toLowerCase().includes(searchTerm) ||
     String(item.ID || '').toLowerCase().includes(searchTerm) ||
-    String(item.Localização || '').toLowerCase().includes(searchTerm)
+    String(item.Localização || '').toLowerCase().includes(searchTerm) ||
+    String(item.NS || '').toLowerCase().includes(searchTerm)
   );
-  renderEquipments(filtered);
+}
+
+equipmentSearch.addEventListener('input', () => {
+  renderEquipments(filterEquipments());
 });
 
 function showEquipment() {
@@ -332,6 +348,10 @@ function renderStatus(items) {
 // Equipment Management
 async function loadEquipments() {
   try {
+    // Load persisted state from localStorage
+    const saved = localStorage.getItem('quiz_app_rig_states');
+    if (saved) rigStates = JSON.parse(saved);
+
     const response = await fetch('equipments.json');
     if (!response.ok) throw new Error('Falha ao carregar equipamentos');
     equipments = await response.json();
@@ -342,11 +362,32 @@ async function loadEquipments() {
   }
 }
 
+function toggleItem(itemId) {
+  if (!rigStates[activeRig]) rigStates[activeRig] = [];
+  
+  const index = rigStates[activeRig].indexOf(itemId);
+  if (index > -1) {
+    rigStates[activeRig].splice(index, 1);
+  } else {
+    rigStates[activeRig].push(itemId);
+  }
+  
+  // Save to localStorage
+  localStorage.setItem('quiz_app_rig_states', JSON.stringify(rigStates));
+  renderEquipments(filterEquipments());
+}
+
 function renderEquipments(items) {
   equipmentContainer.innerHTML = '';
-  items.forEach(item => {
+  const checkedForActiveRig = rigStates[activeRig] || [];
+
+  items.forEach((item, index) => {
+    const uniqueId = item.NS && item.NS !== '-' ? item.NS : `${item.ID}-${index}`;
+    const isChecked = checkedForActiveRig.includes(uniqueId);
+    
     const card = document.createElement('div');
     card.classList.add('equipment-card');
+    if (isChecked) card.classList.add('checked');
     
     const info = document.createElement('div');
     info.classList.add('equip-info');
@@ -355,6 +396,10 @@ function renderEquipments(items) {
       <p>ID: ${item.ID || 'N/A'} | NS: ${item.NS || '-'}</p>
       <p>Local: ${item.Localização || 'Não informado'}</p>
     `;
+
+    const statusRight = document.createElement('div');
+    statusRight.style.display = 'flex';
+    statusRight.style.alignItems = 'center';
 
     const statusDiv = document.createElement('div');
     statusDiv.classList.add('equip-status');
@@ -376,8 +421,16 @@ function renderEquipments(items) {
     statusDiv.appendChild(statusTag);
     statusDiv.appendChild(qty);
     
+    const checkBtn = document.createElement('div');
+    checkBtn.classList.add('check-btn');
+    checkBtn.innerHTML = isChecked ? '✓' : '';
+    checkBtn.addEventListener('click', () => toggleItem(uniqueId));
+
+    statusRight.appendChild(statusDiv);
+    statusRight.appendChild(checkBtn);
+    
     card.appendChild(info);
-    card.appendChild(statusDiv);
+    card.appendChild(statusRight);
     equipmentContainer.appendChild(card);
   });
 }
