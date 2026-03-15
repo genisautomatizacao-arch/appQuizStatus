@@ -11,13 +11,21 @@ const questionCounter = document.getElementById('question-counter');
 const scoreDisplay = document.getElementById('score-display');
 const progressBar = document.getElementById('progress-bar');
 const finalScore = document.getElementById('final-score');
-const scoreTotal = document.querySelector('.score-total');
-const resultMessage = document.getElementById('result-message');
 const circle = document.querySelector('.score-circle');
+const scoreTotal = document.querySelector('.score-total');
 
-// New navigation buttons
-const quizBackBtn = document.getElementById('quiz-back-btn');
-const resultMenuBtn = document.getElementById('result-menu-btn');
+// New navigation elements
+const statusBtn = document.getElementById('status-btn');
+const statusScreen = document.getElementById('status-screen');
+const backToMenuBtn = document.getElementById('back-to-menu-btn');
+const statusContainer = document.getElementById('status-container');
+
+const equipmentBtn = document.getElementById('equipment-btn');
+const equipmentScreen = document.getElementById('equipment-screen');
+const backFromEquipBtn = document.getElementById('back-from-equip-btn');
+const equipmentContainer = document.getElementById('equipment-container');
+const equipmentSearch = document.getElementById('equipment-search');
+const rigTabs = document.querySelectorAll('.rig-tab');
 
 // State Variables
 let questions = [];
@@ -182,19 +190,21 @@ function showResults() {
     resultScreen.classList.add('active');
     
     // Set text
-    finalScore.textContent = score;
-    scoreTotal.textContent = `/ ${questions.length}`;
+    if (finalScore) finalScore.textContent = score;
+    if (scoreTotal) scoreTotal.textContent = `/ ${questions.length}`;
     
     // Calculate degree for conic gradient (0 to 360)
     const percentage = score / questions.length;
     const deg = percentage * 360;
     
     // Animate radial progress bar using CSS custom property
-    circle.style.setProperty('--score-deg', '0');
-    setTimeout(() => {
-        circle.style.setProperty('--score-deg', deg.toString());
-        circle.style.transition = 'all 1s ease-out';
-    }, 100);
+    if (circle) {
+        circle.style.setProperty('--score-deg', '0');
+        setTimeout(() => {
+            circle.style.setProperty('--score-deg', deg.toString());
+            circle.style.transition = 'all 1s ease-out';
+        }, 100);
+    }
 
     // Dynamic message
     if (percentage === 1) {
@@ -216,28 +226,14 @@ function updateScoreUI() {
 }
 
 // Event Listeners
-startBtn.addEventListener('click', startGame);
-restartBtn.addEventListener('click', startGame);
-
-// New navigation elements
-const statusBtn = document.getElementById('status-btn');
-const statusScreen = document.getElementById('status-screen');
-const backToMenuBtn = document.getElementById('back-to-menu-btn');
-const statusContainer = document.getElementById('status-container');
-
-const equipmentBtn = document.getElementById('equipment-btn');
-const equipmentScreen = document.getElementById('equipment-screen');
-const backFromEquipBtn = document.getElementById('back-from-equip-btn');
-const equipmentContainer = document.getElementById('equipment-container');
-const equipmentSearch = document.getElementById('equipment-search');
-const rigTabs = document.querySelectorAll('.rig-tab');
-
-statusBtn.addEventListener('click', showStatus);
-equipmentBtn.addEventListener('click', showEquipment);
-backToMenuBtn.addEventListener('click', backToMenu);
-backFromEquipBtn.addEventListener('click', backToMenu);
-quizBackBtn.addEventListener('click', backToMenu);
-resultMenuBtn.addEventListener('click', backToMenu);
+if (startBtn) startBtn.addEventListener('click', startGame);
+if (restartBtn) restartBtn.addEventListener('click', startGame);
+if (statusBtn) statusBtn.addEventListener('click', showStatus);
+if (equipmentBtn) equipmentBtn.addEventListener('click', showEquipment);
+if (backToMenuBtn) backToMenuBtn.addEventListener('click', backToMenu);
+if (backFromEquipBtn) backFromEquipBtn.addEventListener('click', backToMenu);
+if (quizBackBtn) quizBackBtn.addEventListener('click', backToMenu);
+if (resultMenuBtn) resultMenuBtn.addEventListener('click', backToMenu);
 
 rigTabs.forEach(tab => {
   tab.addEventListener('click', () => {
