@@ -528,7 +528,7 @@ async function loadEquipments() {
     const response = await fetch('equipments.json');
     if (!response.ok) throw new Error('Falha ao carregar equipamentos');
     equipments = await response.json();
-    renderEquipments(equipments);
+    renderEquipments(filterEquipments());
   } catch (error) {
     console.error(error);
     equipmentContainer.innerHTML = '<p>Erro ao carregar inventário.</p>';
