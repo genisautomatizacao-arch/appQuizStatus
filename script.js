@@ -345,11 +345,14 @@ function renderPickerResults(items) {
     div.style.padding = '10px';
     div.style.marginBottom = '5px';
     
+    const title = item.Descricao && item.Descricao !== 'Sem descrição' ? item.Descricao : (item.Equip && item.Equip !== 'N/A' ? item.Equip : 'Equipamento');
+    const subtitle = `NP: ${item.NP || '-'} | NS: ${item.NS || '-'}`;
+    
     div.innerHTML = `
       <div class="equip-info">
-        <h4 style="font-size: 0.85rem">${item.Equip || 'Equipamento'}</h4>
-        <p style="font-size: 0.7rem">NP: ${item.NP || 'N/A'} | NS: ${item.NS || '-'}</p>
-        <p style="font-size: 0.7rem; opacity: 0.8;">${item.Descricao || ''}</p>
+        <h4 style="font-size: 0.85rem">${title}</h4>
+        <p style="font-size: 0.7rem; opacity: 0.9;">${subtitle}</p>
+        ${item.Equip && item.Equip !== 'N/A' && item.Equip !== title ? `<p style="font-size: 0.65rem; opacity: 0.7;">Cat/Tipo: ${item.Equip}</p>` : ''}
       </div>
     `;
 
@@ -652,12 +655,15 @@ function renderEquipments(items) {
           const card = document.createElement('div');
           card.className = `equipment-card ${isChecked ? 'checked' : ''}`;
           
+          const title = item.Descricao && item.Descricao !== 'Sem descrição' ? item.Descricao : (item.Equip && item.Equip !== 'N/A' ? item.Equip : 'Equipamento');
+          const location = item.Localizacao && item.Localizacao !== 'N/A' ? `<p>Local: ${item.Localizacao}</p>` : '';
+
           card.innerHTML = `
             <div class="equip-info">
-              <h3>${item.Equip || 'Equipamento'}</h3>
-              <p>NP: ${item.NP || 'N/A'} | NS: ${item.NS || '-'}</p>
-              <p style="font-size: 0.8rem; margin: 4px 0;">${item.Descricao || ''}</p>
-              <p>Local: ${item.Localizacao || 'N/A'}</p>
+              <h3>${title}</h3>
+              <p>NP: ${item.NP || '-'} | NS: ${item.NS || '-'}</p>
+              ${item.Equip && item.Equip !== 'N/A' && item.Equip !== title ? `<p style="font-size: 0.8rem; margin: 2px 0; opacity: 0.8;">Tipo: ${item.Equip}</p>` : ''}
+              ${location}
             </div>
             <div class="equip-status-right">
               <div class="equip-status">
