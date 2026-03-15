@@ -45,6 +45,7 @@ const pickerSearch = document.getElementById('picker-search');
 const pickerContainer = document.getElementById('picker-container');
 
 // State Variables
+let activePickerCategory = '';
 let questions = [];
 let currentIndex = 0;
 let score = 0;
@@ -287,18 +288,17 @@ function initEventListeners() {
       renderPickerResults(filterPicker(pickerSearch.value));
     });
   }
-
-  if (equipmentSearch) {
-    equipmentSearch.addEventListener('input', () => {
-      renderEquipments(filterEquipments());
-    });
-  }
 }
 
-function openPicker(catFilter = '') {
+function openPicker(category = '') {
+  activePickerCategory = category;
   pickerModal.classList.add('active');
-  pickerSearch.value = catFilter;
-  renderPickerResults(filterPicker(catFilter));
+  pickerSearch.value = '';
+  
+  const modalTitle = document.querySelector('.modal-header h2');
+  if (modalTitle) modalTitle.textContent = `Buscar em: ${category || 'Mestre'}`;
+  
+  renderPickerResults(filterPicker(''));
 }
 
 function closePicker() {
@@ -307,12 +307,16 @@ function closePicker() {
 
 function filterPicker(term) {
   const search = term.toLowerCase();
-  return equipments.filter(item => 
-    String(item.Nome || '').toLowerCase().includes(search) ||
-    String(item.ID || '').toLowerCase().includes(search) ||
-    String(item.Categoria || '').toLowerCase().includes(search) ||
-    String(item.NS || '').toLowerCase().includes(search)
-  );
+  return equipments.filter(item => {
+    const itemCat = item.Categoria || 'Geral';
+    const isInActiveCat = activePickerCategory ? itemCat === activePickerCategory : true;
+    
+    const matchesTerm = String(item.Nome || '').toLowerCase().includes(search) ||
+                        String(item.ID || '').toLowerCase().includes(search) ||
+                        String(item.NS || '').toLowerCase().includes(search);
+                        
+    return isInActiveCat && matchesTerm;
+  });
 }
 
 function renderPickerResults(items) {
