@@ -31,7 +31,24 @@
                     <span>🎯 Iniciar Treinamento</span>
                 </button>
                 <button id="status-btn" class="secondary-btn">📊 Visão de Campo (Sondas)</button>
+                <button id="equipment-btn" class="secondary-btn">📦 Controle de Equipamentos</button>
             </div>
+        </section>
+
+        <!-- New Screen: Equipment Control -->
+        <section id="equipment-screen" class="screen">
+            <h1>Controle de Equipamentos</h1>
+            <p class="subtitle">Inventário e localização de ativos a bordo.</p>
+            
+            <div class="search-container">
+                <input type="text" id="equipment-search" placeholder="Buscar por nome, ID ou local...">
+            </div>
+
+            <div id="equipment-container" class="equipment-grid">
+                <!-- Equipment cards injected by script.js -->
+            </div>
+            
+            <button id="back-from-equip-btn" class="secondary-btn" style="margin-top: 32px; width: 100%;">🏠 Sair do Inventário</button>
         </section>
 
         <!-- Screen 2: Quiz -->

@@ -1,0 +1,30 @@
+[
+  {
+    "ID": "EQP-001",
+    "Nome": "Balança de Teste",
+    "Localização": "Laboratório",
+    "Status": "Disponível",
+    "Quantidade": 2
+  },
+  {
+    "ID": "EQP-002",
+    "Nome": "Compressor de Ar",
+    "Localização": "Deck de Operações",
+    "Status": "Em Uso",
+    "Quantidade": 1
+  },
+  {
+    "ID": "EQP-003",
+    "Nome": "Multímetro Digital",
+    "Localização": "Oficina Elétrica",
+    "Status": "Manutenção",
+    "Quantidade": 3
+  },
+  {
+    "ID": "EQP-004",
+    "Nome": "Guincho Hidráulico",
+    "Localização": "Deck de Carga",
+    "Status": "Disponível",
+    "Quantidade": 1
+  }
+]

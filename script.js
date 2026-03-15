@@ -26,6 +26,7 @@ let score = 0;
 let canClick = true; 
 let timerInterval;
 const TIME_PER_QUESTION = 30;
+let equipments = []; // Global store for filtering
 
 // Initialize
 async function loadQuestions() {
@@ -213,22 +214,39 @@ const statusScreen = document.getElementById('status-screen');
 const backToMenuBtn = document.getElementById('back-to-menu-btn');
 const statusContainer = document.getElementById('status-container');
 
+const equipmentBtn = document.getElementById('equipment-btn');
+const equipmentScreen = document.getElementById('equipment-screen');
+const backFromEquipBtn = document.getElementById('back-from-equip-btn');
+const equipmentContainer = document.getElementById('equipment-container');
+const equipmentSearch = document.getElementById('equipment-search');
+
 statusBtn.addEventListener('click', showStatus);
+equipmentBtn.addEventListener('click', showEquipment);
 backToMenuBtn.addEventListener('click', backToMenu);
+backFromEquipBtn.addEventListener('click', backToMenu);
 quizBackBtn.addEventListener('click', backToMenu);
 resultMenuBtn.addEventListener('click', backToMenu);
 
-function showStatus() {
-  // Hide current screen (menu/start)
+equipmentSearch.addEventListener('input', (e) => {
+  const searchTerm = e.target.value.toLowerCase();
+  const filtered = equipments.filter(item => 
+    String(item.Nome || '').toLowerCase().includes(searchTerm) ||
+    String(item.ID || '').toLowerCase().includes(searchTerm) ||
+    String(item.Localização || '').toLowerCase().includes(searchTerm)
+  );
+  renderEquipments(filtered);
+});
+
+function showEquipment() {
   startScreen.classList.remove('active');
-  // Show status screen
-  statusScreen.classList.add('active');
-  loadStatus();
+  equipmentScreen.classList.add('active');
+  loadEquipments();
 }
 
 function backToMenu() {
-  clearInterval(timerInterval); // Clean up
+  clearInterval(timerInterval); 
   statusScreen.classList.remove('active');
+  equipmentScreen.classList.remove('active');
   quizScreen.classList.remove('active');
   resultScreen.classList.remove('active');
   startScreen.classList.add('active');
@@ -299,6 +317,59 @@ function renderStatus(items) {
     card.appendChild(header);
     card.appendChild(content);
     statusContainer.appendChild(card);
+  });
+}
+
+// Equipment Management
+async function loadEquipments() {
+  try {
+    const response = await fetch('equipments.json');
+    if (!response.ok) throw new Error('Falha ao carregar equipamentos');
+    equipments = await response.json();
+    renderEquipments(equipments);
+  } catch (error) {
+    console.error(error);
+    equipmentContainer.innerHTML = '<p>Erro ao carregar inventário.</p>';
+  }
+}
+
+function renderEquipments(items) {
+  equipmentContainer.innerHTML = '';
+  items.forEach(item => {
+    const card = document.createElement('div');
+    card.classList.add('equipment-card');
+    
+    const info = document.createElement('div');
+    info.classList.add('equip-info');
+    info.innerHTML = `
+      <h3>${item.Nome || 'Equipamento'}</h3>
+      <p>ID: ${item.ID || 'N/A'}</p>
+      <p>Local: ${item.Localização || 'Não informado'}</p>
+    `;
+
+    const statusDiv = document.createElement('div');
+    statusDiv.classList.add('equip-status');
+    
+    const statusTag = document.createElement('span');
+    statusTag.classList.add('status-indicator');
+    
+    const status = (item.Status || '').toLowerCase();
+    if (status.includes('disponível')) statusTag.classList.add('status-available');
+    else if (status.includes('uso')) statusTag.classList.add('status-busy');
+    else statusTag.classList.add('status-maintenance');
+    
+    statusTag.textContent = item.Status || 'Status';
+    
+    const qty = document.createElement('span');
+    qty.classList.add('qty-badge');
+    qty.textContent = `Qtd: ${item.Quantidade || 0}`;
+
+    statusDiv.appendChild(statusTag);
+    statusDiv.appendChild(qty);
+    
+    card.appendChild(info);
+    card.appendChild(statusDiv);
+    equipmentContainer.appendChild(card);
   });
 }
 
