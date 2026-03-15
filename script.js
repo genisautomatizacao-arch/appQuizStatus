@@ -23,7 +23,9 @@ const resultMenuBtn = document.getElementById('result-menu-btn');
 let questions = [];
 let currentIndex = 0;
 let score = 0;
-let canClick = true; // Prevents multiple clicks during animation
+let canClick = true; 
+let timerInterval;
+const TIME_PER_QUESTION = 30;
 
 // Initialize
 async function loadQuestions() {
@@ -83,6 +85,28 @@ function startGame() {
     showQuestion();
 }
 
+function startTimer() {
+    let timeLeft = TIME_PER_QUESTION;
+    const timerText = document.getElementById('timer-text');
+    timerText.textContent = timeLeft;
+    timerText.classList.remove('timer-low');
+    
+    clearInterval(timerInterval);
+    timerInterval = setInterval(() => {
+        timeLeft--;
+        timerText.textContent = timeLeft;
+        
+        if (timeLeft <= 5) {
+            timerText.classList.add('timer-low');
+        }
+        
+        if (timeLeft <= 0) {
+            clearInterval(timerInterval);
+            handleAnswer(-1, null); // Auto-fail
+        }
+    }, 1000);
+}
+
 function showQuestion() {
     canClick = true;
     const q = questions[currentIndex];
@@ -107,21 +131,26 @@ function showQuestion() {
         btn.addEventListener('click', () => handleAnswer(index, btn));
         optionsContainer.appendChild(btn);
     });
+    
+    startTimer();
 }
 
 function handleAnswer(selectedIndex, selectedBtn) {
     if (!canClick) return;
     canClick = false; // block other clicks
     
+    const correctIndex = questions[currentIndex].correctAnswer;
     const allButtons = document.querySelectorAll('.option');
     allButtons.forEach(b => b.classList.add('disabled'));
     
+    clearInterval(timerInterval); // Stop timer when answered
+    
     if (selectedIndex === correctIndex) {
-        selectedBtn.classList.add('correct');
+        if (selectedBtn) selectedBtn.classList.add('correct');
         score++;
         updateScoreUI();
     } else {
-        selectedBtn.classList.add('wrong');
+        if (selectedBtn) selectedBtn.classList.add('wrong');
         allButtons[correctIndex].classList.add('correct');
     }
     
@@ -133,7 +162,7 @@ function handleAnswer(selectedIndex, selectedBtn) {
         } else {
             showResults();
         }
-    }, 1500); // 1.5 seconds delay for feedback
+    }, 1500); 
 }
 
 function showResults() {
@@ -198,6 +227,7 @@ function showStatus() {
 }
 
 function backToMenu() {
+  clearInterval(timerInterval); // Clean up
   statusScreen.classList.remove('active');
   quizScreen.classList.remove('active');
   resultScreen.classList.remove('active');
@@ -226,12 +256,18 @@ function renderStatus(items) {
     const card = document.createElement('div');
     card.classList.add('status-card');
 
+    const isCritical = (item.statusGeral || '').toLowerCase().includes('crítica') || 
+                       (item.riscosOuAlertas || '').toLowerCase() !== 'nenhum reportado';
+    
+    if (isCritical) card.classList.add('critical');
+
     const header = document.createElement('header');
     const title = document.createElement('h3');
     title.textContent = `${item.sonda || 'Sonda'}`;
     
     const tag = document.createElement('span');
     tag.classList.add('status-tag');
+    if (isCritical) tag.classList.add('critical');
     tag.textContent = item.statusGeral || 'Em espera';
     
     header.appendChild(title);

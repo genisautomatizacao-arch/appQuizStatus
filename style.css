@@ -159,6 +159,33 @@ h1 {
     background: rgba(255, 255, 255, 0.1);
 }
 
+/* Timer Component */
+.timer-container {
+    background: rgba(255, 255, 255, 0.08);
+    padding: 6px 16px;
+    border-radius: 100px;
+    font-size: 0.9rem;
+    font-weight: 800;
+    color: var(--text-white);
+    border: 1px solid var(--primary-glow);
+    min-width: 60px;
+}
+
+#timer-text {
+    color: var(--primary);
+    transition: color 0.3s ease;
+}
+
+.timer-low {
+    color: var(--danger) !important;
+    animation: pulseTimer 0.5s infinite alternate;
+}
+
+@keyframes pulseTimer {
+    from { transform: scale(1); }
+    to { transform: scale(1.1); }
+}
+
 /* Quiz UI Components */
 .quiz-nav {
     display: flex;
@@ -273,11 +300,27 @@ h1 {
 }
 
 .status-card {
-    background: rgba(255, 255, 255, 0.03);
+    background: linear-gradient(145deg, rgba(15, 23, 42, 0.8), rgba(30, 41, 59, 0.6));
     border: 1px solid var(--glass-border);
     border-radius: 20px;
-    padding: 20px;
+    padding: 24px;
     animation: slideIn 0.5s ease backwards;
+    position: relative;
+    overflow: hidden;
+}
+
+.status-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 4px;
+    height: 100%;
+    background: var(--primary);
+}
+
+.status-card.critical::before {
+    background: var(--danger);
 }
 
 @keyframes slideIn {
@@ -289,36 +332,55 @@ h1 {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 12px;
+    margin-bottom: 16px;
 }
 
 .status-card h3 {
-    font-size: 1.1rem;
-    font-weight: 700;
+    font-size: 1.2rem;
+    font-weight: 800;
+    letter-spacing: 0.5px;
 }
 
 .status-tag {
-    font-size: 0.7rem;
+    font-size: 0.75rem;
     font-weight: 800;
     background: var(--primary);
-    padding: 4px 10px;
+    padding: 6px 12px;
     border-radius: 8px;
     text-transform: uppercase;
+    box-shadow: 0 4px 12px rgba(99, 102, 241, 0.3);
+}
+
+.status-tag.critical {
+    background: var(--danger);
+    box-shadow: 0 4px 12px rgba(244, 63, 94, 0.3);
 }
 
 .status-content p {
-    font-size: 0.9rem;
+    font-size: 0.95rem;
     color: var(--text-white);
     text-align: left;
-    margin-bottom: 12px;
+    margin-bottom: 20px;
+    line-height: 1.6;
 }
 
 .status-content h4 {
-    font-size: 0.75rem;
+    font-size: 0.8rem;
     color: var(--text-dim);
     text-transform: uppercase;
-    letter-spacing: 0.5px;
-    margin-bottom: 6px;
+    letter-spacing: 1px;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.status-content h4::before {
+    content: '';
+    display: inline-block;
+    width: 12px;
+    height: 2px;
+    background: var(--primary);
 }
 
 .status-list {
