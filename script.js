@@ -554,70 +554,61 @@ function renderEquipments(items) {
   equipmentContainer.innerHTML = '';
   const checkedForActiveRig = rigStates[activeRig] || [];
   
-  let lastCategory = '';
-
-  items.forEach((item, index) => {
-    // Inject category header if it changes
-    const currentCategory = item.Categoria || 'Geral';
-    if (currentCategory !== lastCategory) {
-      const header = document.createElement('div');
-      header.classList.add('equipment-category-header');
-      header.textContent = currentCategory;
-      equipmentContainer.appendChild(header);
-      lastCategory = currentCategory;
-    }
-
-    const uniqueId = item.NS && item.NS !== '-' ? item.NS : `${item.ID}-${index}`;
-    const isChecked = checkedForActiveRig.includes(uniqueId);
-    
-    const card = document.createElement('div');
-    card.classList.add('equipment-card');
-    if (isChecked) card.classList.add('checked');
-    
-    const info = document.createElement('div');
-    info.classList.add('equip-info');
-    info.innerHTML = `
-      <h3>${item.Nome || 'Equipamento'}</h3>
-      <p>ID: ${item.ID || 'N/A'} | NS: ${item.NS || '-'}</p>
-      <p>Local: ${item.Localização || 'Não informado'}</p>
-    `;
-
-    const statusRight = document.createElement('div');
-    statusRight.style.display = 'flex';
-    statusRight.style.alignItems = 'center';
-
-    const statusDiv = document.createElement('div');
-    statusDiv.classList.add('equip-status');
-    
-    const statusTag = document.createElement('span');
-    statusTag.classList.add('status-indicator');
-    
-    const status = (item.Status || '').toLowerCase();
-    if (status.includes('disponível')) statusTag.classList.add('status-available');
-    else if (status.includes('uso')) statusTag.classList.add('status-busy');
-    else statusTag.classList.add('status-maintenance');
-    
-    statusTag.textContent = item.Status || 'Status';
-    
-    const qty = document.createElement('span');
-    qty.classList.add('qty-badge');
-    qty.textContent = `Qtd: ${item.Quantidade || 0}`;
-
-    statusDiv.appendChild(statusTag);
-    statusDiv.appendChild(qty);
-    
-    const checkBtn = document.createElement('div');
-    checkBtn.classList.add('check-btn');
-    checkBtn.innerHTML = isChecked ? '✓' : '';
-    checkBtn.addEventListener('click', () => toggleItem(uniqueId));
-
-    statusRight.appendChild(statusDiv);
-    statusRight.appendChild(checkBtn);
-    
-    card.appendChild(info);
-    card.appendChild(statusRight);
-    equipmentContainer.appendChild(card);
+  // Group items by category first
+  const categories = {};
+  items.forEach(item => {
+    const cat = item.Categoria || 'Geral';
+    if (!categories[cat]) categories[cat] = [];
+    categories[cat].push(item);
   });
+
+  Object.keys(categories).forEach(catName => {
+    const categoryGroup = document.createElement('div');
+    categoryGroup.className = 'category-group';
+    
+    const header = document.createElement('div');
+    header.className = 'equipment-category-header';
+    header.textContent = catName;
+    categoryGroup.appendChild(header);
+
+    const itemsContainer = document.createElement('div');
+    itemsContainer.className = 'category-items';
+    
+    categories[catName].forEach((item, index) => {
+      const matchInMaster = equipments.indexOf(item);
+      const uniqueId = item.NS && item.NS !== '-' ? item.NS : `${item.ID}-${matchInMaster}`;
+      const isChecked = checkedForActiveRig.includes(uniqueId);
+      
+      const card = document.createElement('div');
+      card.className = `equipment-card ${isChecked ? 'checked' : ''}`;
+      
+      card.innerHTML = `
+        <div class="equip-info">
+          <h3>${item.Nome || 'Equipamento'}</h3>
+          <p>ID: ${item.ID || 'N/A'} | NS: ${item.NS || '-'}</p>
+          <p>Local: ${item.Localização || 'Não informado'}</p>
+        </div>
+        <div class="equip-status-right">
+          <div class="equip-status">
+            <span class="status-indicator ${getStatusClass(item.Status)}">${item.Status || 'Status'}</span>
+            <span class="qty-badge">Qtd: ${item.Quantidade || 0}</span>
+          </div>
+          <button class="remove-item-btn" onclick="toggleItem('${uniqueId}')">Remover</button>
+        </div>
+      `;
+      itemsContainer.appendChild(card);
+    });
+
+    categoryGroup.appendChild(itemsContainer);
+    equipmentContainer.appendChild(categoryGroup);
+  });
+}
+
+function getStatusClass(status) {
+  const s = (status || '').toLowerCase();
+  if (s.includes('disponível')) return 'status-available';
+  if (s.includes('uso')) return 'status-busy';
+  return 'status-maintenance';
 }
 
 
