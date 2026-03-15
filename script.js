@@ -346,8 +346,9 @@ function renderPickerResults(items) {
     
     div.innerHTML = `
       <div class="equip-info">
-        <h4 style="font-size: 0.85rem">${item.Nome}</h4>
-        <p style="font-size: 0.7rem">NS: ${item.NS || '-'}</p>
+        <h4 style="font-size: 0.85rem">${item.Equip || 'Equipamento'}</h4>
+        <p style="font-size: 0.7rem">NP: ${item.NP || 'N/A'} | NS: ${item.NS || '-'}</p>
+        <p style="font-size: 0.7rem; opacity: 0.8;">${item.Descricao || ''}</p>
       </div>
     `;
 
@@ -607,14 +608,15 @@ function renderEquipments(items) {
           
           card.innerHTML = `
             <div class="equip-info">
-              <h3>${item.Nome || 'Equipamento'}</h3>
-              <p>ID: ${item.ID || 'N/A'} | NS: ${item.NS || '-'}</p>
-              <p>Local: ${item.Localização || 'Não informado'}</p>
+              <h3>${item.Equip || 'Equipamento'}</h3>
+              <p>NP: ${item.NP || 'N/A'} | NS: ${item.NS || '-'}</p>
+              <p style="font-size: 0.8rem; margin: 4px 0;">${item.Descricao || ''}</p>
+              <p>Local: ${item.Localizacao || 'N/A'}</p>
             </div>
             <div class="equip-status-right">
               <div class="equip-status">
                 <span class="status-indicator ${getStatusClass(item.Status)}">${item.Status || 'Status'}</span>
-                <span class="qty-badge">Qtd: ${item.Quantidade || 0}</span>
+                <span class="qty-badge">Qtd: ${item.Qtd || 0}</span>
               </div>
               <button class="remove-item-btn" onclick="toggleItem('${uniqueId}')">Remover</button>
             </div>
@@ -637,12 +639,11 @@ function getStatusClass(status) {
 
 function getUniqueId(item) {
   if (!item) return '';
-  // Use NS if available and valid, otherwise use name-id-masterIndex
   const masterIndex = equipments.indexOf(item);
   if (item.NS && item.NS !== '-' && item.NS !== 'N/A') {
     return `NS-${item.NS}`;
   }
-  return `ID-${item.ID || 'NONE'}-${masterIndex}`;
+  return `NP-${item.NP || 'NONE'}-${masterIndex}`;
 }
 
 

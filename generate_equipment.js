@@ -48,19 +48,24 @@ async function generateEquipmentData() {
             if (!isNaN(itemNum)) {
                 headerFound = true;
                 
-                // If column 2 has content, it's a new category
-                if (row[2] && typeof row[2] === 'string' && row[2].trim() !== '') {
-                    currentCategory = row[2].trim();
+                // If column 2 has content AND it's not a normal item row yet (or we detect it's a category)
+                // In this spreadsheet, row[2] serves as both Category title and "Equip" field
+                if (row[2] && typeof row[2] === 'string' && row[2].trim() !== '' && isNaN(parseInt(row[2]))) {
+                    // Check if row[6] is empty, if so, it's likely a category header row
+                    if (!row[6]) {
+                        currentCategory = row[2].trim();
+                    }
                 }
 
                 mappedData.push({
                     Categoria: currentCategory,
-                    ID: row[5] || row[4] || 'N/A',
-                    NS: row[5] || row[4] || '-',
-                    Nome: row[6] || 'Equipamento',
-                    Localização: row[10] || 'Não informado',
-                    Status: row[10] || 'Disponível',
-                    Quantidade: row[3] || 1
+                    Equip: row[2] || 'N/A',
+                    Qtd: row[3] || 0,
+                    NP: row[4] || 'N/A',
+                    NS: row[5] || '-',
+                    Descricao: row[6] || 'Sem descrição',
+                    Localizacao: row[10] || 'N/A',
+                    Status: row[10] || 'Disponível'
                 });
             }
         }
