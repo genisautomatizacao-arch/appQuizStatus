@@ -281,6 +281,41 @@ function initEventListeners() {
   }
 }
 
+function renderRigTabs() {
+  if (!rigTabsContainer) return;
+  rigTabsContainer.innerHTML = '';
+  
+  activeRigs.forEach(rigName => {
+    const btn = document.createElement('button');
+    btn.className = `rig-tab ${activeRig === rigName ? 'active' : ''}`;
+    btn.textContent = rigName;
+    btn.dataset.rig = rigName;
+    btn.addEventListener('click', () => {
+      activeRig = rigName;
+      renderRigTabs();
+      renderEquipments(filterEquipments());
+    });
+    rigTabsContainer.appendChild(btn);
+  });
+}
+
+function addRig() {
+  if (activeRigs.length >= 7) {
+    alert("Limite máximo de 7 sondas atingido.");
+    return;
+  }
+  
+  const nextNum = activeRigs.length + 1;
+  const newRig = `Sonda ${nextNum}`;
+  
+  if (!activeRigs.includes(newRig)) {
+    activeRigs.push(newRig);
+    localStorage.setItem('quiz_app_active_rigs', JSON.stringify(activeRigs));
+    renderRigTabs();
+    console.log(`✅ Adicionada: ${newRig}`);
+  }
+}
+
 function filterEquipments() {
   const searchTerm = equipmentSearch.value.toLowerCase();
   return equipments.filter(item => 
