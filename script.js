@@ -43,6 +43,37 @@ const openPickerBtn = document.getElementById('open-picker-btn');
 const closePickerBtn = document.getElementById('close-picker-btn');
 const pickerSearch = document.getElementById('picker-search');
 const pickerContainer = document.getElementById('picker-container');
+const feedbackContainer = document.getElementById('feedback-container');
+const explanationText = document.getElementById('explanation-text');
+const nextBtn = document.getElementById('next-btn');
+
+// Sync helper
+async function syncEquipmentsToFile() {
+    try {
+        const response = await fetch('/save-equipments', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(equipments)
+        });
+        if (!response.ok) throw new Error('Falha na sincronização com o servidor');
+        console.log("💾 Sincronizado com o arquivo equipments.json");
+    } catch (err) {
+        console.warn("⚠️ Não foi possível salvar no arquivo (servidor estático ou offline). Mantendo apenas no navegador.", err);
+    }
+}
+
+// DUPLICATE DETECTION HELPER
+function getDuplicateMap() {
+    const map = {}; // { uniqueId: [rigName1, rigName2, ...] }
+    Object.keys(rigStates).forEach(rig => {
+        const ids = rigStates[rig] || [];
+        ids.forEach(id => {
+            if (!map[id]) map[id] = [];
+            map[id].push(rig);
+        });
+    });
+    return map;
+}
 
 // State Variables
 let activePickerCategory = '';
@@ -52,7 +83,7 @@ let currentIndex = 0;
 let score = 0;
 let canClick = true; 
 let timerInterval;
-const TIME_PER_QUESTION = 30;
+const TIME_PER_QUESTION = 60;
 let equipments = []; // Global store for filtering
 let activeRig = "Sonda 1";
 let activeRigs = ["Sonda 1"]; // Fleet management
@@ -61,7 +92,8 @@ let rigStates = {}; // Persisted state { "Sonda 1": ["ID1", "ID2"] }
 // Initialize
 async function loadQuestions() {
     try {
-        const response = await fetch('questions.json');
+        // Cache Busting: Adding timestamp to URL to force fresh data
+        const response = await fetch(`questions.json?cb=${Date.now()}`);
         
         if (!response.ok) {
             throw new Error(`HTTP error! status: ${response.status}`);
@@ -172,37 +204,48 @@ function showQuestion() {
         optionsContainer.appendChild(btn);
     });
     
+    // Reset Feedback
+    feedbackContainer.classList.add('hidden');
+    nextBtn.classList.add('hidden');
+    
     startTimer();
 }
 
 function handleAnswer(selectedIndex, selectedBtn) {
     if (!canClick) return;
-    canClick = false; // block other clicks
+    canClick = false; 
     
-    const correctIndex = questions[currentIndex].correctAnswer;
+    const q = questions[currentIndex];
+    const correctIndex = q.correctAnswer;
     const allButtons = document.querySelectorAll('.option');
     allButtons.forEach(b => b.classList.add('disabled'));
     
-    clearInterval(timerInterval); // Stop timer when answered
+    clearInterval(timerInterval); 
     
     if (selectedIndex === correctIndex) {
         if (selectedBtn) selectedBtn.classList.add('correct');
         score++;
         updateScoreUI();
+        feedbackContainer.classList.add('correct');
     } else {
         if (selectedBtn) selectedBtn.classList.add('wrong');
         allButtons[correctIndex].classList.add('correct');
+        feedbackContainer.classList.remove('correct');
     }
     
-    // Wait slightly, then go to next
-    setTimeout(() => {
-        currentIndex++;
-        if (currentIndex < questions.length) {
-            showQuestion();
-        } else {
-            showResults();
-        }
-    }, 1500); 
+    // Show Explanation
+    explanationText.textContent = q.explanation || "Confira o manual técnico para mais detalhes.";
+    feedbackContainer.classList.remove('hidden');
+    nextBtn.classList.remove('hidden');
+}
+
+function showNextQuestion() {
+    currentIndex++;
+    if (currentIndex < questions.length) {
+        showQuestion();
+    } else {
+        showResults();
+    }
 }
 
 function showResults() {
@@ -278,6 +321,7 @@ function initEventListeners() {
   if (backFromEquipBtn) backFromEquipBtn.addEventListener('click', backToMenu);
   if (quizBackBtn) quizBackBtn.addEventListener('click', backToMenu);
   if (resultMenuBtn) resultMenuBtn.addEventListener('click', backToMenu);
+  if (nextBtn) nextBtn.addEventListener('click', showNextQuestion);
 
   if (addRigBtn) addRigBtn.addEventListener('click', addRig);
 
@@ -461,7 +505,7 @@ function backToMenu() {
 
 async function loadStatus() {
   try {
-    const response = await fetch('status.json');
+    const response = await fetch(`status.json?cb=${Date.now()}`);
     if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
     const data = await response.json();
     renderStatus(data);
@@ -533,10 +577,17 @@ async function loadEquipments() {
     const savedStates = localStorage.getItem('quiz_app_rig_states');
     if (savedStates) rigStates = JSON.parse(savedStates);
     
-    // Load equipments FIRST before rendering tabs
-    const response = await fetch('equipments.json');
-    if (!response.ok) throw new Error('Falha ao carregar equipamentos');
-    equipments = await response.json();
+    // Load equipments FIRST
+    const savedEquips = localStorage.getItem('quiz_app_equipments_data');
+    if (savedEquips && !window.forceRefreshActive) {
+      equipments = JSON.parse(savedEquips);
+      console.log("📦 Carregado inventário do LocalStorage");
+    } else {
+      const response = await fetch(`equipments.json?cb=${Date.now()}`);
+      if (!response.ok) throw new Error('Falha ao carregar equipamentos');
+      equipments = await response.json();
+      console.log("📥 Carregado inventário diretamente do Servidor");
+    }
     
     // SYNC RIGS: Initialize activeRigs based on unique RigNames in the database
     // This OVERRIDES any old saved names (like "Sonda 1, Sonda 2")
@@ -617,12 +668,21 @@ function toggleItem(itemId) {
   
   const index = rigStates[activeRig].indexOf(itemId);
   if (index > -1) {
+    // REMOVING: Set Qtd to 0 as requested by user
     rigStates[activeRig].splice(index, 1);
+    
+    const itemIndex = equipments.findIndex(e => getUniqueId(e) === itemId);
+    if (itemIndex > -1) {
+        equipments[itemIndex].Qtd = 0;
+        localStorage.setItem('quiz_app_equipments_data', JSON.stringify(equipments));
+        console.log(`🚫 Item ${itemId} removido e zerado.`);
+        syncEquipmentsToFile(); // PERSIST TO FILE
+    }
   } else {
     rigStates[activeRig].push(itemId);
   }
   
-  // Save to localStorage
+  // Save states
   localStorage.setItem('quiz_app_rig_states', JSON.stringify(rigStates));
   
   // Refresh both views
@@ -635,6 +695,7 @@ function toggleItem(itemId) {
 function renderEquipments(items) {
   equipmentContainer.innerHTML = '';
   const onBoardIds = rigStates[activeRig] || [];
+  const duplicateMap = getDuplicateMap();
   
   // Identify and SORT categories alphabetically
   const allCategories = [...new Set(equipments.map(e => e.Categoria || 'Geral'))].sort((a, b) => a.localeCompare(b));
@@ -689,14 +750,24 @@ function renderEquipments(items) {
           const uniqueId = getUniqueId(item);
           const isChecked = onBoardIds.includes(uniqueId);
           
+          // DUPLICITY CHECK
+          const rigsWithItem = duplicateMap[uniqueId] || [];
+          const isDuplicate = rigsWithItem.length > 1;
+          const otherRigs = rigsWithItem.filter(r => r !== activeRig);
+          
           const card = document.createElement('div');
-          card.className = `equipment-card ${isChecked ? 'checked' : ''}`;
+          card.className = `equipment-card ${isChecked ? 'checked' : ''} ${isDuplicate ? 'duplicate-warning' : ''}`;
           
           const title = item.Descricao && item.Descricao !== 'Sem descrição' ? item.Descricao : (item.Equip && item.Equip !== 'N/A' ? item.Equip : 'Equipamento');
           const location = item.Localizacao && item.Localizacao !== 'N/A' ? `<p>Local: ${item.Localizacao}</p>` : '';
+          
+          const rigLabel = otherRigs.length > 1 ? 'NAS SONDAS' : 'NA SONDA';
+          const duplicateBadge = isDuplicate ? 
+            `<div class="duplicate-badge">⚠️ DUPLICADO ${rigLabel} ${otherRigs.join(', ')}</div>` : '';
 
           card.innerHTML = `
             <div class="equip-info">
+              ${duplicateBadge}
               <h3>${title}</h3>
               <p>NP: ${item.NP || '-'} | NS: ${item.NS || '-'}</p>
               ${item.Equip && item.Equip !== 'N/A' && item.Equip !== title ? `<p style="font-size: 0.8rem; margin: 2px 0; opacity: 0.8;">Tipo: ${item.Equip}</p>` : ''}
@@ -736,8 +807,76 @@ function getUniqueId(item) {
 }
 
 
+// Force Refresh Function
+async function forceRefresh() {
+    console.log("🔄 Forçando atualização de dados...");
+    window.forceRefreshActive = true;
+    
+    // Clear cache in service worker if possible
+    if ('serviceWorker' in navigator && navigator.serviceWorker.controller) {
+        navigator.serviceWorker.controller.postMessage({ action: 'skipWaiting' });
+    }
+
+    try {
+        await loadQuestions();
+        await loadStatus();
+        await loadEquipments();
+        alert("✅ Dados atualizados com sucesso diretamente do servidor!");
+    } catch (e) {
+        alert("❌ Erro ao atualizar: " + e.message);
+    } finally {
+        window.forceRefreshActive = false;
+        if (typeof renderRigTabs === 'function') renderRigTabs();
+        if (typeof renderEquipments === 'function') renderEquipments(filterEquipments());
+    }
+}
+
+// Fetch and display last-update dates for data files on the menu buttons
+async function loadMenuLastUpdates() {
+    const files = [
+        { id: 'status-last-update', url: 'status.json' },
+        { id: 'equipment-last-update', url: 'equipments.json' }
+    ];
+    
+    for (const { id, url } of files) {
+        const el = document.getElementById(id);
+        if (!el) continue;
+        try {
+            // Use HEAD to avoid downloading the full file just for the date
+            const res = await fetch(`${url}?cb=${Date.now()}`, { method: 'HEAD' });
+            const lastModified = res.headers.get('Last-Modified');
+            if (lastModified) {
+                const d = new Date(lastModified);
+                const formatted = d.toLocaleString('pt-BR', {
+                    day: '2-digit', month: '2-digit', year: 'numeric',
+                    hour: '2-digit', minute: '2-digit'
+                });
+                el.textContent = `📅 Atualizado em: ${formatted}`;
+            } else {
+                // Fallback: try to get date from JSON content if available
+                const dataRes = await fetch(`${url}?cb=${Date.now()}`);
+                const data = await dataRes.json();
+                // equipments.json items have a 'Date' field
+                const dateStr = Array.isArray(data) && data[0]?.Date;
+                if (dateStr) {
+                    el.textContent = `📅 Ref: ${dateStr}`;
+                } else {
+                    el.textContent = '';
+                }
+            }
+        } catch (e) {
+            el.textContent = '';
+        }
+    }
+}
+
 // Init Load on startup
 document.addEventListener('DOMContentLoaded', () => {
     loadQuestions();
     initEventListeners();
+    loadMenuLastUpdates();
+    
+    // Auto-bind force refresh button if it exists
+    const refreshBtn = document.getElementById('force-refresh-btn');
+    if (refreshBtn) refreshBtn.onclick = forceRefresh;
 });

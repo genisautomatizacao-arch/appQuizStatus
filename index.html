@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Subsea Intelligence | Quiz App</title>
+    <title>DPR</title>
     <link rel="manifest" href="manifest.json">
     <meta name="theme-color" content="#6366f1">
     <link rel="apple-touch-icon" href="icon-192.png">
@@ -21,17 +21,30 @@
         <!-- Screen 1: Home -->
         <section id="menu-screen" class="screen active">
             <div class="logo-container">
-                <img src="logo.png" alt="Subsea Intelligence Logo" class="app-logo" onerror="this.src='icon-192.svg'">
+                <img src="logo.png" alt="DPR Logo" class="app-logo" onerror="this.src='icon-192.svg'">
             </div>
-            <h1>Subsea Intelligence</h1>
-            <p class="subtitle">Aprimore seus conhecimentos técnicos com nossa plataforma de treinamento avançado.</p>
+            <h1>DPR</h1>
+            <p class="subtitle">Treinamento Técnico Avançado</p>
             
             <div class="btn-group">
                 <button id="start-btn" class="primary-btn" disabled>
                     <span>⌛ Carregando Dados...</span>
                 </button>
-                <button id="status-btn" class="secondary-btn">📊 Visão de Campo (Sondas)</button>
-                <button id="equipment-btn" class="secondary-btn">📦 Controle de Equipamentos</button>
+
+                <div class="menu-btn-wrapper">
+                    <button id="status-btn" class="secondary-btn">📊 Visão de Campo (Sondas)</button>
+                    <span id="status-last-update" class="btn-last-update"></span>
+                </div>
+
+                <div class="menu-btn-wrapper">
+                    <button id="equipment-btn" class="secondary-btn">📦 Controle de Equipamentos</button>
+                    <span id="equipment-last-update" class="btn-last-update"></span>
+                </div>
+
+                <div style="margin-top: 20px; text-align: center;">
+                    <button id="force-refresh-btn" class="secondary-btn" style="border: 1px dashed rgba(255,255,255,0.3); font-size: 0.85rem; padding: 12px; background: rgba(255,255,255,0.05);">🔄 Forçar Sincronização de Dados</button>
+                    <p style="font-size: 10px; opacity: 0.4; margin-top: 8px;">Versão: 5.0.0 (DPR Update)</p>
+                </div>
             </div>
         </section>
 
@@ -81,7 +94,7 @@
             <header class="quiz-nav">
                 <button id="quiz-back-btn" class="icon-btn">Voltar</button>
                 <div class="timer-container">
-                    <span id="timer-text">30</span>s
+                    <span id="timer-text">60</span>s
                 </div>
                 <div id="question-counter" class="indicator">Pergunta 1/15</div>
                 <div id="score-display" class="indicator">Score: 0</div>
@@ -98,6 +111,19 @@
             <div id="options-container" class="options-stack">
                 <!-- Options injected by script.js -->
             </div>
+
+            <!-- New: Feedback & Next Button -->
+            <div id="feedback-container" class="feedback-card hidden">
+                <div class="feedback-icon">💡</div>
+                <div class="feedback-text">
+                    <h3>Explicação Técnica</h3>
+                    <p id="explanation-text"></p>
+                </div>
+            </div>
+            
+            <button id="next-btn" class="primary-btn hidden" style="margin-top: 24px; width: 100%;">
+                <span>Continuar</span> ➡️
+            </button>
         </section>
 
         <!-- Screen 3: Results -->
@@ -131,8 +157,8 @@
 
     </main>
 
-    <script src="script.js?v=3"></script>
-    <button id="repair-app-btn" style="position: fixed; bottom: 5px; right: 5px; opacity: 0.2; font-size: 10px; border: none; background: none; color: white;">v3 - Reparar</button>
+    <script src="script.js?v=5"></script>
+    <button id="repair-app-btn" style="position: fixed; bottom: 5px; right: 5px; opacity: 0.2; font-size: 10px; border: none; background: none; color: white;">v5 - Reparar</button>
     <script>
       if ('serviceWorker' in navigator) {
         window.addEventListener('load', () => {
