@@ -584,24 +584,6 @@ h1 {
     box-shadow: 0 0 0 2px var(--primary-glow);
 }
 
-#equipment-search-btn {
-    background: var(--primary);
-    color: white;
-    border: none;
-    border-radius: 12px;
-    padding: 12px 16px;
-    font-size: 1.1rem;
-    cursor: pointer;
-    transition: var(--transition);
-    flex-shrink: 0;
-}
-
-#equipment-search-btn:hover {
-    background: #4f46e5;
-    transform: scale(1.05);
-    box-shadow: 0 4px 12px var(--primary-glow);
-}
-
 .equipment-grid {
     display: grid;
     grid-template-columns: 1fr;
