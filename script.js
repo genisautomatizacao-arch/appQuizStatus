@@ -533,20 +533,18 @@ async function loadEquipments() {
     const savedStates = localStorage.getItem('quiz_app_rig_states');
     if (savedStates) rigStates = JSON.parse(savedStates);
     
-    const savedRigs = localStorage.getItem('quiz_app_active_rigs');
-    if (savedRigs) activeRigs = JSON.parse(savedRigs);
-
-    renderRigTabs();
-
+    // Load equipments FIRST before rendering tabs
     const response = await fetch('equipments.json');
     if (!response.ok) throw new Error('Falha ao carregar equipamentos');
     equipments = await response.json();
     
     // SYNC RIGS: Initialize activeRigs based on unique RigNames in the database
+    // This OVERRIDES any old saved names (like "Sonda 1, Sonda 2")
     const availableRigs = [...new Set(equipments.map(e => e.RigName))].sort();
     if (availableRigs.length > 0) {
       activeRigs = availableRigs;
       if (!activeRigs.includes(activeRig)) activeRig = activeRigs[0];
+      localStorage.setItem('quiz_app_active_rigs', JSON.stringify(activeRigs));
       
       // AUTO-POPULATE: Pre-fill checklists if they are empty
       activeRigs.forEach(rig => {
@@ -557,6 +555,9 @@ async function loadEquipments() {
       });
       localStorage.setItem('quiz_app_rig_states', JSON.stringify(rigStates));
     }
+
+    // NOW render the tabs with correct names
+    renderRigTabs();
 
     // Default catalog: the first one available in the file
     if (!activeCatalog && equipments.length > 0) {
