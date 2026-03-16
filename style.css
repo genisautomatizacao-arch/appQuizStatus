@@ -923,3 +923,11 @@ h1 {
     
     h1 { font-size: 1.75rem; }
 }
+
+/* Desktop: limit all 3 menu buttons to 50% width, centered */
+@media (min-width: 1024px) {
+    #menu-screen .btn-group {
+        width: 50%;
+        align-self: center;
+    }
+}
