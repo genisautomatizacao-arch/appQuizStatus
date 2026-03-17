@@ -1,4 +1,4 @@
-const CACHE_NAME = 'sonda-app-v3';
+const CACHE_NAME = 'sonda-app-v6';
 const urlsToCache = [
   './',
   './index.html',
@@ -15,7 +15,7 @@ self.addEventListener('install', event => {
   event.waitUntil(
     caches.open(CACHE_NAME)
       .then(cache => {
-        console.log('Cache v3 aberto');
+        console.log('Cache v6 aberto');
         return cache.addAll(urlsToCache);
       })
   );
