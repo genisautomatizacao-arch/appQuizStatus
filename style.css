@@ -64,7 +64,11 @@ body {
     position: relative;
     overflow: hidden;
     margin: 20px;
-    transition: max-width 0.5s ease;
+    min-height: 550px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    transition: max-width 0.5s ease, min-height 0.3s ease;
 }
 
 @media (min-width: 1024px) {
@@ -84,6 +88,7 @@ body {
 .screen.active {
     display: flex;
     flex-direction: column;
+    flex: 1; /* allow it to stretch inside app-container */
     opacity: 1;
     transform: translateY(0);
 }

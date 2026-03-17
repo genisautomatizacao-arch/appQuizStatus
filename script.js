@@ -78,7 +78,8 @@ function getDuplicateMap() {
 // State Variables
 let activePickerCategory = '';
 let activeCatalog = ''; // New state for selected database file
-let questions = [];
+let masterQuestionPool = []; // Stores all fetched questions
+let questions = []; // Stores the current session's subset
 let currentIndex = 0;
 let score = 0;
 let canClick = true; 
@@ -105,11 +106,12 @@ async function loadQuestions() {
            throw new Error("O arquivo JSON de perguntas está vazio ou não é um Array válido.");
         }
         
-        questions = data;
+        masterQuestionPool = data;
+        questions = [...masterQuestionPool]; // Fallback if startGame isn't used immediately
         const btnSpan = startBtn.querySelector('span');
         if (btnSpan) btnSpan.textContent = '🎯 Iniciar Treinamento';
         startBtn.disabled = false;
-        console.log("✅ Perguntas carregadas com sucesso:", questions.length);
+        console.log("✅ Perguntas carregadas com sucesso:", masterQuestionPool.length);
         
     } catch (error) {
         console.error("❌ Erro ao carregar perguntas:", error);
@@ -132,14 +134,14 @@ async function startGame() {
     currentIndex = 0;
     score = 0;
 
-    if (questions.length === 0) {
+    if (masterQuestionPool.length === 0) {
         console.warn("⚠️ Tentativa de iniciar quiz sem perguntas carregadas.");
         await loadQuestions();
-        if (questions.length === 0) return; // If still no questions, exit
+        if (masterQuestionPool.length === 0) return; // If still no questions, exit
     }
     
     // Copy the full question pool
-    let activeQuestions = [...questions];
+    let activeQuestions = [...masterQuestionPool];
     
     // Shuffle the entire pool
     shuffleArray(activeQuestions);
