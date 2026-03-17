@@ -1,6 +1,8 @@
 // Global Debug/Error Handling
+// Note: ResizeObserver loop errors are benign browser warnings and are ignored here.
 window.onerror = function(msg, url, lineNo, columnNo, error) {
-    alert("Erro detectado: " + msg + "\nLinha: " + lineNo);
+    if (typeof msg === 'string' && msg.includes('ResizeObserver')) return true;
+    console.error("Erro detectado:", msg, "Linha:", lineNo);
     return false;
 };
 
