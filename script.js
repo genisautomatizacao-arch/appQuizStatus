@@ -109,7 +109,7 @@ async function loadQuestions() {
         masterQuestionPool = data;
         questions = [...masterQuestionPool]; // Fallback if startGame isn't used immediately
         const btnSpan = startBtn.querySelector('span');
-        if (btnSpan) btnSpan.textContent = '🎯 Iniciar Treinamento';
+        if (btnSpan) btnSpan.textContent = '🎯 QUIZ';
         startBtn.disabled = false;
         console.log("✅ Perguntas carregadas com sucesso:", masterQuestionPool.length);
         
@@ -131,6 +131,9 @@ function shuffleArray(array) {
 }
 
 async function startGame() {
+    const isConfirmed = confirm("ATENÇÃO:\n\nEste quiz é exclusivo para teste de conhecimento e familiarização com os equipamentos.\n\nPara operações reais, SEMPRE consulte a documentação oficial e atualizada da sonda.\n\nDeseja iniciar o quiz?");
+    if (!isConfirmed) return;
+
     currentIndex = 0;
     score = 0;
 

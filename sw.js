@@ -1,4 +1,4 @@
-const CACHE_NAME = 'sonda-app-v6';
+const CACHE_NAME = 'sonda-app-v7';
 const urlsToCache = [
   './',
   './index.html',

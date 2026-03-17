@@ -1,7 +1,7 @@
 {
-  "name": "Quiz Sonda App",
-  "short_name": "SondaApp",
-  "description": "App de Treinamento Técnico e Status de Sondas",
+  "name": "DPR Training",
+  "short_name": "DPR",
+  "description": "App de Treinamento Técnico DPR",
   "start_url": "./index.html",
   "display": "standalone",
   "background_color": "#0f172a",

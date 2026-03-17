@@ -284,5 +284,1254 @@
     ],
     "correctAnswer": 2,
     "explanation": "A pressão de trabalho do Header LP da HPU é de 5.000 psi, conforme descrito no manual do DPR 5K."
+  },
+  {
+    "question": "Qual é o objetivo do procedimento de mobilização e inicialização da HPU – DPR 5K?",
+    "options": [
+      "A) Realizar a manutenção da HPU",
+      "B) Instruir sobre a inicialização e operação da HPU",
+      "C) Descrever a instalação da HPU",
+      "D) Especificar os requisitos de segurança para a HPU"
+    ],
+    "correctAnswer": 1,
+    "explanation": "O objetivo do procedimento é instruir detalhadamente sobre a inicialização e operação da HPU de controle, conforme descrito na seção 1 do manual."
+  },
+  {
+    "question": "Qual é a tensão elétrica necessária para a energização da HPU?",
+    "options": [
+      "A) 230 VAC",
+      "B) 460 VAC",
+      "C) 380 VAC",
+      "D) 220 VAC"
+    ],
+    "correctAnswer": 1,
+    "explanation": "A tensão elétrica necessária para a energização da HPU é de 460 VAC, conforme descrito na seção 8.3.2 do manual."
+  },
+  {
+    "question": "O que deve ser feito antes de realizar a pré-carga de N2 dos acumuladores?",
+    "options": [
+      "A) Verificar a pressão dos acumuladores",
+      "B) Solicitar os valores atualizados de pré-carga dos acumuladores ao Suporte Operacional Oceaneering",
+      "C) Realizar a manutenção da HPU",
+      "D) Iniciar a operação da HPU"
+    ],
+    "correctAnswer": 1,
+    "explanation": "Antes de realizar a pré-carga de N2 dos acumuladores, é necessário solicitar os valores atualizados de pré-carga dos acumuladores ao Suporte Operacional Oceaneering, conforme descrito na seção 8.4.1 do manual."
+  },
+  {
+    "question": " Qual é o procedimento correto para a pré-carga de N2 dos acumuladores de LP?",
+    "options": [
+      "A) Abrir as válvulas de entrada dos acumuladores e iniciar a pré-carga",
+      "B) Fechar as válvulas de entrada dos acumuladores e iniciar a pré-carga",
+      "C) Abrir parcialmente as válvulas 6.13 / 6.3 / 6.4 / 6.5 / 6.6 e iniciar a pré-carga",
+      "D) Desabilitar o suprimento de N2 para a Booster Pump"
+    ],
+    "correctAnswer": 2,
+    "explanation": "Antes de iniciar a pré-carga de N2 dos acumuladores de LP, é necessário abrir parcialmente as válvulas 6.13 / 6.3 / 6.4 / 6.5 / 6.6, a fim de limitar o fluxo de N2 para o reservatório de retorno em caso de haver bexiga danificada, conforme descrito na seção 8.4.7 do manual."
+  },
+  {
+    "question": " Qual é a pressão necessária para a regulagem da AIR REGULATOR durante a pré-carga de N2 dos acumuladores?",
+    "options": [
+      "A) 50-70 psi",
+      "B) 80-100 psi",
+      "C) 120-150 psi",
+      "D) 200-250 psi"
+    ],
+    "correctAnswer": 1,
+    "explanation": "A pressão necessária para a regulagem da AIR REGULATOR durante a pré-carga de N2 dos acumuladores é de 80-100 psi, conforme descrito na seção 8.4.9 do manual."
+  },
+  {
+    "question": "Qual é a pressão de trabalho do sistema DPR 5KII?",
+    "options": [
+      "A) 3.000 psi",
+      "B) 5.000 psi",
+      "C) 7.000 psi",
+      "D) 10.000 psi"
+    ],
+    "correctAnswer": 1,
+    "explanation": "De acordo com o item 3.1 Premissas Gerais do Sistema, a pressão de trabalho é de 5.000 psi."
+  },
+  {
+    "question": "Qual é a temperatura de operação do sistema DPR 5KII?",
+    "options": [
+      "A) -18 a 100º C",
+      "B) -18 a 121º C",
+      "C) 0 a 95º C",
+      "D) 0 a 121º C"
+    ],
+    "correctAnswer": 1,
+    "explanation": "De acordo com o item 3.1 Premissas Gerais do Sistema, a temperatura de operação é de -18 a 121º C."
+  },
+  {
+    "question": "Qual é o nível de especificação mínimo do sistema?",
+    "options": [
+      "A) PSL 1",
+      "B) PSL 2",
+      "C) PSL 3G",
+      "D) PSL 4"
+    ],
+    "correctAnswer": 2,
+    "explanation": "De acordo com o item 3.1 Premissas Gerais do Sistema, o nível de especificação mínimo do sistema é PSL 3G."
+  },
+  {
+    "question": "Qual é o peso máximo do fluido de completação?",
+    "options": [
+      "A) 10 lb/gal",
+      "B) 12 lb/gal",
+      "C) 13,5 lb/gal",
+      "D) 15 lb/gal"
+    ],
+    "correctAnswer": 2,
+    "explanation": "De acordo com o item 3.4.1 Fluidos de Completamento, o peso do fluido de completação é de até 13,5 lb/gal."
+  },
+  {
+    "question": "Qual é o comprimento máximo da HPU?",
+    "options": [
+      "A) 10'",
+      "B) 15'",
+      "C) 20'",
+      "D) 25'"
+    ],
+    "correctAnswer": 2,
+    "explanation": "De acordo com o item 3.2 Operações com Sonda, o comprimento máximo da HPU é de 20'."
+  },
+  {
+    "question": "Qual é a pressão de trabalho máxima do sistema DPR 5KII?",
+    "options": [
+      "A) 3.000 psi",
+      "B) 5.000 psi",
+      "C) 7.000 psi",
+      "D) 10.000 psi"
+    ],
+    "correctAnswer": 1,
+    "explanation": "De acordo com a seção 3.1 do manual, a pressão de trabalho do sistema DPR 5KII é de 5.000 psi."
+  },
+  {
+    "question": "Qual é a temperatura de operação do sistema DPR 5KII?",
+    "options": [
+      "A) -18 a 100º C",
+      "B) -18 a 121º C",
+      "C) 0 a 95º C",
+      "D) 0 a 150º C"
+    ],
+    "correctAnswer": 1,
+    "explanation": "De acordo com a seção 3.1 do manual, a temperatura de operação do sistema DPR 5KII é de -18 a 121º C, exceto para o HCR, que é de 0 a 95º C."
+  },
+  {
+    "question": "Qual é o nível de especificação mínimo do sistema DPR 5KII?",
+    "options": [
+      "A) PSL 1",
+      "B) PSL 2",
+      "C) PSL 3",
+      "D) PSL 3G"
+    ],
+    "correctAnswer": 3,
+    "explanation": "De acordo com a seção 3.1 do manual, o nível de especificação mínimo do sistema DPR 5KII é PSL 3G para todas as áreas molhadas pelos fluidos produzidos e injetados, assim como todos os contentores de pressão."
+  },
+  {
+    "question": "Qual é o tipo de fluido de controle utilizado no sistema DPR 5KII?",
+    "options": [
+      "A) Fluidos de completação",
+      "B) Fluidos de estimulação",
+      "C) Fluidos de controle base água",
+      "D) Fluidos de cimentação"
+    ],
+    "correctAnswer": 2,
+    "explanation": "De acordo com a seção 3.4 do manual, os fluidos de controle utilizados no sistema DPR 5KII são fluidos de controle base água, como o Oceanic HW 4 43 e o Oceanic HW 525P."
+  },
+  {
+    "question": "Qual é a classe de limpeza dos sistemas de controle do sistema DPR 5KII?",
+    "options": [
+      "A) ISO 4406 classe 15/13/10",
+      "B) ISO 4406 classe 17/15/12",
+      "C) ISO 4406 classe 21/19/16",
+      "D) ISO 4406 classe 25/23/20"
+    ],
+    "correctAnswer": 1,
+    "explanation": "De acordo com a seção 3.1 do manual, a classe de limpeza dos sistemas de controle do sistema DPR 5KII é ISO 4406 classe 17/15/12, mas pode ser necessária uma classe de limpeza mais alta, como a ISO 4406 classe 21/19/16, em alguns casos."
+  },
+  {
+    "question": "Qual é o propósito principal do procedimento de mobilização do Open Sea Reeler?",
+    "options": [
+      "A) Realizar a manutenção do equipamento",
+      "B) Preparar o equipamento para operação",
+      "C) Executar a operação do Open Sea Reeler",
+      "D) Desmobilizar o Open Sea Reeler"
+    ],
+    "correctAnswer": 1,
+    "explanation": "O procedimento visa instruir sobre a preparação e teste do Open Sea Reeler/Open Sea Umbilical no deck antes da operação, bem como informar todas as ferramentas necessárias para sua realização, conforme descrito na seção 1 do manual."
+  },
+  {
+    "question": "Quais são as principais responsabilidades do Supervisor (Lead Service Technician) durante a operação do Open Sea Reeler?",
+    "options": [
+      "A) Executar a operação do Open Sea Reeler",
+      "B) Gerenciar as operações da Oceaneering a bordo das unidades marítimas",
+      "C) Realizar a manutenção do equipamento",
+      "D) Preparar o equipamento para operação"
+    ],
+    "correctAnswer": 1,
+    "explanation": "O Supervisor é responsável pelo gerenciamento das operações da Oceaneering a bordo das unidades marítimas, conforme descrito na seção 5 do manual."
+  },
+  {
+    "question": "Qual é a faixa de temperatura de operação do Carretel Open Sea?",
+    "options": [
+      "A) 0° a 30°C",
+      "B) 0° a 40°C",
+      "C) 0° a 50°C",
+      "D) 0° a 60°C"
+    ],
+    "correctAnswer": 1,
+    "explanation": "A faixa de temperatura de operação do Carretel Open Sea é de 0° a 40°C, conforme descrito na Tabela 3 do manual."
+  },
+  {
+    "question": "Qual é o procedimento para verificar se o pino trava de segurança está devidamente acoplado antes de efetuar qualquer serviço no interior do tambor?",
+    "options": [
+      "A) Verificar se o pino trava de segurança está visível",
+      "B) Verificar se o pino trava de segurança está devidamente acoplado e o suprimento de ar desconectado",
+      "C) Verificar se o pino trava de segurança está lubrificado",
+      "D) Verificar se o pino trava de segurança está fixado com parafusos"
+    ],
+    "correctAnswer": 1,
+    "explanation": "O procedimento correto é verificar se o pino trava de segurança está devidamente acoplado e o suprimento de ar desconectado, conforme descrito na seção 9 do manual."
+  },
+  {
+    "question": "Qual é o tipo de óleo recomendado para o sistema de lubrificação do Open Sea Reeler?",
+    "options": [
+      "A) Shell Tellus S2 M46",
+      "B) Enerpac Hydraulic Oil HF-100",
+      "C) Castrol Brayco SV3",
+      "D) Transaqua HT2"
+    ],
+    "correctAnswer": 0,
+    "explanation": "O óleo recomendado para o sistema de lubrificação do Open Sea Reeler é o Shell Tellus S2 M46, conforme descrito na seção 9 do manual."
+  },
+  {
+    "question": "Qual é a pressão máxima de trabalho da Surface Flow Tree?",
+    "options": [
+      "A) 3000 PSI",
+      "B) 5000 PSI",
+      "C) 7000 PSI",
+      "D) 10000 PSI"
+    ],
+    "correctAnswer": 1,
+    "explanation": "De acordo com o manual, a pressão máxima de trabalho da Surface Flow Tree é de 5000 PSI, como especificado na Tabela 4: Especificações Técnicas SFT."
+  },
+  {
+    "question": "Qual é o diâmetro mínimo do drift do Bloco Principal da Surface Flow Tree?",
+    "options": [
+      "A) 4,09\"",
+      "B) 5,09\"",
+      "C) 6,09\"",
+      "D) 7,09\""
+    ],
+    "correctAnswer": 1,
+    "explanation": "De acordo com o manual, o diâmetro mínimo do drift do Bloco Principal da Surface Flow Tree é de 5,09\", como definido pela API 6A (tabela D.22 – Drift Diameter for Individual Valves and Christmas Trees)."
+  },
+  {
+    "question": "Qual é o tipo de vedação utilizada entre as sedes e as gavetas das válvulas da Surface Flow Tree?",
+    "options": [
+      "A) Vedação metal-metal com deposição de liga resistente a corrosão",
+      "B) Vedação metal-metal com deposição de carbeto de tungstênio",
+      "C) Vedação elastomérica",
+      "D) Vedação mecânica"
+    ],
+    "correctAnswer": 0,
+    "explanation": "De acordo com o manual, a Surface Flow Tree utiliza vedação metal-metal com deposição de liga resistente a corrosão (CRA – Inconel 625) nas interfaces entre as sedes e as gavetas das válvulas."
+  },
+  {
+    "question": "Qual é o procedimento para realizar a montagem do tubo na Surface Flow Tree?",
+    "options": [
+      "A) Utilizar no mínimo 2 pipe stands",
+      "B) Utilizar no mínimo 3 pipe stands",
+      "C) Utilizar no mínimo 4 pipe stands",
+      "D) Utilizar no mínimo 5 pipe stands"
+    ],
+    "correctAnswer": 2,
+    "explanation": "De acordo com o manual, para a montagem do tubo na nova SFT 5KII, é necessário utilizar no mínimo 04 pipe stands, com a distribuição recomendada de 1º e 2º pipe stands posicionados nas extremidades da SFT, 3º pipe stand localizado no meio do tubo e 4º pipe stand colocado na extremidade final do tubo da SFT."
+  },
+  {
+    "question": "Qual é o torque aplicado nos parafusos trava entre o saver sub e o crossover?",
+    "options": [
+      "A) 5 N.m",
+      "B) 8 N.m",
+      "C) 10 N.m",
+      "D) 15 N.m"
+    ],
+    "correctAnswer": 1,
+    "explanation": "De acordo com o manual, o torque aplicado nos parafusos trava entre o saver sub e o crossover é de 8 N.m, usando graxa Never-seez regular grade (P/N: CA051-008-01) ou similar com coeficiente de fricção 0.06."
+  },
+  {
+    "question": "Qual é o propósito do procedimento de instrução de trabalho para o Tubing Hanger Reeler/Tubing Hanger Umbilical?",
+    "options": [
+      "A) Realizar a manutenção do equipamento",
+      "B) Instruir sobre a preparação e teste do equipamento antes da operação",
+      "C) Executar a operação de perfuração",
+      "D) Realizar a instalação do equipamento"
+    ],
+    "correctAnswer": 1,
+    "explanation": "O procedimento visa instruir sobre a preparação e teste do Tubing Hanger Reeler/Tubing Hanger Umbilical no deck antes da operação, bem como informar sobre as ferramentas necessárias para sua realização."
+  },
+  {
+    "question": "Qual é a faixa de temperatura de operação do Carretel Tubing Hanger?",
+    "options": [
+      "A) 0°C a 20°C",
+      "B) 0°C a 40°C",
+      "C) 20°C a 40°C",
+      "D) 0°C a 60°C"
+    ],
+    "correctAnswer": 1,
+    "explanation": "A faixa de temperatura de operação do Carretel Tubing Hanger é de 0°C a 40°C, como especificado na Tabela 3: Especificações do Carretel in Riser."
+  },
+  {
+    "question": "Qual é o peso máximo permitido para o transporte de cargas utilizando o Tubing Hanger Reeler?",
+    "options": [
+      "A) 15 kg",
+      "B) 30 kg",
+      "C) 50 kg",
+      "D) 100 kg"
+    ],
+    "correctAnswer": 0,
+    "explanation": "O peso máximo permitido para o transporte de cargas utilizando o Tubing Hanger Reeler é de 15 kg, caso contrário, é necessário solicitar ajuda ou utilizar meios mecânicos para suspender ou movimentar as cargas."
+  },
+  {
+    "question": "Qual é o procedimento para realizar a conexão da linha piloto da válvula gaveta QC1/1?",
+    "options": [
+      "A) Conectar a linha piloto diretamente ao Tubing Hanger Control Panel",
+      "B) Conectar a linha piloto ao Tubing Hanger Reeler e, em seguida, ao Tubing Hanger Control Panel",
+      "C) Realizar a conexão via HMI",
+      "D) Realizar a conexão via override"
+    ],
+    "correctAnswer": 1,
+    "explanation": "A conexão da linha piloto da válvula gaveta QC1/1 deve ser realizada conectando a linha piloto ao Tubing Hanger Reeler e, em seguida, ao Tubing Hanger Control Panel."
+  },
+  {
+    "question": "Qual é o volume esperado para confirmar a abertura e fechamento da válvula gaveta?",
+    "options": [
+      "A) 0,1 litros",
+      "B) 0,196 litros",
+      "C) 0,5 litros",
+      "D) 1 litro"
+    ],
+    "correctAnswer": 1,
+    "explanation": "O volume esperado para confirmar a abertura e fechamento da válvula gaveta é de 0,196 litros, como especificado no procedimento de teste funcional da válvula gaveta."
+  },
+  {
+    "question": "Qual é a capacidade de carga do Riser Spider?",
+    "options": [
+      "A) 200 ton",
+      "B) 317 ton",
+      "C) 400 ton",
+      "D) 500 ton"
+    ],
+    "correctAnswer": 1,
+    "explanation": "A capacidade de carga do Riser Spider é de 317 ton, conforme especificado na Tabela 3: Especificações Técnicas do manual."
+  },
+  {
+    "question": "Qual é o range de operação do Riser Spider?",
+    "options": [
+      "A) 2-1/2” – 5-1/2”",
+      "B) 2-7/8” – 7-5/8”",
+      "C) 3-1/2” – 6-1/2”",
+      "D) 4-1/2” – 8-1/2”"
+    ],
+    "correctAnswer": 1,
+    "explanation": "O range de operação do Riser Spider é de 2-7/8” – 7-5/8”, conforme especificado na Tabela 3: Especificações Técnicas do manual."
+  },
+  {
+    "question": "Qual é a pressão de operação do Riser Spider?",
+    "options": [
+      "A) 1.000 psi",
+      "B) 2.000 psi",
+      "C) 2.500 psi",
+      "D) 3.000 psi"
+    ],
+    "correctAnswer": 2,
+    "explanation": "A pressão de operação do Riser Spider é de 2.500 psi, conforme especificado na Tabela 3: Especificações Técnicas do manual."
+  },
+  {
+    "question": "Qual é o fluxo requerido para a operação do Riser Spider?",
+    "options": [
+      "A) 5 gpm",
+      "B) 10 gpm",
+      "C) 15 gpm",
+      "D) 20 gpm"
+    ],
+    "correctAnswer": 1,
+    "explanation": "O fluxo requerido para a operação do Riser Spider é de 10 gpm, conforme especificado na Tabela 3: Especificações Técnicas do manual."
+  },
+  {
+    "question": "Qual é a IMPORTANTE precaução a ser tomada durante a movimentação do Riser Spider para o drill floor?",
+    "options": [
+      "A) Verificar a pressão do ar comprimido",
+      "B) Verificar a conexão das mangueiras hidráulicas",
+      "C) Acompanhar contínuo e com instruções à equipe de movimentação de carga para garantir práticas seguras e corretas",
+      "D) Realizar a lubrificação das conexões"
+    ],
+    "correctAnswer": 2,
+    "explanation": "A IMPORTANTE precaução a ser tomada durante a movimentação do Riser Spider para o drill floor é o acompanhamento contínuo e com instruções à equipe de movimentação de carga para garantir práticas seguras e corretas, conforme especificado na Seção 10.2 do manual."
+  },
+  {
+    "question": "Qual é o objetivo do documento procedural de operações DPR em modo Tubing Hanger?",
+    "options": [
+      "A) Descrever o procedimento de operações DPR em modo Tubing Hanger",
+      "B) Detalhar os pontos necessários para a realização de operações DPR em modo Tubing Hanger",
+      "C) Descrever o procedimento de operações DPR em modo Tubing Hanger e detalhar os pontos necessários",
+      "D) Descrever o procedimento de operações DPR em modo diferente de Tubing Hanger"
+    ],
+    "correctAnswer": 0,
+    "explanation": "De acordo com o texto do manual, o objetivo do documento é descrever o procedimento de operações DPR em modo Tubing Hanger."
+  },
+  {
+    "question": "Quem é o responsável pelo gerenciamento das operações da Oceaneering a bordo das unidades marítimas?",
+    "options": [
+      "A) Técnico de Serviços",
+      "B) Supervisor",
+      "C) STO",
+      "D) Planejador de Poços/Operações"
+    ],
+    "correctAnswer": 1,
+    "explanation": "De acordo com o texto do manual, o Supervisor (Lead Service Technician) é o responsável pelo gerenciamento das operações da Oceaneering a bordo das unidades marítimas."
+  },
+  {
+    "question": "O que deve ser feito em caso de necessidade de registro de uma ação para MOC vigente na operação?",
+    "options": [
+      "A) Adicionar na pasta do Job",
+      "B) Informar ao STO OII",
+      "C) Registrar no EFR",
+      "D) Enviar para o suporte técnico"
+    ],
+    "correctAnswer": 0,
+    "explanation": "De acordo com o texto do manual, em caso de necessidade de registro de uma ação para MOC vigente na operação, o mesmo deve ser adicionado na pasta do Job."
+  },
+  {
+    "question": "Qual é a sequência correta para a movimentação de equipamentos entre o barco de apoio e a sonda?",
+    "options": [
+      "A) Verificar o layout operacional da sonda, verificar a SOP, verificar as janelas operacionais",
+      "B) Solicitar à equipe de movimentação de cargas da sonda, realizar a reunião pré-trabalho, utilizar o documento JSEA",
+      "C) Verificar as janelas operacionais, solicitar à equipe de movimentação de cargas da sonda, realizar a reunião pré-trabalho",
+      "D) Realizar a reunião pré-trabalho, verificar as janelas operacionais, solicitar à equipe de movimentação de cargas da sonda"
+    ],
+    "correctAnswer": 1,
+    "explanation": "De acordo com o texto do manual, a sequência correta para a movimentação de equipamentos entre o barco de apoio e a sonda é solicitar à equipe de movimentação de cargas da sonda, realizar a reunião pré-trabalho e utilizar o documento JSEA."
+  },
+  {
+    "question": "Qual é o objetivo da verificação de conformidade de equipamentos?",
+    "options": [
+      "A) Verificar se os equipamentos recebidos estão de acordo com a planilha D-0802859_G",
+      "B) Registrar o recebimento dos equipamentos e seus periféricos",
+      "C) Verificar se os equipamentos recebidos estão de acordo com a planilha D-0802859_G e registrar o recebimento dos equipamentos e seus periféricos",
+      "D) Informar ao STO OII sobre os equipamentos recebidos"
+    ],
+    "correctAnswer": 2,
+    "explanation": "De acordo com o texto do manual, o objetivo da verificação de conformidade de equipamentos é verificar se os equipamentos recebidos estão de acordo com a planilha D-0802859_G e registrar o recebimento dos equipamentos e seus periféricos."
+  },
+  {
+    "question": "Qual é o objetivo do documento Procedimento Operacional Open Sea Mode - DPR 5K ll?",
+    "options": [
+      "Descrever o procedimento de operações DPR em modo Open Sea",
+      "Descrever o procedimento de operações DPR em modo Fechado",
+      "Descrever o procedimento de manutenção de equipamentos DPR",
+      "Descrever o procedimento de teste de equipamentos DPR"
+    ],
+    "correctAnswer": 0,
+    "explanation": "De acordo com o texto do manual, o objetivo do documento é descrever o procedimento de operações DPR em modo Open Sea."
+  },
+  {
+    "question": "Quais são as atribuições e responsabilidades do Supervisor (Lead Service Technician) nas operações DPR?",
+    "options": [
+      "Responsável por executar as operações da Oceaneering a bordo das unidades marítimas",
+      "Responsável por monitorar e acompanhar as operações em andamento e prover suporte técnico necessário à equipe offshore",
+      "Responsável pelo gerenciamento das operações da Oceaneering a bordo das unidades marítimas, comunicar ao suporte de base sobre o andamento das operações e assegurar que qualquer acidente ou incidente seja relatado",
+      "Responsável por prover suporte técnico necessário à equipe offshore nas operações em andamento, com foco nos equipamentos"
+    ],
+    "correctAnswer": 2,
+    "explanation": "De acordo com o texto do manual, o Supervisor (Lead Service Technician) é responsável pelo gerenciamento das operações da Oceaneering a bordo das unidades marítimas, comunicar ao suporte de base sobre o andamento das operações e assegurar que qualquer acidente ou incidente seja relatado."
+  },
+  {
+    "question": "Qual é o procedimento para realizar a montagem da Surface Flow Tree/Swivel no Drill Pipe de 43’?",
+    "options": [
+      "Deve-se utilizar o procedimento D-0841266 - Instrução de Trabalho Surface Flow Tree Flexible Flow Line Pipe DPR 5K II e realizar a montagem na horizontal em uma área de 10 metros linear",
+      "Deve-se utilizar o procedimento D-0841266 - Instrução de Trabalho Surface Flow Tree Flexible Flow Line Pipe DPR 5K II e realizar a montagem na horizontal em uma área de 20 metros linear",
+      "Deve-se utilizar o procedimento D-0841266 - Instrução de Trabalho Surface Flow Tree Flexible Flow Line Pipe DPR 5K II e realizar a montagem na vertical em uma área de 10 metros linear",
+      "Deve-se utilizar o procedimento D-0841266 - Instrução de Trabalho Surface Flow Tree Flexible Flow Line Pipe DPR 5K II e realizar a montagem na vertical em uma área de 20 metros linear"
+    ],
+    "correctAnswer": 1,
+    "explanation": "De acordo com o texto do manual, o procedimento para realizar a montagem da Surface Flow Tree/Swivel no Drill Pipe de 43’ é utilizar o procedimento D-0841266 - Instrução de Trabalho Surface Flow Tree Flexible Flow Line Pipe DPR 5K II e realizar a montagem na horizontal em uma área de 20 metros linear."
+  },
+  {
+    "question": " Qual é o torque aplicado em cada conexão dos tubos?",
+    "options": [
+      "73.000 lb/ft",
+      "70.000 lb/ft",
+      "60.000 lb/ft",
+      "50.000 lb/ft"
+    ],
+    "correctAnswer": 0,
+    "explanation": "De acordo com o texto do manual, o torque aplicado em cada conexão dos tubos é de 73.000 lb/ft."
+  },
+  {
+    "question": "O que deve ser feito em caso de danos a algum equipamento OII durante a movimentação?",
+    "options": [
+      "Deve-se solicitar que a equipe de movimentação de cargas da sonda continue a movimentação",
+      "Deve-se solicitar que a equipe de movimentação de cargas da sonda pare a movimentação e registrar o dano",
+      "Deve-se solicitar que a equipe de movimentação de cargas da sonda continue a movimentação e não registrar o dano",
+      "Deve-se solicitar que a equipe de movimentação de cargas da sonda pare a movimentação e não registrar o dano"
+    ],
+    "correctAnswer": 1,
+    "explanation": "De acordo com o texto do manual, em caso de danos a algum equipamento OII durante a movimentação, deve-se solicitar que a equipe de movimentação de cargas da sonda pare a movimentação e registrar o dano."
+  },
+  {
+    "question": "Qual é a capacidade nominal do elevador manual modelo CL-350?",
+    "options": [
+      "A) 200 toneladas",
+      "B) 350 toneladas",
+      "C) 500 toneladas",
+      "D) 750 toneladas"
+    ],
+    "correctAnswer": 1,
+    "explanation": "De acordo com a Tabela 4: Especificações Elevador manual DPR 5KII, a capacidade nominal do elevador manual modelo CL-350 é de 350 toneladas."
+  },
+  {
+    "question": "Qual é o peso bruto aproximado do elevador pneumático de porta dupla?",
+    "options": [
+      "A) 500 kg",
+      "B) 750 kg",
+      "C) 975 kg",
+      "D) 1200 kg"
+    ],
+    "correctAnswer": 2,
+    "explanation": "De acordo com a Tabela 3: Especificações Elevador pneumático DPR 5KII, o peso bruto aproximado do elevador pneumático de porta dupla é de 975 kg."
+  },
+  {
+    "question": "Qual é a pressão de trabalho do elevador pneumático?",
+    "options": [
+      "A) 50 PSI",
+      "B) 100 PSI",
+      "C) 150 PSI",
+      "D) 200 PSI"
+    ],
+    "correctAnswer": 1,
+    "explanation": "De acordo com a Tabela 3: Especificações Elevador pneumático DPR 5KII, a pressão de trabalho do elevador pneumático é de 100 PSI."
+  },
+  {
+    "question": "Qual é a função do Stabbing Guide?",
+    "options": [
+      "A) Manusear a coluna de trabalho durante estaleiramento",
+      "B) Guiar a entrada dos pinos, conexão XT-MF-69",
+      "C) Fixar a coluna durante atividades de manobra",
+      "D) Realizar testes funcionais"
+    ],
+    "correctAnswer": 1,
+    "explanation": "De acordo com a seção 7.6 Stabbing Guide, a função do Stabbing Guide é guiar a entrada dos pinos, conexão XT-MF-69."
+  },
+  {
+    "question": "Qual é a capacidade nominal do elevador auxiliar?",
+    "options": [
+      "A) 2 toneladas",
+      "B) 5 toneladas",
+      "C) 10 toneladas",
+      "D) 20 toneladas"
+    ],
+    "correctAnswer": 1,
+    "explanation": "De acordo com a Tabela 5: Especificações Elevador auxiliar DPR 5KII, a capacidade nominal do elevador auxiliar é de 5 toneladas."
+  },
+  {
+    "question": "Qual é a pressão máxima de trabalho permitida para a coluna DPR 5K II?",
+    "options": [
+      "A) 3.000 psi",
+      "B) 5.000 psi",
+      "C) 7.000 psi",
+      "D) 10.000 psi"
+    ],
+    "correctAnswer": 1,
+    "explanation": "De acordo com a Tabela 5, a pressão máxima de trabalho permitida para a coluna DPR 5K II é de 5.000 psi."
+  },
+  {
+    "question": "Qual é o tipo de fluido de completação permitido para uso na coluna DPR 5K II?",
+    "options": [
+      "A) Água doce",
+      "B) Água salgada",
+      "C) Fluidos de completação com adição de tensoativos não iônicos, sequestrador de oxigênio e bactericida",
+      "D) Fluidos de completação com adição de ácidos"
+    ],
+    "correctAnswer": 2,
+    "explanation": "De acordo com o item 5.4.1, os fluidos de completação utilizados pelo sistema SCVS durante as operações offshore possuem origem consoante a referência [4], e seu uso deverá ser conforme as concentrações, volumes, densidades e vazões descritas abaixo, incluindo a adição de tensoativos não iônicos, sequestrador de oxigênio e bactericida."
+  },
+  {
+    "question": "Qual é o valor máximo permitido para o offset da sonda em operações com BAP?",
+    "options": [
+      "A) 1,5%",
+      "B) 2,6%",
+      "C) 4%",
+      "D) 5%"
+    ],
+    "correctAnswer": 1,
+    "explanation": "De acordo com a Tabela 6, o offset máximo das ferramentas para desconexão (POD) deverá ser de 2,6% com relação a LDA para operações com BAP."
+  },
+  {
+    "question": "Qual é a temperatura máxima permitida para o uso dos equipamentos da coluna DPR 5K II?",
+    "options": [
+      "A) 100°C",
+      "B) 120°C",
+      "C) 150°C",
+      "D) 180°C"
+    ],
+    "correctAnswer": 1,
+    "explanation": "De acordo com a Tabela 5, a temperatura de uso para todos os equipamentos da coluna DPR 5K II é de -21 a 120°C."
+  },
+  {
+    "question": "Qual é o propósito do manual de instruções do DPR 5K II?",
+    "options": [
+      "A) Mobilização e inicialização da HPU (Unidade de Pouso)",
+      "B) Operação e manutenção da HPU",
+      "C) Segurança e responsabilidade no trabalho",
+      "D) Referências e definições técnicas"
+    ],
+    "correctAnswer": 1,
+    "explanation": "O manual de instruções do DPR 5K II é utilizado para guiar os operadores na mobilização e inicialização da HPU, incluindo as etapas de preparação e energização da unidade."
+  },
+  {
+    "question": "Quais são os limites operacionais da HPU (Unidade de Pouso) em relação à temperatura ambiental?",
+    "options": [
+      "A) -10°C a 50°C",
+      "B) 0°C a 40°C",
+      "C) -20°C a 60°C",
+      "D) 10°C a 35°C"
+    ],
+    "correctAnswer": 2,
+    "explanation": "De acordo com o manual, a HPU deve ser operada em temperatura ambiente entre 0°C e 40°C, conforme indicado na seção de segurança e responsabilidade no trabalho."
+  },
+  {
+    "question": "Qual é o procedimento correto para a pré-carga de N2 nos acumuladores da HPU?",
+    "options": [
+      "A) Abastecer os acumuladores com N2 através da válvula 55.1",
+      "B) Preparar a HPU para a pré-carga de N2",
+      "C) Energizar a HPU e iniciar a pré-carga de N2",
+      "D) Conectar os jumpers hidráulicos e iniciar a pré-carga de N2"
+    ],
+    "correctAnswer": 2,
+    "explanation": "O procedimento correto para a pré-carga de N2 nos acumuladores da HPU é preparar a HPU para a pré-carga de N2, conforme indicado na seção de procedimentos da HPU."
+  },
+  {
+    "question": "Qual é o equipamento necessário para a operação da HPU nos procedimentos de desmontagem e montagem de componentes?",
+    "options": [
+      "A) Chave de fenda e martelo",
+      "B) Fio de aço e solda",
+      "C) Superfusor e limadora",
+      "D) Calços e ganchos de aço"
+    ],
+    "correctAnswer": 3,
+    "explanation": "De acordo com o manual, os equipamentos necessários para a operação da HPU nos procedimentos de desmontagem e montagem de componentes incluem superfusor e limadora, conforme indicado na seção de recursos necessários."
+  },
+  {
+    "question": "Qual é a responsabilidade do operador em relação à segurança durante as operações de pré-carga de N2 nos acumuladores da HPU?",
+    "options": [
+      "A) Verificar a pressão dos acumuladores antes da pré-carga de N2",
+      "B) Preparar a HPU para a pré-carga de N2",
+      "C) Energizar a HPU e iniciar a pré-carga de N2",
+      "D) Conectar os jumpers hidráulicos e iniciar a pré-carga de N2"
+    ],
+    "correctAnswer": 0,
+    "explanation": "A responsabilidade do operador em relação à segurança durante as operações de pré-carga de N2 nos acumuladores da HPU é verificar a pressão dos acumuladores antes da pré-carga de N2, conforme indicado na seção de segurança e responsabilidade no trabalho."
+  },
+  {
+    "question": "Qual é o objetivo do manual DPR 5K II?",
+    "options": [
+      "A) Descrever as operações do Reeler Open Sea",
+      "B) Definir as regras e responsabilidades do operador",
+      "C) Especificar as especificações do carretel Open Sea",
+      "D) Relatar os procedimentos de segurança"
+    ],
+    "correctAnswer": 0,
+    "explanation": "O objetivo do manual é descrever as operações do Reeler Open Sea, conforme mencionado na seção \"Propósito\" da introdução."
+  },
+  {
+    "question": "Qual é a frequência mínima recomendada para a manutenção do sistema hidráulico?",
+    "options": [
+      "A) Todas 100 horas de operação",
+      "B) Todas 500 horas de operação",
+      "C) Todas 1000 horas de operação",
+      "D) Não há recomendação específica"
+    ],
+    "correctAnswer": 2,
+    "explanation": "A frequência de manutenção do sistema hidráulico é definida na seção \"Manutenção\" do manual, que recomenda a manutenção a cada 500 horas de operação, mas também destaca a importância de realizar manutenções preventivas regulares."
+  },
+  {
+    "question": "Qual é a condição necessária para realizar a operação de subida com o carretel Open Sea?",
+    "options": [
+      "A) Pressão nos tanques de ar superior a 500 PSI",
+      "B) Pressão nos tanques de ar inferior a 500 PSI",
+      "C) O indicador do freio de emergência deve estar desativado",
+      "D) O indicador do freio de emergência deve estar ativado"
+    ],
+    "correctAnswer": 2,
+    "explanation": "De acordo com a seção \"Operação do Open Sea Reeler\", a condição necessária para realizar a operação de subida é que o indicador do freio de emergência esteja desativado, conforme indicado na figura 11."
+  },
+  {
+    "question": "Qual é o tipo de lubrificante recomendado para uso no carretel Open Sea?",
+    "options": [
+      "A) Lubrificante sintético",
+      "B) Lubrificante mineral",
+      "C) Lubrificante hidráulico",
+      "D) Não há recomendação específica"
+    ],
+    "correctAnswer": 1,
+    "explanation": "De acordo com a seção \"Lubrificantes\" do manual, o tipo de lubrificante recomendado para uso no carretel Open Sea é o lubrificante sintético, conforme especificado na Tabela 9."
+  },
+  {
+    "question": "Qual é o procedimento recomendado para a desativação do freio de emergência do carretel Open Sea?",
+    "options": [
+      "A) Desligar o motor do intensificador",
+      "B) Abster-se de pressionar a alavanca de acionamento do guia cabo",
+      "C) Verificar a pressão nos tanques de ar",
+      "D) Realizar procedimentos de manutenção"
+    ],
+    "correctAnswer": 2,
+    "explanation": "De acordo com a seção \"Operação do Open Sea Reeler\", o procedimento recomendado para a desativação do freio de emergência é não pressionar a alavanca de acionamento do guia cabo, conforme indicado na figura 11."
+  },
+  {
+    "question": "Qual é o propósito do procedimento descrito no documento?",
+    "options": [
+      "Instruir sobre preparação e teste do Tubing Hanger Reeler/Tubing Hanger Umbilical no deck antes da operação",
+      "Detalhar as operações que serão realizadas utilizando Tubing Hanger Reeler/Tubing Hanger Umbilical",
+      "Descrever as ferramentas necessárias para a realização do procedimento",
+      "Todos os itens anteriores"
+    ],
+    "correctAnswer": 0,
+    "explanation": "Segundo a seção 1 do documento, o propósito do procedimento é instruir sobre preparação e teste do Tubing Hanger Reeler/Tubing Hanger Umbilical no deck antes da operação, bem como informar todas as ferramentas necessárias para sua realização."
+  },
+  {
+    "question": "Quais são as operações que estão incluídas no escopo do procedimento?",
+    "options": [
+      "Posicionamento dos equipamentos, teste funcional e preparação para operação",
+      "Posicionamento dos equipamentos e preparação para operação",
+      "Teste funcional dos equipamentos e preparação para operação",
+      "Posicionamento dos equipamentos"
+    ],
+    "correctAnswer": 0,
+    "explanation": "Segundo a seção 2 do documento, o escopo engloba as operações de posicionamento dos equipamentos, teste funcional dos equipamentos e preparação para operação."
+  },
+  {
+    "question": "Quais são as medidas de segurança mencionadas no documento?",
+    "options": [
+      "JSEA (Job Safety & Environment Analysis) e LSR (Life Saving Rules)",
+      "EPI (Equipamento de Proteção Individual) e EPC (Equipamento)",
+      "JSEA (Job Safety & Environment Analysis) e EPC (Equipamento)",
+      "LSR (Life Saving Rules) e EPI (Equipamento de Proteção Individual)"
+    ],
+    "correctAnswer": 0,
+    "explanation": "Segundo a seção 3 do documento, as medidas de segurança mencionadas incluem JSEA (Job Safety & Environment Analysis) e LSR (Life Saving Rules)."
+  },
+  {
+    "question": "Qual é a importância de realizar testes funcionais dos equipamentos?",
+    "options": [
+      "Para garantir a segurança dos trabalhadores",
+      "Para verificar se os equipamentos estão funcionando corretamente",
+      "Para evitar possíveis falhas nos equipamentos",
+      "Todos os itens anteriores"
+    ],
+    "correctAnswer": 0,
+    "explanation": "Segundo a seção 11 do documento, a importância de realizar testes funcionais dos equipamentos é verificar se eles estão funcionando corretamente, evitar possíveis falhas nos equipamentos e garantir a segurança dos trabalhadores."
+  },
+  {
+    "question": "Qual é o propósito da seção 13.5 do documento?",
+    "options": [
+      "Detalhar as operações de retenção dos equipamentos",
+      "Descrever os procedimentos de armazenamento dos equipamentos",
+      "Informar sobre as responsabilidades em caso de falhas nos equipamentos",
+      "Retenção dos equipamentos"
+    ],
+    "correctAnswer": 3,
+    "explanation": "Segundo a seção 13.5 do documento, o propósito é detalhar a retenção dos equipamentos, que inclui a identificação, armazenamento, proteção, recuperação e retenção dos equipamentos."
+  },
+  {
+    "question": "Qual é o propósito principal da instrução de trabalho para o equipamento de manobra DPR 5K II?",
+    "options": [
+      "A) Descrever o funcionamento do equipamento",
+      "B) Estabelecer regras e responsabilidades para o uso do equipamento",
+      "C) Fornecer especificações técnicas do equipamento",
+      "D) Identificar os componentes críticos do equipamento"
+    ],
+    "correctAnswer": 2,
+    "explanation": "A instrução de trabalho é destinada a estabelecer regras e responsabilidades para o uso do equipamento de manobra DPR 5K II, garantindo a segurança e a eficiência nas operações."
+  },
+  {
+    "question": "Qual é o material recomendado para a lubricação do elevador pneumático?",
+    "options": [
+      "A) Óleo mineral",
+      "B) Graxa sintética",
+      "C) Hidratação de silicone",
+      "D) Não há recomendação"
+    ],
+    "correctAnswer": 3,
+    "explanation": "A Tabela 11 menciona que a hidratação de silicone é uma das opções recomendadas para a lubricação do elevador pneumático 5KII."
+  },
+  {
+    "question": "Qual é a função do Stabbing Guide?",
+    "options": [
+      "A) Auxiliar na instalação da cunha manual",
+      "B) Estabilizar a conexão da mangueira de acionamento",
+      "C) Posicionar a cunha manual na junta DPR",
+      "D) Proteger a caixa da junta DPR"
+    ],
+    "correctAnswer": 3,
+    "explanation": "O Stabbing Guide, descrito na Seção 7.6, é responsável por posicionar a cunha manual na caixa da junta DPR, facilitando a operação."
+  },
+  {
+    "question": "Qual é a altura máxima permitida para manusear o elevador pneumático?",
+    "options": [
+      "A) Sem restrição",
+      "B) 1 metro",
+      "C) 2 metros",
+      "D) Não é especificado"
+    ],
+    "correctAnswer": 0,
+    "explanation": "Não há restrição ou orientação específica sobre a altura máxima permitida para manusear o elevador pneumático. É importante considerar as condições de trabalho e as normas de segurança."
+  },
+  {
+    "question": "Qual é o procedimento recomendado para fechar o elevador pneumático manualmente?",
+    "options": [
+      "A) Girar a ferramenta no sentido contrário",
+      "B) Aplicar força direcional na porta",
+      "C) Uso de ferramenta correta e giro no sentido horário",
+      "D) Nada deve ser feito manualmente"
+    ],
+    "correctAnswer": 3,
+    "explanation": "A Figura 8, que ilustra o fechamento manual do elevador pneumático, mostra que é necessário usar a ferramenta correta e girar no sentido horário para efetuar o fechamento."
+  },
+  {
+    "question": "O que é o sistema de controle da Cabine de Controle e quais são as suas principais funções?",
+    "options": [
+      "A) Sistema de controle dos equipamentos hidráulicos",
+      "B) Sistema de controle da pressurização e segurança da Cabine de Controle",
+      "C) Sistema de controle da interface hidráulica",
+      "D) Sistema de controle da interface pneumática"
+    ],
+    "correctAnswer": 1,
+    "explanation": "O sistema de controle da Cabine de Controle é responsável por monitorar a presença de fogo e gás no interior da cabine e realizar a purga e controle da pressão positiva. Além disso, também é responsável por gerenciar as operações do sistema e fornecer dados em tempo real. A resposta correta é B) Sistema de controle da pressurização e segurança da Cabine de Controle."
+  },
+  {
+    "question": "Qual é o limite de tempo de purga da Cabine de Controle?",
+    "options": [
+      "A) 20 minutos",
+      "B) 30 minutos",
+      "C) 55 minutos",
+      "D) 60 minutos"
+    ],
+    "correctAnswer": 2,
+    "explanation": "O tempo de purga da Cabine de Controle é de 55 minutos. A resposta correta é C) 55 minutos."
+  },
+  {
+    "question": "Qual é o objetivo principal da configuração do detector de gás HC?",
+    "options": [
+      "A) Detectar a presença de gás H2S",
+      "B) Detectar a presença de gás HC e fornecer dados em tempo real",
+      "C) Realizar a purga e controle da pressão positiva no interior da cabine",
+      "D) Controlar o funcionamento das bombas da HPU"
+    ],
+    "correctAnswer": 2,
+    "explanation": "O objetivo principal da configuração do detector de gás HC é detectar a presença de gás HC e fornecer dados em tempo real. A resposta correta é B) Detectar a presença de gás HC e fornecer dados em tempo real."
+  },
+  {
+    "question": "Em que situação é permitido realizar o by-pass do sistema de segurança da Cabine de Controle?",
+    "options": [
+      "A) Quando o sistema está em operação normal",
+      "B) Na ausência de atmosfera explosiva",
+      "C) Quando ocorre uma falha no sistema de segurança",
+      "D) Quando o operador deseja realizar uma manutenção"
+    ],
+    "correctAnswer": 1,
+    "explanation": "A resposta correta é B) Na ausência de atmosfera explosiva."
+  },
+  {
+    "question": "Qual é a função principal do CPU na Cabine de Controle?",
+    "options": [
+      "A) Controlar o funcionamento das bombas da HPU",
+      "B) Realizar a purga e controle da pressão positiva no interior da cabine",
+      "C) Fornecer dados em tempo real",
+      "D) Gerenciar as operações do sistema"
+    ],
+    "correctAnswer": 3,
+    "explanation": "A resposta correta é C) Fornecer dados em tempo real."
+  },
+  {
+    "question": "Qual é o procedimento necessário antes de iniciar a energização da HPU?",
+    "options": [
+      "A) Realizar a aterragem da HPU",
+      "B) Verificar o suprimento elétrico da sonda",
+      "C) Verificar os circuitos da HPU",
+      "D) Executar o procedimento de pré-carga de N2 dos acumuladores"
+    ],
+    "correctAnswer": 0,
+    "explanation": "O procedimento de pré-carga de N2 dos acumuladores deve ser executado antes da energização da HPU, conforme descrito no manual na página 11."
+  },
+  {
+    "question": "Qual é o objetivo da pressurização dos headers hidráulicos?",
+    "options": [
+      "A) Pressurizar os acumuladores LP/MP",
+      "B) Pressurizar os headers hidráulicos",
+      "C) Preparar a HPU para a operação",
+      "D) Realizar o abastecimento dos reservatórios"
+    ],
+    "correctAnswer": 1,
+    "explanation": "A pressurização dos headers hidráulicos é realizada para pressurizar o sistema hidráulico da HPU, conforme descrito no manual na página 30."
+  },
+  {
+    "question": "Quais são os componentes necessários para a operação da HPU?",
+    "options": [
+      "A) Aterramento da HPU",
+      "B) Suprimento elétrico da sonda",
+      "C) MCBs da Control Cabin Panel",
+      "D) Todos os componentes listados"
+    ],
+    "correctAnswer": 3,
+    "explanation": "Os componentes mencionados são necessários para a operação da HPU, conforme descrito no manual no índice."
+  },
+  {
+    "question": "Qual é a importância de realizar a verificação dos circuitos da HPU antes da operação?",
+    "options": [
+      "A) Preparar a HPU para a operação",
+      "B) Realizar a aterragem da HPU",
+      "C) Verificar os componentes da HPU",
+      "D) Identificar possíveis falhas elétricas"
+    ],
+    "correctAnswer": 3,
+    "explanation": "A verificação dos circuitos da HPU é importante para identificar possíveis falhas elétricas e garantir a segurança durante a operação, conforme descrito no manual no índice."
+  },
+  {
+    "question": "Qual é o procedimento necessário após a pressurização dos headers hidráulicos?",
+    "options": [
+      "A) Conectar os jumpers hidráulicos",
+      "B) Realizar o abastecimento dos reservatórios",
+      "C) Executar o procedimento de pré-carga de N2 dos acumuladores",
+      "D) Aterrar a HPU"
+    ],
+    "correctAnswer": 0,
+    "explanation": "Conectar os jumpers hidráulicos é o procedimento necessário após a pressurização dos headers hidráulicos, conforme descrito no manual na página 32."
+  },
+  {
+    "question": "Qual é o nível de prioridade para as normas utilizadas para a verificação do design analysis referente aos equipamentos DPR?",
+    "options": [
+      "1. NACE / DS-1",
+      "2. ISO / IEC",
+      "3. API",
+      "4. ANSI / ASME"
+    ],
+    "correctAnswer": 2,
+    "explanation": "De acordo com a Tabela 2, a ordem de prioridade para as normas utilizadas é: 1. API; 2. ISO / IEC; 3. ANSI / ASME."
+  },
+  {
+    "question": "Qual é o documento que apresenta os requisitos para a apresentação dos dados de entrada e dos resultados da Riser Analysis do projeto DPR 5K (Lotes 1 e 2)?",
+    "options": [
+      "FD-3000.00-1516-274-P1I-021",
+      "CT-TDUT 012/2019",
+      "ET-3000.00-1516-619-PPC-001",
+      "PR-3000.00-1516-274-P1I-021"
+    ],
+    "correctAnswer": 1,
+    "explanation": "De acordo com a Seção 1.1, o CT-TDUT 012/2019 é o documento que apresenta os requisitos para a apresentação dos dados de entrada e dos resultados da Riser Analysis do projeto DPR 5K (Lotes 1 e 2)."
+  },
+  {
+    "question": "Qual é a ordem de prioridade para as referências normativas quando houver conflito?",
+    "options": [
+      "API; ISO / IEC; ANSI / ASME",
+      "API; NACE / DS-1; ISO / IEC",
+      "NACE / DS-1; ISO / IEC; API",
+      "ANSI / ASME; ISO / IEC; API"
+    ],
+    "correctAnswer": 0,
+    "explanation": "De acordo com a Tabela 2, a ordem de prioridade para as referências normativas quando houver conflito é: 1. API; 2. ISO / IEC; 3. ANSI / ASME."
+  },
+  {
+    "question": "Qual é a descrição da sigla HCR?",
+    "options": [
+      "Alta Resistência ao Colapso",
+      "High Pressure",
+      "Hydraulic Power Unit / Open Sea",
+      "High Quality"
+    ],
+    "correctAnswer": 0,
+    "explanation": "De acordo com a Seção 1.3, HCR significa Alta Resistência ao Colapso."
+  },
+  {
+    "question": "Qual é a norma que apresenta os requisitos para o uso de ferramentas de contagem de partículas em fluidos hidráulicos?",
+    "options": [
+      "API SPEC 5DP",
+      "API SPEC 6A",
+      "API RP 7G",
+      "ISO-4406"
+    ],
+    "correctAnswer": 3,
+    "explanation": "De acordo com a Tabela 2, a ISO-4406 é a norma que apresenta os requisitos para o uso de ferramentas de contagem de partículas em fluidos hidráulicos."
+  },
+  {
+    "question": "Quais são as responsabilidades dos membros da equipe durante a operação do carretel Open Sea Reeler?",
+    "options": [
+      "A) Somente responsabilidade do operador",
+      "B) Responsabilidade compartilhada entre o operador e os membros da equipe",
+      "C) Nenhuma responsabilidade para os membros da equipe",
+      "D) Somente a supervisão é responsável"
+    ],
+    "correctAnswer": 1,
+    "explanation": "De acordo com o manual (seção 5 Regras e Responsabilidades), os membros da equipe compartilham responsabilidades durante a operação do carretel Open Sea Reeler, incluindo a supervisão e a execução das tarefas."
+  },
+  {
+    "question": "Qual é a função da válvula principal de bloqueio de ar (BV1) no carretel Open Sea Reeler?",
+    "options": [
+      "A) Controlar a pressão do ar no sistema",
+      "B) Bloquear o fluxo de ar em caso de emergência",
+      "C) Ajustar a quantidade de lubrificante",
+      "D) Registar dados de operação"
+    ],
+    "correctAnswer": 1,
+    "explanation": "De acordo com o manual (seção 3 Descrição), a válvula principal de bloqueio de ar (BV1) é responsável por bloquear o fluxo de ar em caso de emergência, garantindo a segurança da equipe e do equipamento."
+  },
+  {
+    "question": "Qual é a importância da inspeção regular do carretel Open Sea Reeler?",
+    "options": [
+      "A) Garantir a eficiência da operação",
+      "B) Reduzir custos e aumentar a produtividade",
+      "C) Identificar problemas de segurança e manter o equipamento em boas condições",
+      "D) Aumentar a capacidade de carga"
+    ],
+    "correctAnswer": 2,
+    "explanation": "De acordo com o manual (seção 6 Segurança), a inspeção regular do carretel Open Sea Reeler é crucial para identificar problemas de segurança e manter o equipamento em boas condições, evitando acidentes e garantindo a segurança da equipe."
+  },
+  {
+    "question": "Quais são as especificações do carretel Open Sea mencionadas no manual?",
+    "options": [
+      "A) Tamanho e peso",
+      "B) Especificações de material e construção",
+      "C) Capacidade de carga e velocidade de movimentação",
+      "D) Todas as opções anteriores"
+    ],
+    "correctAnswer": 3,
+    "explanation": "De acordo com o manual (seção 3 Descrição), as especificações do carretel Open Sea incluem tamanho e peso, especificações de material e construção, capacidade de carga e velocidade de movimentação."
+  },
+  {
+    "question": "Qual é a responsabilidade do operador do carretel Open Sea Reeler em relação à segurança?",
+    "options": [
+      "A) Somente responsabilidade do operador",
+      "B) Responsabilidade compartilhada entre o operador e a equipe",
+      "C) Nenhuma responsabilidade para o operador",
+      "D) Responsabilidade exclusiva do gerente de operação"
+    ],
+    "correctAnswer": 1,
+    "explanation": "De acordo com o manual (seção 6 Segurança), o operador do carretel Open Sea Reeler é responsável por garantir a segurança da equipe e do equipamento, adotando medidas preventivas e de controle para evitar acidentes."
+  },
+  {
+    "question": "Quais são os procedimentos iniciais para a mobilização de equipamentos para operações de Tubing Hanger Mode?",
+    "options": [
+      "Verificar o layout operacional da sonda e realizar verificações de segurança",
+      "Realizar testes hidrostáticos nas ferramentas subsea",
+      "Mobilizar o conjunto umbilical+JRC+THRT"
+    ],
+    "correctAnswer": 0,
+    "explanation": "Conforme a Seção 6.2 do manual, o SOP (Sequência Operacional Preliminar) deve ser realizado antes da mobilização de equipamentos. Isso inclui a verificação do layout operacional da sonda e a realização de verificações de segurança."
+  },
+  {
+    "question": "Quais são os equipamentos necessários para a configuração do software na Control Cabin?",
+    "options": [
+      "HPU, Booster, Control Cabin",
+      "Carretel/Umbilical Tubing Hanger, Ferramenta Torque de Clamps",
+      "Main Elevator, Long Bails, Upper Spread Bar"
+    ],
+    "correctAnswer": 1,
+    "explanation": "Conforme a Seção 9.1 do manual, a configuração do software na Control Cabin requere um Carretel/Umbilical Tubing Hanger e uma Ferramenta Torque de Clamps."
+  },
+  {
+    "question": "O que deve ser realizado antes de desassentar a coluna de trabalho?",
+    "options": [
+      "Verificar as verificações pré-assentamento",
+      "Realizar testes hidrostáticos nas ferramentas subsea",
+      "Mobilizar o conjunto umbilical+JRC+THRT"
+    ],
+    "correctAnswer": 0,
+    "explanation": "Conforme a Seção 12.1 do manual, antes de desassentar a coluna de trabalho, é necessário verificar as verificações pré-assentamento."
+  },
+  {
+    "question": "Quais são os cuidados operacionais que devem ser observados com a coluna de trabalho travada?",
+    "options": [
+      "Monitorar o sistema com frequência",
+      "Não realizar atividades que possam danificar a coluna de trabalho",
+      "Não utilizar ferramentas que possam causar riscos adicionais"
+    ],
+    "correctAnswer": 1,
+    "explanation": "Conforme a Seção 11.5 do manual, quando a coluna de trabalho está travada, é necessário observar cuidados operacionais, incluindo não realizar atividades que possam danificar a coluna de trabalho."
+  },
+  {
+    "question": "Quem é responsável por aprovar o documento de procedimento operacional?",
+    "options": [
+      "Gabriel Magalhaes/Daniel Philot",
+      "Thiago Sipoli/Bruno Silva",
+      "Marcos Mendonça"
+    ],
+    "correctAnswer": 2,
+    "explanation": "Conforme a Seção HISTÓRICO DE REVISÃO do manual, o documento de procedimento operacional deve ser aprovado por Marcos Mendonça."
+  },
+  {
+    "question": "Para qual propósito é destinado o procedimento operacional Open Sea Mode - DPR 5K ll?",
+    "options": [
+      "A) Movimentação de equipamentos",
+      "B) Preparação para a operação",
+      "C) Controle de poço",
+      "D) Monitoramento do sistema"
+    ],
+    "correctAnswer": 2,
+    "explanation": "O procedimento operacional Open Sea Mode - DPR 5K ll é destinado ao controle de poço, conforme explicitado no capítulo 1. (Propósito)"
+  },
+  {
+    "question": "Quais equipamentos devem ser testados hidrostaticamente antes da operação?",
+    "options": [
+      "A) HPU, Booster, Control Cabin, RCP e ESDP",
+      "B) Carretel/Umbilical Open Sea",
+      "C) SFT x DPR x COFLEXIP",
+      "D) HPU, Booster, Control Cabin, RCP e ESDP, bem como Carretel/Umbilical Open Sea"
+    ],
+    "correctAnswer": 1,
+    "explanation": "De acordo com o capítulo 9 (Preparação para a operação), o teste hidrostatico é realizado nos equipamentos HPU, Booster, Control Cabin, RCP e ESDP."
+  },
+  {
+    "question": "Qual é a responsabilidade do pessoal operacional e de apoio durante a operação?",
+    "options": [
+      "A) Garantir a segurança da equipe e do ambiente",
+      "B) Manter atualizados os registros de operação",
+      "C) Realizar testes de superfície",
+      "D) Todas as opções acima"
+    ],
+    "correctAnswer": 0,
+    "explanation": "Conforme explicitado no capítulo 5 (Atribuições e responsabilidades), o pessoal operacional e de apoio é responsável por garantir a segurança da equipe e do ambiente, manter atualizados os registros de operação e realizar testes de superfície."
+  },
+  {
+    "question": "Quais funções da HPU devem ser preparadas para o EDS?",
+    "options": [
+      "A) OS01 e OS02",
+      "B) HPU e Booster",
+      "C) RCP e ESDP",
+      "D) Todas as opções acima"
+    ],
+    "correctAnswer": 0,
+    "explanation": "De acordo com o capítulo 9 (Preparação para a operação), as funções OS01 e OS02 da HPU devem ser preparadas para o EDS."
+  },
+  {
+    "question": "Qual é o objetivo final do procedimento operacional Open Sea Mode - DPR 5K ll?",
+    "options": [
+      "A) Instalação da coluna de trabalho",
+      "B) Teste das linhas de superfície",
+      "C) Habilitação do EDS para assentamento da coluna de trabalho",
+      "D) Desmobilização do equipamento"
+    ],
+    "correctAnswer": 2,
+    "explanation": "Conforme explicitado no capítulo 11 (Monitoramento do sistema), o objetivo final do procedimento operacional é habilitar o EDS para o assentamento da coluna de trabalho."
+  },
+  {
+    "question": "Qual é o objetivo principal do manual de instrução de trabalho para o equipamento de manobra DPR 5K II?",
+    "options": [
+      "A) Realizar operações de perfuração de poços",
+      "B) Descrever procedimentos de segurança para o equipamento",
+      "C) Definir especificações técnicas do equipamento",
+      "D) Realizar inspeção visual dos elevadores"
+    ],
+    "correctAnswer": 2,
+    "explanation": "O objetivo principal do manual é descrever procedimentos de segurança para o equipamento, conforme destacado na seção 6: SEGURANÇA."
+  },
+  {
+    "question": "Qual é o procedimento correto para inspeção visual da cunha manual, de acordo com o manual?",
+    "options": [
+      "A) Verificar apenas a estrutura visual da cunha",
+      "B) Verificar a cunha manual antes da instalação no elevador",
+      "C) Realizar inspeção visual da cunha manual antes de realizar operações",
+      "D) Não realizar inspeção visual da cunha manual"
+    ],
+    "correctAnswer": 3,
+    "explanation": "A inspeção visual da cunha manual deve ser realizada antes de realizar operações, conforme descrito na seção 9.2: Inspeção visual da cunha manual."
+  },
+  {
+    "question": "Quais são os limites operacionais do elevador pneumático DPR 5K II?",
+    "options": [
+      "A) Pode operar em profundidades de até 5000 metros",
+      "B) Pode operar em temperaturas de até 40°C",
+      "C) Pode operar com uma pressão máxima de 100 bar",
+      "D) Pode operar com uma capacidade de carregamento de até 100 kg"
+    ],
+    "correctAnswer": 1,
+    "explanation": "O elevador pneumático DPR 5K II pode operar em profundidades de até 5000 metros, conforme destacado na Tabela 3: Especificações Elevador pneumático DPR 5KII."
+  },
+  {
+    "question": "Quais são os recursos necessários para a operação do equipamento de manobra DPR 5K II?",
+    "options": [
+      "A) Elevador pneumático, elevador manual, elevador auxiliar e cunha manual",
+      "B) Elevador pneumático, elevador manual, cunha manual e stabber guide",
+      "C) Elevador pneumático, elevador manual, stabber guide e conexão de acionamento",
+      "D) Elevador pneumático, elevador manual, cunha manual e insertos 7.1/8 \""
+    ],
+    "correctAnswer": 0,
+    "explanation": "Os recursos necessários para a operação do equipamento de manobra DPR 5K II são listados na Tabela 9: Recursos Necessários."
+  },
+  {
+    "question": "Quem é responsável pela aprovação e revisão do manual de instrução de trabalho para o equipamento de manobra DPR 5K II?",
+    "options": [
+      "A) Robson Lima",
+      "B) Thiago Sipoli",
+      "C) Jonatas Silva e Robson Lima",
+      "D) Equipe de design e desenvolvimento"
+    ],
+    "correctAnswer": 3,
+    "explanation": "A aprovação e revisão do manual foram realizadas por Jonatas Silva e Robson Lima, conforme destacado no histórico de revisão."
+  },
+  {
+    "question": "Qual é o objetivo principal deste documento?",
+    "options": [
+      "Descrever o sistema de completo e workover em poços submarinos",
+      "Descrever os limites operacionais do sistema SCVS Oceaneering DPR 5KII",
+      "Descrever a história de revisão do documento",
+      "Descrever a lista de tabelas"
+    ],
+    "correctAnswer": 1,
+    "explanation": "O objetivo deste documento é descrever os limites operacionais conforme ao projeto SCVS Oceaneering DPR 5KII, conforme mencionado na introdução (Seção 1)"
+  },
+  {
+    "question": "Quais são as referências normativas utilizadas para estabelecer os limites operacionais?",
+    "options": [
+      "Ref. [19] e [26]",
+      "Ref. [1] e [2]",
+      "Ref. [3] e [4]",
+      "Ref. [5] e [6]"
+    ],
+    "correctAnswer": 0,
+    "explanation": "As referências normativas para estabelecer os valores limites são Ref. [19] e [26], conforme mencionado na introdução (Seção 1)"
+  },
+  {
+    "question": "Em que seção do documento é apresentada a lista de tabelas?",
+    "options": [
+      "Seção 1",
+      "Seção 2",
+      "Seção 3",
+      "Seção 4"
+    ],
+    "correctAnswer": 4,
+    "explanation": "A lista de tabelas é apresentada na Seção 4 do documento"
+  },
+  {
+    "question": "Qual é o fluido utilizado na cimentação de acordo com a Tabela 4?",
+    "options": [
+      "Fluido de completação",
+      "Fluido de estimulação",
+      "Fluido para operação com cimentação",
+      "Fluido para deriva"
+    ],
+    "correctAnswer": 2,
+    "explanation": "A Tabela 4 apresenta os fluidos de cimentação utilizados no sistema SCVS Oceaneering DPR 5KII"
+  },
+  {
+    "question": "Qual é o limite máximo de perda de carga admitido para a linha de 1.1/4'?",
+    "options": [
+      "5 bar",
+      "10 bar",
+      "15 bar",
+      "20 bar"
+    ],
+    "correctAnswer": 3,
+    "explanation": "A Figura 13 apresenta a perda de carga admitida para a linha de 1.1/4', que é de até 20 bar"
   }
 ]
