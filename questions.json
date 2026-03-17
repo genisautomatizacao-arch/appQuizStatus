@@ -7,7 +7,8 @@
       "C) Desligar a unidade, acionar as manobras de fechamento do GUIA e abertura da cunha por 20 segundos, desconectar do painel, depois do Riser Spider, e por fim da HPU.",
       "D) Manter o guia e a cunha fechados, desligar a alimentação pneumática e hidráulica, acionar as manobras de abertura do GUIA e fechamento da cunha por 15 segundos, desconectar da unidade hidráulica, depois do painel, e por fim do Riser Spider."
     ],
-    "correctAnswer": 1
+    "correctAnswer": 1,
+    "explanation": "Conforme o manual D-0841277_A, a segurança exige manter o guia aberto e cunha fechada, desativar as fontes de energia e ciclar os comandos por 20s para garantir a despressurização total antes da desconexão física."
   },
   {
     "question": "De acordo com o documento 'D-0841266_A - Instrucao de Trabalho - Surface Flow Tree – Flexible Flow Line Pipe – DPR 5K II', qual é o sentido de rotação do atuador hidráulico tipo FAIL CLOSE da válvula WING do Bloco Lateral da SFT para realizar sua abertura manual via override?",
@@ -17,7 +18,8 @@
       "C) Sentido horário.",
       "D) Sentido anti-horário."
     ],
-    "correctAnswer": 3
+    "correctAnswer": 3,
+    "explanation": "O documento D-0841266_A especifica que o sentido anti-horário é o padrão para abertura manual por override em válvulas Wing tipo FAIL CLOSE da SFT."
   },
   {
     "question": "De acordo com o documento 'D-0841263_A - Instrucão de Trabalho - Mobilização Open Sea Reeler – DPR 5K II', qual dos seguintes itens NÃO é um intertravamento de segurança listado na Tabela 6 para desativar o sistema de acionamento do Carretel Open Sea?",
@@ -27,7 +29,8 @@
       "C) Umbilical tension sensor interlock",
       "D) Transit Bolt Interlock (HV1/6)"
     ],
-    "correctAnswer": 2
+    "correctAnswer": 2,
+    "explanation": "O sensor de tensão do umbilical (Umbilical tension sensor) não é listado como um intertravamento de segurança na Tabela 6 do documento D-0841263_A."
   },
   {
     "question": "De acordo com o documento 'Sistema de Controle DPR 5KII', quais são os níveis inferior e superior de alarme para o detector de gás sulfídrico (H2S) no CPFG (Combined Pressurization Fire & Gas Control Panel) da Cabine de Controle?",
@@ -37,7 +40,8 @@
       "C) Nível inferior: 10 ppm, Nível superior: 20 ppm",
       "D) Nível inferior: 0.5% v/v, Nível superior: 1% v/v"
     ],
-    "correctAnswer": 1
+    "correctAnswer": 1,
+    "explanation": "O sistema de controle DPR 5KII define alarmes críticos de H2S em 5 ppm (nível baixo) e 10 ppm (nível alto) para proteção da equipe na cabine."
   },
   {
     "question": "De acordo com o documento 'Sistema de Controle DPR 5KII', quais são as especificações de potência do motor elétrico, vazão e pressão de trabalho para as bombas do circuito de alta pressão (HP) da HPU?",
@@ -47,7 +51,8 @@
       "C) 20HP, 4.4 GPM, 10.000 psi",
       "D) 20HP, 2 GPM, 5.000 psi"
     ],
-    "correctAnswer": 1
+    "correctAnswer": 1,
+    "explanation": "As unidades HPU do DPR 5KII utilizam motores de 15HP para entregar 2 GPM a uma pressão de 10.000 psi no circuito de alta (HP)."
   },
   {
     "question": "De acordo com o documento 'D-0841266_A - Instrucao de Trabalho - Surface Flow Tree – Flexible Flow Line Pipe – DPR 5K II', qual o torque correto a ser aplicado nos 4 parafusos trava (P/N: 0523802) entre o Saver Sub e o crossover da SFT utilizando graxa Never-seez regular grade (P/N: CA051-008-01) com coeficiente de fricção 0.06, e qual o torque caso um plug de rosca esquerda seja utilizado?",
@@ -57,17 +62,8 @@
       "C) 52 lb.ft com graxa; 8.75 N.m sem graxa; 23.05 NM para plug de rosca esquerda.",
       "D) 8 N.m com graxa; 52 lb.ft sem graxa; 23.05 NM para plug de rosca esquerda."
     ],
-    "correctAnswer": 0
-  },
-  {
-    "question": "De acordo com os documentos 'D-0824049_A _ Instrução de Trabalho – Mobilização e Operação da Torcup, Hytorc, Kit clamp`s e Kit CWJ' (Seção 8, Página 9) e 'Conversion Charts RP-2000 RAPTOR TorcUP Torque 2015' (Página 1), qual a pressão de ar em PSI que deve ser ajustada no regulador do kit lubrifil para que uma ferramenta TorcUP RP-2000 aplique um torque de 985 lb.ft nos dogs de travamento da Stress Joint + MRC?",
-    "options": [
-      "A) 30 psi",
-      "B) 40 psi",
-      "C) 50 psi",
-      "D) 60 psi"
-    ],
-    "correctAnswer": 1
+    "correctAnswer": 0,
+    "explanation": "O uso de graxa Never-seez altera o coeficiente de fricção, exigindo 8 N.m aplicado nos parafusos trava conforme o manual D-0841266_A."
   },
   {
     "question": "De acordo com o documento 'D-0841275_A - Instrucao de Trabalho - Mobilizacao do Tubing Hanger Reeler DPR 5K II', qual a pressão e o volume esperado para o teste funcional da válvula gaveta do Tubing Hanger Reeler, tanto para abertura quanto para fechamento?",
@@ -77,7 +73,8 @@
       "C) 3000 psi, 0.250 litros",
       "D) 5000 psi, 0.196 litros"
     ],
-    "correctAnswer": 1
+    "correctAnswer": 1,
+    "explanation": "O teste funcional requer 3000 psi de pressão operacional e o deslocamento de volume medido de 0.196 litros (Manual D-0841275_A)."
   },
   {
     "question": "De acordo com o documento 'Sistema de Controle DPR 5KII', qual é a condição crítica para a correta inicialização da HMI do sistema de controle DPR 5K, e qual o tempo de espera associado para o switch (stratix)?",
@@ -87,66 +84,205 @@
       "C) A HMI pode ser energizada a qualquer momento, pois sua inicialização é independente do switch (stratix).",
       "D) A HMI requer uma reinicialização manual do switch (stratix) se não iniciar em 2 minutos."
     ],
-    "correctAnswer": 1
+    "correctAnswer": 1,
+    "explanation": "O switch Stratix leva de 5 a 10 minutos para inicializar completamente. Ligar a HMI antes disso causa falhas de comunicação no sistema DPR 5KII."
   },
   {
-    "question": "De acordo com o documento 'Sistema de Controle DPR 5KII', na Sequência de ESD 2 - ESD, qual é a ação que ocorre aos 20 segundos e qual a ação que ocorre aos 25 segundos após a ativação da sequência?",
+    "question": "Qual é a capacidade de carga do Riser Spider?",
     "options": [
-      "A) Aos 20s: Fecha Válvula EDP 5” 4 (Pressurizada); Aos 25s: Abre Válvula Wing SFT 49 (Ventada).",
-      "B) Aos 20s: Abre Válvula EDP 5” 3 (Ventada); Aos 25s: Abre Válvula Wing SFT 49 (Ventada).",
-      "C) Aos 20s: Abre Válvula Anular EDP 5 (Ventada); Aos 25s: Fecha Cisalhante TRT 23 (Pressurizada).",
-      "D) Aos 20s: Piloto SDR 24 (Pressurizada); Aos 25s: Abre Válvula Wing SFT 49 (Ventada)."
+      "A) 200 ton",
+      "B) 317 ton",
+      "C) 400 ton",
+      "D) 500 ton"
     ],
-    "correctAnswer": 1
+    "correctAnswer": 1,
+    "explanation": "De acordo com a tabela 3, Especificações Técnicas, a capacidade de carga do Riser Spider é de 317 ton."
   },
   {
-    "question": "De acordo com o documento 'Sistema de Controle DPR 5KII', quais são as pressões de pré-carga de Nitrogênio (N2) para os acumuladores de bexiga dos Headers LP e HP da HPU, respectivamente?",
+    "question": "Qual é o procedimento para realizar o teste do Riser Spider?",
     "options": [
-      "A) LP Header: 2.650 psi; HP Header: 4.350 psi.",
-      "B) LP Header: 5.000 psi; HP Header: 10.000 psi.",
-      "C) LP Header: 4.350 psi; HP Header: 2.650 psi.",
-      "D) LP Header: 2.000 psi; HP Header: 4.000 psi."
+      "A) Realizar o teste sem documentação necessária",
+      "B) Realizar o isolamento da área e informar na boca de ferro o início e término do teste",
+      "C) Realizar o teste sem conexão das mangueiras hidráulicas",
+      "D) Realizar o teste sem verificar o nível de óleo do tanque da Unidade Hidráulica"
     ],
-    "correctAnswer": 0
+    "correctAnswer": 1,
+    "explanation": "De acordo com o item 9.2, Preparação E Teste Do Riser Spider, é necessário realizar o isolamento da área e informar na boca de ferro o início e término do teste."
   },
   {
-    "question": "De acordo com o documento 'D-0841263_A - Instrucão de Trabalho - Mobilização Open Sea Reeler – DPR 5K II', quais são os raios de curvatura mínimos dinâmico e de armazenamento para o Umbilical Open Sea?",
+    "question": "Qual é a pressão de operação do Riser Spider?",
     "options": [
-      "A) Raio de curvatura mínimo dinâmico: 800 mm; Raio de curvatura mínimo de armazenamento: 900 mm.",
-      "B) Raio de curvatura mínimo dinâmico: 1100 mm; Raio de curvatura mínimo de armazenamento: 700 mm.",
-      "C) Raio de curvatura mínimo dinâmico: 700 mm; Raio de curvatura mínimo de armazenamento: 1100 mm.",
-      "D) Raio de curvatura mínimo dinâmico: 900 mm; Raio de curvatura mínimo de armazenamento: 800 mm."
+      "A) 1.000 psi",
+      "B) 2.000 psi",
+      "C) 2.500 psi",
+      "D) 3.000 psi"
     ],
-    "correctAnswer": 1
+    "correctAnswer": 2,
+    "explanation": "De acordo com a tabela 3, Especificações Técnicas, a pressão de operação do Riser Spider é de 2.500 psi."
   },
   {
-    "question": "De acordo com o documento 'D-0824049_A _ Instrução de Trabalho – Mobilização e Operação da Torcup, Hytorc, Kit clamp`s e Kit CWJ', após a montagem da CWJ com a chave de ar, quais são as configurações de torque finais e corretas para os parafusos das seções inferior e média, e para os parafusos de alternância nas seções superiores?",
+    "question": "Qual é a temperatura de operação do Carretel Open Sea?",
     "options": [
-      "A) Parafusos inferior e médio: 15 Nm; Parafusos de alternância superiores: 25 Nm.",
-      "B) Parafusos inferior e médio: 20 Nm; Parafusos de alternância superiores: 10 Nm.",
-      "C) Parafusos inferior e médio: 25 Nm; Parafusos de alternância superiores: 15 Nm.",
-      "D) Parafusos inferior e médio: 45 lbf.ft; Parafusos de alternância superiores: 25 Nm."
+      "A) 0° a 30°C",
+      "B) 0° a 40°C",
+      "C) 0° a 50°C",
+      "D) 0° a 60°C"
     ],
-    "correctAnswer": 2
+    "correctAnswer": 1,
+    "explanation": "De acordo com a Tabela 3: Especificações do Carretel Open Sea, a temperatura de operação é de 0° a 40°C."
   },
   {
-    "question": "De acordo com o documento 'D-0841277_A - Instrucao de Trabalho - Riser Spider DPR 5K II', com que frequência é imprescindível realizar a limpeza e lubrificação do BOWL e dos mordentes do Riser Spider durante as operações de manobra de coluna?",
+    "question": "Qual é o peso máximo do Carretel Open Sea?",
     "options": [
-      "A) A cada 10 seções.",
-      "B) A cada 20 seções.",
-      "C) A cada 30 seções.",
-      "D) Diariamente."
+      "A) 20.000kg",
+      "B) 30.000kg",
+      "C) 35.000kg",
+      "D) 40.000kg"
     ],
-    "correctAnswer": 2
+    "correctAnswer": 2,
+    "explanation": "De acordo com a Tabela 3: Especificações do Carretel Open Sea, o peso máximo do Carretel Open Sea (Max. Gross Weight) é de 35.000kg."
   },
   {
-    "question": "De acordo com o documento 'D-0841266_A - Instrucao de Trabalho - Surface Flow Tree – Flexible Flow Line Pipe – DPR 5K II', quais são os três testes hold points obrigatórios, conforme o padrão Petrobras PE-1PBR-01580, que devem ser realizados no bloco e válvulas da SFT?",
+    "question": "Qual é a capacidade do tambor do Carretel Open Sea?",
     "options": [
-      "A) Vedação da válvula Master no sentido do fluxo, Vedação da válvula Swab no sentido de contra fluxo, Vedação da válvula Wing no sentido de contra fluxo.",
-      "B) Vedação da válvula Swab no sentido do fluxo, Vedação da válvula Master no sentido de contra fluxo, Vedação da válvula Wing no sentido do fluxo.",
-      "C) Vedação da válvula Swab no sentido de contra fluxo, Vedação da válvula Master no sentido do fluxo, Vedação da válvula Wing no sentido de contra fluxo.",
-      "D) Vedação da válvula Swab no sentido do fluxo, Vedação da válvula Wing no sentido de contra fluxo, Vedação da válvula Master no sentido do fluxo."
+      "A) 1.500m",
+      "B) 2.000m",
+      "C) 2.500m",
+      "D) 3.000m"
     ],
-    "correctAnswer": 1
+    "correctAnswer": 1,
+    "explanation": "De acordo com a Tabela 3: Especificações do Carretel Open Sea, a capacidade do tambor é de (6 camadas x 35 voltas) + (1 camadas x 23 voltas) = 2000m."
+  },
+  {
+    "question": "Qual é a pressão máxima de trabalho da Surface Flow Tree?",
+    "options": [
+      "A) 3000 PSI",
+      "B) 5000 PSI",
+      "C) 8000 PSI",
+      "D) 10000 PSI"
+    ],
+    "correctAnswer": 1,
+    "explanation": "De acordo com a tabela 4: Especificações Técnicas SFT, a pressão máxima de trabalho da Surface Flow Tree é de 5000 PSI."
+  },
+  {
+    "question": "Qual é o diâmetro mínimo do drift do Bloco Lateral da Surface Flow Tree?",
+    "options": [
+      "A) 2,06\"",
+      "B) 3,06\"",
+      "C) 4,06\"",
+      "D) 5,06\""
+    ],
+    "correctAnswer": 1,
+    "explanation": "De acordo com o texto, o diâmetro mínimo do drift do Bloco Lateral da Surface Flow Tree é de 3,06\", definido pela API 6A (tabela D.22 – Drift Diameter for Individual Valves and Christmas Trees)."
+  },
+  {
+    "question": "Qual é o torque aplicado nos parafusos trava entre o Swivel e o Saver sub?",
+    "options": [
+      "A) 5 N.m",
+      "B) 8 N.m",
+      "C) 10 N.m",
+      "D) 12 N.m"
+    ],
+    "correctAnswer": 1,
+    "explanation": "De acordo com o texto, o torque aplicado nos parafusos trava entre o Swivel e o Saver sub é de 8 N.m, usando graxa Never-seez regular grade (P/N: CA051-008-01) ou similar com coeficiente de fricção 0,06."
+  },
+  {
+    "question": "Qual é o propósito do procedimento descrito no manual do DPR 5K II?",
+    "options": [
+      "A) Descrever as especificações técnicas do Tubing Hanger Reeler",
+      "B) Instruir sobre a preparação e teste do Tubing Hanger Reeler/Tubing Hanger Umbilical",
+      "C) Enumerar os componentes do sistema de acionamento do carretel",
+      "D) Descrever os procedimentos de segurança para a operação do DPR 5K II"
+    ],
+    "correctAnswer": 1,
+    "explanation": "O propósito do procedimento é instruir sobre a preparação e teste do Tubing Hanger Reeler/Tubing Hanger Umbilical, conforme descrito na página 5 do manual."
+  },
+  {
+    "question": "Qual é a faixa de temperatura de operação do Carretel Tubing Hanger?",
+    "options": [
+      "A) -20°C a 50°C",
+      "B) 0°C a 40°C",
+      "C) 10°C a 60°C",
+      "D) -10°C a 30°C"
+    ],
+    "correctAnswer": 1,
+    "explanation": "A faixa de temperatura de operação do Carretel Tubing Hanger é de 0°C a 40°C, conforme descrito na Tabela 3 do manual."
+  },
+  {
+    "question": "Qual é o procedimento para realizar o teste funcional da válvula gaveta?",
+    "options": [
+      "A) Pressurizar a linha piloto da válvula gaveta com 1000 psi e verificar o volume pelo flow meter",
+      "B) Pressurizar a linha piloto da válvula gaveta com 3000 psi e verificar o volume pelo flow meter",
+      "C) Realizar o teste via override sem pressurizar a linha piloto",
+      "D) Desligar o sistema de acionamento do carretel antes de realizar o teste"
+    ],
+    "correctAnswer": 1,
+    "explanation": "O procedimento para realizar o teste funcional da válvula gaveta é pressurizar a linha piloto da válvula gaveta com 3000 psi e verificar o volume pelo flow meter, conforme descrito na página 15 do manual."
+  },
+  {
+    "question": "Qual é a pressão máxima de trabalho da coluna DPR 5K II?",
+    "options": [
+      "A) 3.000 psi",
+      "B) 5.000 psi",
+      "C) 7.000 psi",
+      "D) 10.000 psi"
+    ],
+    "correctAnswer": 1,
+    "explanation": "De acordo com a Tabela 5, a pressão máxima de trabalho da coluna DPR 5K II é de 5.000 psi."
+  },
+  {
+    "question": "Qual é o peso máximo permitido para compressão da coluna DPR em operações com THMR?",
+    "options": [
+      "A) 20 klbs",
+      "B) 50 klbs",
+      "C) 100 klbs",
+      "D) 200 klbs"
+    ],
+    "correctAnswer": 1,
+    "explanation": "De acordo com a Tabela 5, o peso máximo permitido para compressão da coluna DPR em operações com THMR é de 50 klbs."
+  },
+  {
+    "question": "Qual é o offset máximo das ferramentas para desconexão (POD) em operações com BAP?",
+    "options": [
+      "A) 1% da LDA",
+      "B) 2% da LDA",
+      "C) 2,6% da LDA",
+      "D) 4% da LDA"
+    ],
+    "correctAnswer": 2,
+    "explanation": "De acordo com a Tabela 6, o offset máximo das ferramentas para desconexão (POD) em operações com BAP é de 2,6% da LDA."
+  },
+  {
+    "question": "Qual é a função principal da HPU (Hydraulic Power Unit) no Sistema de Controle do DPR 5K?",
+    "options": [
+      "A) Fornecer ar comprimido para os equipamentos",
+      "B) Fornecer fluido hidráulico pressurizado para os equipamentos",
+      "C) Controlar a temperatura do sistema",
+      "D) Monitorar a pressão do sistema"
+    ],
+    "correctAnswer": 1,
+    "explanation": "A HPU é responsável por prover fluido hidráulico pressurizado para os equipamentos vinculados ao sistema, conforme descrito no manual do DPR 5K."
+  },
+  {
+    "question": "Qual é o tempo de purga do sistema CPFG (Combined Pressurization Fire & Gas Control Panel)?",
+    "options": [
+      "A) 30 minutos",
+      "B) 45 minutos",
+      "C) 55 minutos",
+      "D) 60 minutos"
+    ],
+    "correctAnswer": 2,
+    "explanation": "O tempo de purga do sistema CPFG é de 55 minutos, conforme descrito no manual do DPR 5K."
+  },
+  {
+    "question": "Qual é a pressão de trabalho do Header LP da HPU?",
+    "options": [
+      "A) 2.000 psi",
+      "B) 3.000 psi",
+      "C) 5.000 psi",
+      "D) 10.000 psi"
+    ],
+    "correctAnswer": 2,
+    "explanation": "A pressão de trabalho do Header LP da HPU é de 5.000 psi, conforme descrito no manual do DPR 5K."
   }
 ]
